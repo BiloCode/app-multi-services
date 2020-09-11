@@ -1,8 +1,9 @@
+import { AuthenticationState } from '../../../../metadata/types';
+
 namespace AuthMetadata {
   export interface IStore {
     isLoadingInformation : boolean;
-    isWorker : boolean;
-    isAuthenticated : boolean;
+    userAuthenticatioState : AuthenticationState
   }
 }
 

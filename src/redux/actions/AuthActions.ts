@@ -1,22 +1,20 @@
 import { Dispatch } from "redux";
+import { AuthenticationState } from "../../metadata/types";
 
 const TYPES = {
   SET_AUTHENTICATION_STATE: "set-authentication-state",
 };
 
-const updateAuthenticationState = (isAuthenticated : boolean, isWorker : boolean) => ({
+const updateAuthenticationState = (isAuthenticated : AuthenticationState) => ({
   type: TYPES.SET_AUTHENTICATION_STATE,
-  payload: {
-    isAuthenticated,
-    isWorker
-  }
+  payload: isAuthenticated
 });
 
 export const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
     //Request to API...
 
-    dispatch(updateAuthenticationState(true,false));
+    dispatch(updateAuthenticationState('authentication-user'));
   } catch (e) {
     console.log(e);
   }
