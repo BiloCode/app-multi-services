@@ -14,7 +14,7 @@ export const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
     //Request to API...
 
-    dispatch(updateAuthenticationState('authentication-user'));
+    dispatch(updateAuthenticationState('not-authentication'));
   } catch (e) {
     console.log(e);
   }

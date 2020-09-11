@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 //Types
 import AuthMetadata from '../../redux/reducers/Auth/metadata';
-import { RootState } from '../../metadata/types';
+import { ReduxRootState } from '../../metadata/types';
 
 //Redux
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ const useRouterInit = () : AuthMetadata.IStore => {
   const {
     userAuthenticatioState,
     isLoadingInformation
-  } = useSelector<RootState, AuthMetadata.IStore>(s => s.auth, shallowEqual);
+  } = useSelector<ReduxRootState, AuthMetadata.IStore>(s => s.auth, shallowEqual);
 
   useEffect(() => {
     dispatch(checkAuthenticationState());

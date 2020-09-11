@@ -1,12 +1,11 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Login from '../screens/Login';
 import useRouterInit from './hooks/useRouterInit';
 import ScreenLoading from '../components/ScreenLoading';
-
-const Stack = createStackNavigator();
+import AuthUser from './stacks/Auth-User';
+import AuthWorker from './stacks/Auth-Worker';
+import NotAuth from './stacks/Not-Auth';
 
 const Router = () => {
   const { isLoadingInformation , userAuthenticatioState } = useRouterInit();
@@ -14,9 +13,13 @@ const Router = () => {
   if(isLoadingInformation) return <ScreenLoading />
 
   return <NavigationContainer>
-    <Stack.Navigator headerMode='none'>
-      <Stack.Screen name='login' component={Login} />
-    </Stack.Navigator>
+    {
+      userAuthenticatioState === 'not-authentication' ?
+        <NotAuth /> :
+        userAuthenticatioState === 'authentication-user' ?
+          <AuthUser /> :
+          <AuthWorker />
+    }
   </NavigationContainer>
 }
 
