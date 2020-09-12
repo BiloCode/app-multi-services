@@ -1,5 +1,3 @@
-import { Dispatch } from "redux";
-
 const TYPES = {
   SET_USERNAME_VALUE : 'set-username-value',
   SET_PASSWORD_VALUE : 'set-password-value',
@@ -16,17 +14,8 @@ export const setUsername = (value : string) => ({
   payload : value
 });
 
-const setEmptyStore = () => ({
+export const setEmptyStore = () => ({
   type : TYPES.EMPTY_STORE
 })
-
-export const sendLoginInformation = (username : string, password : string) => async (dispatch : Dispatch) => {
-  try{
-    console.log(username,password);
-    dispatch(setEmptyStore());
-  }catch(e){
-    console.log(e);
-  }
-}
 
 export default TYPES;

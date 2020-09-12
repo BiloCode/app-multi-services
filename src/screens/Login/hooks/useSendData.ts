@@ -1,6 +1,6 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
-import { sendLoginInformation } from "../../../redux/actions/LoginActions";
+import { sendLoginInformation } from "../../../redux/actions/AuthActions";
 import LoginMetadata from "../../../redux/reducers/Login/metadata";
 
 const useSendData = () => {
