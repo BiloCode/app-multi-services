@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import GlobalButtonStyles from './styles';
 
@@ -22,4 +22,4 @@ GlobalButton.defaultProps = {
   horizontalSize : '100%'
 }
 
-export default GlobalButton;
+export default memo(GlobalButton);

@@ -15,7 +15,8 @@ export default function App() {
     RalewayExtraBold : require('./src/fonts/Raleway-ExtraBold.ttf'),
     RalewaySemiBold : require('./src/fonts/Raleway-SemiBold.ttf'),
     RalewayBold : require('./src/fonts/Raleway-Bold.ttf'),
-    RalewayMedium : require('./src/fonts/Raleway-Medium.ttf')
+    RalewayMedium : require('./src/fonts/Raleway-Medium.ttf'),
+    RalewayRegular : require('./src/fonts/Raleway-Regular.ttf')
   });
 
   if(!loaded) return null;

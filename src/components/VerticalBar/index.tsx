@@ -19,19 +19,19 @@ const VerticalBar : FC = ({ children }) => {
     <VerticalBarStyles.Container>
       <VerticalBarStyles.Bar>
         <VerticalBarStyles.BarHeader>
-          <Icon content={<AntDesign name="user" size={32} color="#fff" />} onPress={NavigateToProfile} />
+          <Icon content={<AntDesign name="user" size={24} color="#fff" />} onPress={NavigateToProfile} />
         </VerticalBarStyles.BarHeader>
         <VerticalBarStyles.BarSection>
-          <Icon content={<AntDesign name="home" size={32} color="#fff" />} onPress={NavigateToHome} />
-          <Icon content={<AntDesign name="search1" size={32} color="#fff" />} onPress={NavigateToSearch} />
-          <Icon content={<AntDesign name="profile" size={32} color="#fff" />} onPress={NavigateToWorkDetail} />
-          <Icon content={<AntDesign name="setting" size={32} color="#fff" />} onPress={NavigateToConfiguration} />
+          <Icon content={<AntDesign name="home" size={24} color="#fff" />} onPress={NavigateToHome} />
+          <Icon content={<AntDesign name="search1" size={24} color="#fff" />} onPress={NavigateToSearch} />
+          <Icon content={<AntDesign name="profile" size={24} color="#fff" />} onPress={NavigateToWorkDetail} />
+          <Icon content={<AntDesign name="setting" size={24} color="#fff" />} onPress={NavigateToConfiguration} />
         </VerticalBarStyles.BarSection>
         <VerticalBarStyles.BarFooter>
-          <Icon content={<AntDesign name="back" size={32} color="#fff" />} onPress={CloseSession} />
+          <Icon content={<AntDesign name="back" size={28} color="#fff" />} onPress={CloseSession} />
         </VerticalBarStyles.BarFooter>
       </VerticalBarStyles.Bar>
-      <VerticalBarStyles.Content as={ScrollView}>
+      <VerticalBarStyles.Content>
         {children}
       </VerticalBarStyles.Content>
     </VerticalBarStyles.Container>

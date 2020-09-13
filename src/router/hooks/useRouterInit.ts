@@ -6,9 +6,9 @@ import { ReduxRootState } from '../../metadata/types';
 
 //Redux
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { checkAuthenticationState } from '../../redux/actions/AuthActions';
+import { checkAuthenticationState } from '../../redux/reducers/Auth/actions/async';
 
-const useRouterInit = () : AuthMetadata.IStore => {
+const useRouterInit = () => {
   const dispatch = useDispatch();
   const {
     userAuthenticatioState,

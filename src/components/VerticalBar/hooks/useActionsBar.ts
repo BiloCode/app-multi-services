@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { closeAuthentication } from "../../../redux/actions/AuthActions";
+import { closeAuthentication } from "../../../redux/reducers/Auth/actions/async";
 
 const useActionsBar = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,9 @@ const useActionsBar = () => {
   const NavigateToProfile = () => null;
   const NavigateToSearch = () => null;
   const NavigateToWorkDetail = () => null;
-  const CloseSession = () => dispatch(closeAuthentication());
+  const CloseSession = () => {
+    dispatch(closeAuthentication());
+  }
 
   return {
     NavigateToHome,

@@ -1,18 +1,9 @@
 import { AsyncStorage } from "react-native";
 import { Dispatch } from "redux";
-import { AuthenticationState } from "../../metadata/types";
-import { setEmptyStore } from "./LoginActions";
+import { AuthenticationState } from "../../../../metadata/types";
+import { setLoadingData, updateAuthenticationState } from "./sync";
 
-const TYPES = {
-  SET_AUTHENTICATION_STATE: "set-authentication-state",
-};
-
-const updateAuthenticationState = (isAuthenticated : AuthenticationState) => ({
-  type: TYPES.SET_AUTHENTICATION_STATE,
-  payload: isAuthenticated
-});
-
-export const checkAuthenticationState = () => async (dispatch : Dispatch) => {
+const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
     //Request to API...
 
@@ -29,12 +20,13 @@ export const checkAuthenticationState = () => async (dispatch : Dispatch) => {
     }
 
     dispatch(updateAuthenticationState(state));
+    dispatch(setLoadingData(false));
   } catch (e) {
     console.log(e);
   }
 };
 
-export const sendLoginInformation = (username : string, password : string) => async (dispatch : Dispatch) => {
+const sendLoginInformation = (username : string, password : string) => async (dispatch : Dispatch) => {
   try{
     if(username === 'billy123' && password === 'billy123'){
       //Request API...
@@ -47,22 +39,27 @@ export const sendLoginInformation = (username : string, password : string) => as
       await AsyncStorage.setItem('user-information',JSON.stringify(payload));
 
       dispatch(updateAuthenticationState('authentication-user'));
-      dispatch(setEmptyStore());
     }
   }catch(e){
     console.log(e);
   }
 }
 
-export const closeAuthentication = () => async (dispatch : Dispatch) => {
+const closeAuthentication = () => async (dispatch : Dispatch) => {
+  dispatch(setLoadingData(true));
   try{
     //Request To API...
     
     await AsyncStorage.clear();
     dispatch(updateAuthenticationState('not-authentication'));
+    dispatch(setLoadingData(false));
   }catch(e){
     console.log(e);
   }
 }
 
-export default TYPES;
+export {
+  checkAuthenticationState,
+  sendLoginInformation,
+  closeAuthentication
+}

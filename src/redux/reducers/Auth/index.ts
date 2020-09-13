@@ -1,5 +1,4 @@
-import AuthMetadata from "./metadata";
-import TYPES from "../../actions/AuthActions";
+import AuthMetadata, { TYPES } from "./metadata";
 
 const initialState : AuthMetadata.IStore = {
   userAuthenticatioState : 'not-authentication',
@@ -10,8 +9,14 @@ const reducer = (state = initialState , action) : AuthMetadata.IStore => {
   switch(action.type){
     case TYPES.SET_AUTHENTICATION_STATE:
       return {
-        userAuthenticatioState : action.payload,
-        isLoadingInformation : false
+        ...state,
+        userAuthenticatioState : action.payload
+      }
+
+    case TYPES.SET_LOADING_DATA :
+      return {
+        ...state,
+        isLoadingInformation : action.payload
       }
 
     default:

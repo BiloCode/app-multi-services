@@ -6,7 +6,7 @@ const VerticalBarStyles = {
     flex-direction: row;
   `,
   Bar : styled.View`
-    width: 75px;
+    width: 60px;
     padding-top: 24px;
     height: 100%;
     background-color: #1858D4;
@@ -23,8 +23,8 @@ const VerticalBarStyles = {
   `,
   Content : styled.View`
     flex: 1;
+    padding: 0 20px;
     padding-top: 24px;
-    padding-left: 15px;
     background-color: #FAFAFA;
   `
 }
