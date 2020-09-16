@@ -1,22 +1,30 @@
 import { AsyncStorage } from "react-native";
 import { Dispatch } from "redux";
+import { App } from "../../../../config";
 import { AuthenticationState } from "../../../../metadata/types";
+import { setUserInformation } from "../../User/actions/sync";
 import { setLoadingData, updateAuthenticationState } from "./sync";
 
 const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
-    //Request to API...
-
     let state : AuthenticationState = 'not-authentication';
-    const payload = await AsyncStorage.getItem('user-information');
+    const token = await AsyncStorage.getItem('user-information');
 
-    if(payload) {
-      const { isMentor } = JSON.parse(payload);
+    if(token) {
+      const request = await App.post('/auth/token/verify', new URLSearchParams({ token }));
 
-      if(isMentor) 
-        state = 'authentication-worker';
-      else 
-        state = 'authentication-user';
+      if(request.data.isExpired) {
+        await AsyncStorage.clear();
+        state = 'not-authentication';
+      }else{
+        if(request.data.worker){
+          state = 'authentication-worker';
+          dispatch(setUserInformation(request.data.worker));
+        }else if(request.data.user){
+          state = 'authentication-user';
+          dispatch(setUserInformation(request.data.user));
+        }
+      }
     }
 
     dispatch(updateAuthenticationState(state));
@@ -27,19 +35,29 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
 };
 
 const sendLoginInformation = (username : string, password : string) => async (dispatch : Dispatch) => {
+  dispatch(setLoadingData(true));
+  
   try{
-    if(username === 'billy123' && password === 'billy123'){
-      //Request API...
+    let state : AuthenticationState = 'not-authentication';
+    const request = await App.post('auth/login', new URLSearchParams({
+      username,
+      password
+    }));
 
-      const payload = {
-        token : 'Bearer sdsad6as5d15as',
-        isMentor : false
+    if(request.data.token) {
+      await AsyncStorage.setItem('user-information',request.data.token);
+
+      if(request.data.worker){
+        state = 'authentication-worker';
+        dispatch(setUserInformation(request.data.worker));
+      }else if(request.data.user){
+        state = 'authentication-user';
+        dispatch(setUserInformation(request.data.user));
       }
-
-      await AsyncStorage.setItem('user-information',JSON.stringify(payload));
-
-      dispatch(updateAuthenticationState('authentication-user'));
     }
+
+    dispatch(updateAuthenticationState(state));
+    dispatch(setLoadingData(false));
   }catch(e){
     console.log(e);
   }
@@ -48,8 +66,6 @@ const sendLoginInformation = (username : string, password : string) => async (di
 const closeAuthentication = () => async (dispatch : Dispatch) => {
   dispatch(setLoadingData(true));
   try{
-    //Request To API...
-    
     await AsyncStorage.clear();
     dispatch(updateAuthenticationState('not-authentication'));
     dispatch(setLoadingData(false));

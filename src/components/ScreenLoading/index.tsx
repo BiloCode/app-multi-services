@@ -4,7 +4,7 @@ import { ScreenViewContainer } from './styles';
 
 const ScreenLoading = () => {
   return <ScreenViewContainer>
-    <ActivityIndicator size={60} />
+    <ActivityIndicator size={60} color='#1858D4' />
   </ScreenViewContainer>
 }
 
