@@ -4,14 +4,14 @@ const SpecialtyCardStyles = {
   Container : styled.View`
     width: 45%;
     min-width: 117px;
-    height: 117px;
+    height: 130px;
     background-color: #F4F4F4;
     border-radius: 20px;
     margin: 3px;
   `,
   ImageContainer : styled.View`
     width: 100%;
-    height: 85px;
+    height: 95px;
     justify-content: center;
     align-items: center;
   `,

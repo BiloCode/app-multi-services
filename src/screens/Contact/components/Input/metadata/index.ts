@@ -3,20 +3,24 @@ namespace NSInput {
     label : string;
   }
 
+  interface IPlaceholderInput {
+    placeholder?: string;
+  }
+
   interface IEventChangeTextInput {
     onChangeText?(ev : string) : void;
   }
 
-  interface IProps extends IPropsBase {
-    placeholder?: string;
+  interface IProps extends IPropsBase , IPlaceholderInput {
     defaultValue? : string;
   }
 
   export interface IPropsText extends IProps,IEventChangeTextInput {}
   export interface IPropsTextArea extends IProps,IEventChangeTextInput {}
 
-  export interface IPropsSelect extends IProps {
-    onChange?() : void;
+  export interface IPropsSelect extends IPropsBase {
+    onChange?(item,index) : void;
+    itemSelected : any;
   }
 }
 
