@@ -8,7 +8,7 @@ const useModalAnimation = () => {
 
   useEffect(() => {
     Animated.timing(slideRight,{
-      duration : 300,
+      duration : 250,
       toValue : 1,
       useNativeDriver : true
     }).start();

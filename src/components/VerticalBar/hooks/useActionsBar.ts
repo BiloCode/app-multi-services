@@ -7,17 +7,17 @@ const useActionsBar = () => {
   const dispatch = useDispatch();
 
   const NavigateToHome = () => nav.navigate('home');
-  const NavigateToConfiguration = () => null;
+  const NavigateToContact = () => nav.navigate('contact');
   const NavigateToProfile = () => null;
-  const NavigateToSearch = () => null;
-  const NavigateToWorkDetail = () => null;
+  const NavigateToSearch = () => nav.navigate('search');
+  const NavigateToWorkDetail = () => alert('En construccion...');
   const CloseSession = () => {
     dispatch(closeAuthentication());
   }
 
   return {
     NavigateToHome,
-    NavigateToConfiguration,
+    NavigateToContact,
     NavigateToProfile,
     NavigateToSearch,
     NavigateToWorkDetail,

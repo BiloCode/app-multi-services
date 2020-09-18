@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import useStarAmount from '../../hooks/useStarAmount';
+import useStarAmount from '../../../../hooks/useStarAmount';
 import BaseBox from '../BaseBox';
 import SBS from './styles';
 

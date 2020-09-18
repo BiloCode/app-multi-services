@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Animated, ScrollView, TouchableOpacity } from 'react-native';
 import GlobalButton from '../GlobalButton';
@@ -9,7 +9,11 @@ import { ReduxRootState } from '../../metadata/types';
 import { SpecialtyMetadata } from '../../redux/reducers/Specialty/metadata';
 import Item from './Item';
 
-const ModalSearch = () => {
+interface IProps {
+  onClose?() : void;
+}
+
+const ModalSearch : FC<IProps> = ({ onClose }) => {
   const state = useSelector<ReduxRootState, SpecialtyMetadata.IStore>(({ specialties }) => specialties,shallowEqual);
   const styles = useModalAnimation();
 
@@ -30,7 +34,7 @@ const ModalSearch = () => {
     <MSS.ButtonContainer>
       <GlobalButton text='Ver a los mas Cercanos' />
     </MSS.ButtonContainer>
-    <MSS.IconClose as={TouchableOpacity}>
+    <MSS.IconClose onPress={onClose} as={TouchableOpacity}>
       <MaterialCommunityIcons name="close-circle-outline" size={32} color="#1858D4" />
     </MSS.IconClose>
   </MSS.Container>

@@ -8,7 +8,7 @@ import useActionsBar from './hooks/useActionsBar';
 const VerticalBar : FC = ({ children }) => {
   const { 
     CloseSession,
-    NavigateToConfiguration,
+    NavigateToContact,
     NavigateToHome,
     NavigateToProfile,
     NavigateToSearch,
@@ -25,7 +25,7 @@ const VerticalBar : FC = ({ children }) => {
           <Icon content={<AntDesign name="home" size={24} color="#fff" />} onPress={NavigateToHome} />
           <Icon content={<AntDesign name="search1" size={24} color="#fff" />} onPress={NavigateToSearch} />
           <Icon content={<AntDesign name="profile" size={24} color="#fff" />} onPress={NavigateToWorkDetail} />
-          <Icon content={<AntDesign name="setting" size={24} color="#fff" />} onPress={NavigateToConfiguration} />
+          <Icon content={<AntDesign name="phone" size={24} color="#fff" />} onPress={NavigateToContact} />
         </VerticalBarStyles.BarSection>
         <VerticalBarStyles.BarFooter>
           <Icon content={<AntDesign name="back" size={28} color="#fff" />} onPress={CloseSession} />
