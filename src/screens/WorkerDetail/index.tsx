@@ -10,25 +10,29 @@ import ProfileSection from './components/ProfileSection';
 import SpecialtyBox from './components/SpecialtyBox';
 import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
+import ModalSearch from '../../components/ModalSearch';
 
 const WorkerDetail = () => (
-  <WDS.MainContainer as={ScrollView}>
-    <ProfileSection />
-    <WDS.WorkInformation>
-      <SpecialtyBox />
-      <BaseBox>
-        <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
-      </BaseBox>
-      <PriceBox />
-      <LocationBox />
-      <WDS.MarginVerticalContainer>
-        <WDS.MarginBottom>
-          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' />
-        </WDS.MarginBottom>
-        <GlobalButton text='Solicitar Servicio' />
-      </WDS.MarginVerticalContainer>
-    </WDS.WorkInformation>
-  </WDS.MainContainer>
+  <>
+    <WDS.MainContainer as={ScrollView}>
+      <ProfileSection />
+      <WDS.WorkInformation>
+        <SpecialtyBox />
+        <BaseBox>
+          <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
+        </BaseBox>
+        <PriceBox />
+        <LocationBox />
+        <WDS.MarginVerticalContainer>
+          <WDS.MarginBottom>
+            <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' />
+          </WDS.MarginBottom>
+          <GlobalButton text='Solicitar Servicio' />
+        </WDS.MarginVerticalContainer>
+      </WDS.WorkInformation>
+    </WDS.MainContainer>
+    <ModalSearch />
+  </>
 )
 
 export default memo(WorkerDetail);

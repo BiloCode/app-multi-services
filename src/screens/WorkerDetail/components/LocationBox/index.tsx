@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import BaseBox from '../BaseBox';
 import LBS from './styles';
 
