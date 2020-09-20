@@ -1,12 +1,16 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 import BaseBox from '../BaseBox';
 import PriceBoxStyles from './styles';
 
-const PriceBox = () => {
+interface IProps {
+  data : number;
+}
+
+const PriceBox : FC<IProps> = ({ data }) => {
   return <BaseBox>
     <PriceBoxStyles.Container>
       <PriceBoxStyles.BaseText>Precio Inicial / Base</PriceBoxStyles.BaseText>
-      <PriceBoxStyles.PriceText>S/ 16.00</PriceBoxStyles.PriceText>
+      <PriceBoxStyles.PriceText>S/ {data}</PriceBoxStyles.PriceText>
     </PriceBoxStyles.Container>
   </BaseBox>
 }

@@ -1,15 +1,19 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import useStarAmount from '../../../../hooks/useStarAmount';
 import BaseBox from '../BaseBox';
 import SBS from './styles';
 
-const SpecialtyBox = () => {
+interface IProps {
+  data : string;
+}
+
+const SpecialtyBox : FC<IProps> = ({ data }) => {
   const stars = useStarAmount(3);
 
   return <BaseBox>
     <SBS.Container>
-      <SBS.SpecialtyText>Desarrollador Web UX / UI</SBS.SpecialtyText>
+      <SBS.SpecialtyText>{data}</SBS.SpecialtyText>
       <SBS.StarContainer>
         { stars.map((v,i) => <AntDesign key={i} name={v.name} size={10} color='#1858D4' />) }
       </SBS.StarContainer>      

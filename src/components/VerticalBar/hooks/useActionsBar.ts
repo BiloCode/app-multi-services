@@ -8,7 +8,7 @@ const useActionsBar = () => {
 
   const NavigateToHome = () => nav.navigate('home');
   const NavigateToContact = () => nav.navigate('contact');
-  const NavigateToProfile = () => null;
+  const NavigateToProfile = () => nav.navigate('profile');
   const NavigateToSearch = () => nav.navigate('search');
   const NavigateToWorkDetail = () => alert('En construccion...');
   const CloseSession = () => {

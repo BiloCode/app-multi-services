@@ -1,8 +1,13 @@
-import React, { memo } from 'react';
+import React, { FC, memo } from 'react';
+import MapView from 'react-native-maps';
 import BaseBox from '../BaseBox';
 import LBS from './styles';
 
-const LocationBox = () => {
+interface IProps {
+  data : string;
+}
+
+const LocationBox : FC<IProps> = ({ data }) => {
   return <LBS.Container>
     <BaseBox isMarginBottom={false}>
       <LBS.LocationTextContainer>
@@ -10,9 +15,15 @@ const LocationBox = () => {
         <LBS.LocationText>Rimac, Pasaje los descalzos 146</LBS.LocationText>
       </LBS.LocationTextContainer>
     </BaseBox>    
-    <LBS.MapContainer>
-
-    </LBS.MapContainer>
+    <LBS.MapContainer 
+      as={MapView}
+      initialRegion={{
+        latitude: -12.0464,
+        longitude: -77.0428,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+    />
   </LBS.Container>
 }
 
