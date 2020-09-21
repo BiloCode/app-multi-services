@@ -40,9 +40,9 @@ const WorkerDetail = () => {
       <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
       <WDS.MarginVerticalContainer>
         <WDS.MarginBottom>
-          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' />
+          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={() => alert('En Construccion...')} />
         </WDS.MarginBottom>
-        <GlobalButton text='Solicitar Servicio' />
+        <GlobalButton text='Solicitar Servicio' onPress={() => alert('En Construccion...')} />
       </WDS.MarginVerticalContainer>
     </WDS.WorkInformation>
   </WDS.MainContainer>

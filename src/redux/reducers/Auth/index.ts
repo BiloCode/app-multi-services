@@ -2,7 +2,8 @@ import AuthMetadata, { TYPES } from "./metadata";
 
 const initialState : AuthMetadata.IStore = {
   userAuthenticatioState : 'not-authentication',
-  isLoadingInformation : true
+  isLoadingInformation : true,
+  isSend : false
 }
 
 const reducer = (state = initialState , action) : AuthMetadata.IStore => {
@@ -17,6 +18,12 @@ const reducer = (state = initialState , action) : AuthMetadata.IStore => {
       return {
         ...state,
         isLoadingInformation : action.payload
+      }
+
+    case TYPES.SET_IS_SEND:
+      return {
+        ...state,
+        isSend : action.payload
       }
 
     default:

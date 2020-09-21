@@ -1,7 +1,7 @@
-enum TYPES {
-  UPDATE_NEAREST_WORKERS,
-  UPDATE_NEW_WORKERS,
-  UPDATE_WORKER_DETAIL_DATA
+const TYPES = {
+  UPDATE_NEAREST_WORKERS : 'update-nearest-workers',
+  UPDATE_NEW_WORKERS : 'update-new-workers',
+  UPDATE_WORKER_DETAIL_DATA : 'update-worker-detail-data'
 }
 
 export namespace WorkerMetadata {

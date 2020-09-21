@@ -8,7 +8,9 @@ interface IProps {
 }
 
 const SpecialtyCard : FC<IProps> = ({ title , image }) => {
-  return <SCS.Container as={TouchableOpacity}>
+  const onPress = () => alert('En Construccion...');
+
+  return <SCS.Container onPress={onPress} as={TouchableOpacity}>
     <SCS.ImageContainer>
       <SCS.Image source={{ uri : image }} resizeMode='contain' />
     </SCS.ImageContainer>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
-import Input from '../Input';
+import Input from '../../../../components/Input';
 import InputListStyles from './styles';
 import { KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 

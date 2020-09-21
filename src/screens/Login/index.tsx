@@ -7,7 +7,7 @@ import useSendData from './hooks/useLoginAuthentication';
 import LS from './styles';
 
 const Login = () => {
-  const { changePasswordValue , changeUsernameValue , sendData } = useSendData();
+  const { changePasswordValue , changeUsernameValue , sendData , isSend } = useSendData();
 
   return <LS.Container>
     <LS.Circle />
@@ -20,7 +20,7 @@ const Login = () => {
         changePassword={changePasswordValue}
         changeUsername={changeUsernameValue} 
       />
-      <GlobalButton text='Iniciar Sesion' onPress={sendData} />
+      <GlobalButton isLoading={isSend} text='Iniciar Sesion' onPress={sendData} />
       <FooterMessage />      
     </LS.FormContainer>
   </LS.Container>

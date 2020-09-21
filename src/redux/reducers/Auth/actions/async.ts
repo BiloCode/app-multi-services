@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { App } from "../../../../config";
 import { AuthenticationState } from "../../../../metadata/types";
 import { setUserInformation } from "../../User/actions/sync";
-import { setLoadingData, updateAuthenticationState } from "./sync";
+import { setLoadingData, updateAuthenticationLoading, updateAuthenticationState } from "./sync";
 
 const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
@@ -12,17 +12,18 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
 
     if(token) {
       const request = await App.post('/auth/token/verify', new URLSearchParams({ token }));
+      const { isExpired , worker , user } = request.data;
 
-      if(request.data.isExpired) {
+      if(isExpired) {
         await AsyncStorage.clear();
         state = 'not-authentication';
       }else{
-        if(request.data.worker){
+        if(worker){
           state = 'authentication-worker';
-          dispatch(setUserInformation(request.data.worker));
-        }else if(request.data.user){
+          dispatch(setUserInformation(worker));
+        }else if(user){
           state = 'authentication-user';
-          dispatch(setUserInformation(request.data.user));
+          dispatch(setUserInformation(user));
         }
       }
     }
@@ -35,7 +36,7 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
 };
 
 const sendLoginInformation = (username : string, password : string) => async (dispatch : Dispatch) => {
-  dispatch(setLoadingData(true));
+  dispatch(updateAuthenticationLoading(true));
   
   try{
     let state : AuthenticationState = 'not-authentication';
@@ -44,20 +45,26 @@ const sendLoginInformation = (username : string, password : string) => async (di
       password
     }));
 
-    if(request.data.token) {
-      await AsyncStorage.setItem('user-information',request.data.token);
+    const { token , worker , user } = request.data;
 
-      if(request.data.worker){
-        state = 'authentication-worker';
-        dispatch(setUserInformation(request.data.worker));
-      }else if(request.data.user){
-        state = 'authentication-user';
-        dispatch(setUserInformation(request.data.user));
-      }
+    if(!token){
+      dispatch(updateAuthenticationLoading(false));
+      alert('Usuario o Contraseña incorrecta.')
+      return;
+    }
+
+    await AsyncStorage.setItem('user-information',request.data.token);
+
+    if(worker){
+      state = 'authentication-worker';
+      dispatch(setUserInformation(worker));
+    }else if(user){
+      state = 'authentication-user';
+      dispatch(setUserInformation(user));
     }
 
     dispatch(updateAuthenticationState(state));
-    dispatch(setLoadingData(false));
+    dispatch(updateAuthenticationLoading(false));
   }catch(e){
     console.log(e);
   }

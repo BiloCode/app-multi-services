@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { ReduxRootState } from "../../../metadata/types";
 import { sendLoginInformation } from "../../../redux/reducers/Auth/actions/async";
-
+import AuthMetadata from "../../../redux/reducers/Auth/metadata";
 
 const useLoginAuthentication = () => {
   const dispatch = useDispatch();
+  const { isSend } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth,shallowEqual)
+
   const [ usernameValue , setUsernameValue ] = useState<string>('');
   const [ passwordValue , setPasswordValue ] = useState<string>('');
 
@@ -20,7 +23,8 @@ const useLoginAuthentication = () => {
   return {
     changePasswordValue,
     changeUsernameValue,
-    sendData
+    sendData,
+    isSend
   }
 }
 

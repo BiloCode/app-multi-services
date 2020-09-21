@@ -26,13 +26,13 @@ const ModalSearch : FC<IProps> = ({ onClose }) => {
       <ScrollView>
         {
           state.list.map((v,i) => (
-            <Item key={i} text={v.name} />
+            <Item key={i} text={v.name} onPress={() => alert('En construccion...')} />
           ))
         } 
       </ScrollView>
     </MSS.ListContent>
     <MSS.ButtonContainer>
-      <GlobalButton text='Ver a los mas Cercanos' />
+      <GlobalButton text='Ver a los mas Cercanos' onPress={() => alert('En construccion...')} />
     </MSS.ButtonContainer>
     <MSS.IconClose onPress={onClose} as={TouchableOpacity}>
       <MaterialCommunityIcons name="close-circle-outline" size={32} color="#1858D4" />

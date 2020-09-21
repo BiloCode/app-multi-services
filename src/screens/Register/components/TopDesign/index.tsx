@@ -12,8 +12,10 @@ const TopDesign = () => {
     <TDS.CircleRight />
     <TDS.CircleLeft />
     <TDS.FloatingContent>
-      <TDS.TextTitle>Registrate Ahora!</TDS.TextTitle>
-      <TDS.TextDescription>Registrate y pertenece a nuestra gran comunidad</TDS.TextDescription>
+      <TDS.TextContainer>
+        <TDS.TextTitle>Registrate Ahora!</TDS.TextTitle>
+        <TDS.TextDescription>Registrate y pertenece a nuestra gran comunidad</TDS.TextDescription>
+      </TDS.TextContainer>
     </TDS.FloatingContent>
     <TDS.IconBack onPress={NavigateToBack} as={TouchableOpacity}>
       <AntDesign name="arrowleft" size={24} color="#fff" />

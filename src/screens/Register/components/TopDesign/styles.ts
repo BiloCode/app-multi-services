@@ -7,10 +7,12 @@ const CircleStyles = css`
   position: absolute;
 `;
 
+const Height = '260px';
+
 const TopDesignStyles = {
   Container : styled.View`
     width: 100%;
-    height: 250px;
+    height: ${Height};
     position: relative;
     top: 0;
     left: 0;
@@ -29,9 +31,13 @@ const TopDesignStyles = {
   `,
   FloatingContent : styled.View`
     width: 100%;
-    height: 250px;
+    height: ${Height};
+  `,
+  TextContainer : styled.View`
+    width: 80%;
+    height: ${Height};
+    margin: 0 auto;
     justify-content: center;
-    padding: 0 40px;
   `,
   TextTitle : styled.Text`
     font-family: 'RalewayBlack';
@@ -43,12 +49,13 @@ const TopDesignStyles = {
     font-family: 'RalewayBold';
     font-size: 12px;
     color: #fff;
+    padding-right: 20px;
   `,
   IconBack : styled.View`
     position: absolute;
     top: 0;
     left: 0;
-    padding: 25px;
+    padding: 20px 25px;
   `
 }
 
