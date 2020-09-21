@@ -10,18 +10,23 @@ const useParamsWorkerDetail = () => {
       id,
       location,
       specialty,
-      user
+      user,
+      backgroundImage
     } 
-  } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => ,shallowEqual);
+  } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker,shallowEqual);
   
   return {
     id,
     fullName : `${user?.name} ${user?.lastname}`,
     basePrice,
     profileImage : user?.profileImage,
-    location,
+    location : {
+      coords : location,
+      mapLocation : `${user?.district.province.name} ,${user?.district.name}`
+    },
     specialty : specialty?.name,
-    availability
+    availability,
+    backgroundImage
   }
 }
 

@@ -8,15 +8,16 @@ interface IProps {
   fullName : string;
   availability : string;
   profileImage : string;
+  backgroundImage : string;
 }
 
-const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage }) => {
+const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage , backgroundImage }) => {
   const { goBack } = useNavigation();
 
   const NavigateGoBack = () => goBack();
 
   return <PSS.MainContainer>
-    <PSS.Image source={{ uri : 'https://i.blogs.es/079f1b/looney-tunes-cartoons-bugs-bunny-and-elmer-fudd/1366_2000.jpeg' }} />  
+    <PSS.Image source={{ uri : backgroundImage }} />  
     <PSS.FloatingContent>
       <PSS.ImageProfileContainer>
         <PSS.ImageProfile source={{ uri : profileImage  }} />

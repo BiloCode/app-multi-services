@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import useStarAmount from '../../../../hooks/useStarAmount';
 import SmallButton from '../SmallButton';
@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const WorkerCard : FC<IProps> = ({ data }) => {
-  const { user : { name , lastname } , specialty } = data;
+  const { user : { name , lastname , profileImage } , specialty } = data;
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -25,7 +25,9 @@ const WorkerCard : FC<IProps> = ({ data }) => {
   }
   
   return <WCS.Container>
-    <WCS.ImageProfile source={{ uri : 'https://polvora.com.mx/wp-content/uploads/2020/07/Bugs-bunny-80-10.jpg' }} />
+    <WCS.ImageProfileContainer>
+      <WCS.ImageProfile source={{ uri : profileImage ? profileImage : 'https://s5.postimg.cc/537jajaxj/default.png' }} />  
+    </WCS.ImageProfileContainer>
     <WCS.InformationContainer>
       <WCS.WorkerName>{`${name} ${lastname}`}</WCS.WorkerName>
       <WCS.Specialty>{specialty.name}</WCS.Specialty>
@@ -37,4 +39,4 @@ const WorkerCard : FC<IProps> = ({ data }) => {
   </WCS.Container>
 }
 
-export default WorkerCard;
+export default memo(WorkerCard);

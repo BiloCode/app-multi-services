@@ -6,6 +6,7 @@ const WorkerListStyles = {
     height: 280px;
     justify-content: space-between;
     margin-bottom: 25px;
+    position: relative;
   `,
   Title : styled.Text`
     font-family: 'RalewayExtraBold';
@@ -14,7 +15,17 @@ const WorkerListStyles = {
   `,
   CardsContainer : styled.View`
     width: 100%;
-    height: 250px;
+    position: relative;
+    align-items: flex-start;
+  `,
+  LoadingContainer : styled.View`
+    width: 100%;
+    height: 280px;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
   `
 }
 

@@ -25,15 +25,15 @@ const Search = () => {
           <MainDescription text={faker.lorem.words(15)} />    
           <SmallButton onPress={openModal} text='Selecciona un filtro' />
           <SS.WorkersContainer>
-            <WorkerList
-              title='Los mas Cercanos a Ti' 
-              data={workersNearest}
-              isLoading={workersNearestLoading} 
-            />
             <WorkerList 
               title='Nuestros Nuevos Especialistas' 
               data={workersNew}
               isLoading={workersNewLoading}
+            />
+            <WorkerList
+              title='Los mas Cercanos a Ti' 
+              data={workersNearest}
+              isLoading={workersNearestLoading} 
             />          
           </SS.WorkersContainer>
         </ScrollView>        

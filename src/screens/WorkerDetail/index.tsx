@@ -13,17 +13,31 @@ import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
 
 const WorkerDetail = () => {
-  const { availability , basePrice , fullName , id , location , profileImage , specialty } = useParamsWorkerDetail();
+  const { 
+    id,
+    availability,
+    basePrice,
+    fullName,
+    location,
+    profileImage,
+    specialty,
+    backgroundImage,
+  } = useParamsWorkerDetail();
 
   return <WDS.MainContainer as={ScrollView}>
-    <ProfileSection fullName={fullName} availability={availability!} profileImage={profileImage!} />
+    <ProfileSection 
+      fullName={fullName} 
+      availability={availability!} 
+      profileImage={profileImage ? profileImage : 'https://s5.postimg.cc/537jajaxj/default.png'} 
+      backgroundImage={backgroundImage!}
+    />
     <WDS.WorkInformation>
       <SpecialtyBox data={specialty!} />
       <BaseBox>
         <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
       </BaseBox>
       <PriceBox data={basePrice!} />
-      <LocationBox data={location!} />
+      <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
       <WDS.MarginVerticalContainer>
         <WDS.MarginBottom>
           <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' />

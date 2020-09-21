@@ -4,15 +4,16 @@ import BaseBox from '../BaseBox';
 import LBS from './styles';
 
 interface IProps {
-  data : string;
+  coords : string;
+  mapLocation : string;
 }
 
-const LocationBox : FC<IProps> = ({ data }) => {
+const LocationBox : FC<IProps> = ({ coords , mapLocation }) => {
   return <LBS.Container>
     <BaseBox isMarginBottom={false}>
       <LBS.LocationTextContainer>
         <LBS.LocationTextBase>Ubicacion</LBS.LocationTextBase>
-        <LBS.LocationText>Rimac, Pasaje los descalzos 146</LBS.LocationText>
+        <LBS.LocationText>{mapLocation}</LBS.LocationText>
       </LBS.LocationTextContainer>
     </BaseBox>    
     <LBS.MapContainer 
@@ -23,6 +24,7 @@ const LocationBox : FC<IProps> = ({ data }) => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       }}
+      scrollEnabled={false}
     />
   </LBS.Container>
 }

@@ -6,7 +6,8 @@ export const getNewsWorkers = () => async dispatch => {
     const request = await App.get('/worker/new');
     const { workers } = request.data;
 
-    dispatch(setNewWorkers(workers));
+    if(workers)
+      dispatch(setNewWorkers(workers));
   }catch(e){
     console.log(e);
   }
@@ -20,7 +21,8 @@ export const getNearestWorkers = (districtId : number) => async dispatch => {
     
     const { workers } = request.data;
 
-    dispatch(setNearestWorkers(workers));
+    if(workers)
+      dispatch(setNearestWorkers(workers));
   }catch(e){
     console.log(e);
   }

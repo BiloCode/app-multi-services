@@ -13,17 +13,19 @@ interface IProps {
 const WorkerList : FC<IProps> = ({ title , data , isLoading }) => {
   return <WLS.Container>
     <WLS.Title>{title}</WLS.Title>
-    <WLS.CardsContainer>
-      {
-        isLoading ? 
-          <ActivityIndicator color='#1858D4' /> : 
+    {
+      isLoading ? 
+        <WLS.LoadingContainer>
+          <ActivityIndicator size={32} color='#1858D4' />
+        </WLS.LoadingContainer> :
+        <WLS.CardsContainer>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {data.map((v,i) => (
               <WorkerCard key={i} data={v} />
             ))}
           </ScrollView> 
-      }     
-    </WLS.CardsContainer>
+        </WLS.CardsContainer>        
+    }
   </WLS.Container>
 }
 

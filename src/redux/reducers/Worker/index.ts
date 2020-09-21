@@ -15,7 +15,7 @@ const initialState : WorkerMetadata.IStore = {
 }
 
 const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
-  switch(action.payload) {
+  switch(action.type) {
     case TYPES.UPDATE_NEAREST_WORKERS:
       return {
         ...state,
@@ -25,6 +25,7 @@ const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
           workersNearestLoading : false
         }
       }
+
     case TYPES.UPDATE_NEW_WORKERS:
       return {
         ...state,

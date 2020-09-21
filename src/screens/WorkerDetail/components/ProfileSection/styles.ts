@@ -5,7 +5,7 @@ const ProfileSectionStyles = {
     width: 100%;
     height: 225px;
     position: relative;
-    background-color: rgba(0,0,0,.7);
+    background-color: #D4D4D4;
   `,
   Image : styled.Image`
     width: 100%;
@@ -14,7 +14,7 @@ const ProfileSectionStyles = {
   FloatingContent : styled.View`
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.4);
     position: absolute;
     top: 0;
     left: 0;

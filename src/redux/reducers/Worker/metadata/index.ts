@@ -11,11 +11,17 @@ export namespace WorkerMetadata {
     location : string;
     basePrice : number;
     createdAt : Date;
+    backgroundImage : string;
     user : {
       name : string;
       lastname : string;
       profileImage : string;
-      districtId : number;
+      district: {
+        name : string;
+        province : {
+          name : string;
+        }        
+      };
       description : string;
     },
     specialty : {

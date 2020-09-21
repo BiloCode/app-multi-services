@@ -1,4 +1,10 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
+
+const ImageStyles = css`
+  width: 100%;
+  height: 110px;
+  border-radius: 20px;
+`
 
 const WorkerCardStyles = {
   Container : styled.View`
@@ -6,7 +12,7 @@ const WorkerCardStyles = {
     background-color: #FFF;
     margin-right: 10px;
     border-radius: 20px;
-    padding: 25px;
+    padding: 25px 0;
     align-items: center;
   `,
   InformationContainer : styled.View`
@@ -17,6 +23,7 @@ const WorkerCardStyles = {
     font-size: 13px;
     color: #585858;
     text-align: center;
+    padding: 0 15px;
   `,
   Specialty : styled.Text`
     font-family: 'RalewaySemiBold';
@@ -30,10 +37,12 @@ const WorkerCardStyles = {
     justify-content: center;
     align-items: center;
   `,
+  ImageProfileContainer : styled.View`
+    ${ImageStyles}
+    padding: 0 25px;
+  `,
   ImageProfile : styled.Image`
-    width: 100%;
-    height: 110px;
-    border-radius: 20px;
+    ${ImageStyles}
   `
 }
 
