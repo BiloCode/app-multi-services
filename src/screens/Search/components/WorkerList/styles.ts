@@ -1,17 +1,21 @@
 import styled from "styled-components/native";
 
+const margin = '25px';
+
 const WorkerListStyles = {
   Container : styled.View`
     width: 100%;
-    height: 280px;
     justify-content: space-between;
-    margin-bottom: 25px;
     position: relative;
+    margin-bottom: ${margin};
   `,
   Title : styled.Text`
     font-family: 'RalewayExtraBold';
     color: #585858;
-    font-size: 15px;
+    font-size: 16px;
+    padding-bottom: ${margin};
+    padding-right: ${margin};
+    line-height: 20px;
   `,
   CardsContainer : styled.View`
     width: 100%;

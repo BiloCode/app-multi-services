@@ -23,7 +23,7 @@ const SpecialtiesSection = () => {
           <SSS.TitleSection>Nuestras Especialidades</SSS.TitleSection>
         </SSS.ContainerTitle>
       )}
-      renderItem={({ item }) => <SpecialtyCard title={item.name} image={item.image} />}
+      renderItem={({ item }) => <SpecialtyCard id={item.id} title={item.name} image={item.image} />}
     />
   </SSS.Container>
 }

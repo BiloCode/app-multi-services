@@ -8,6 +8,7 @@ import { shallowEqual, useSelector } from 'react-redux';
 import { ReduxRootState } from '../../metadata/types';
 import { SpecialtyMetadata } from '../../redux/reducers/Specialty/metadata';
 import Item from './Item';
+import useNavigateToFilterScreen from '../../hooks/useNavigateToFilterScreen';
 
 interface IProps {
   onClose?() : void;
@@ -16,6 +17,7 @@ interface IProps {
 const ModalSearch : FC<IProps> = ({ onClose }) => {
   const state = useSelector<ReduxRootState, SpecialtyMetadata.IStore>(({ specialties }) => specialties,shallowEqual);
   const styles = useModalAnimation();
+  const NavigateToFilterScreen = useNavigateToFilterScreen();
 
   return <MSS.Container as={Animated.View} style={styles} >
     <MSS.TitleContainer>
@@ -26,7 +28,11 @@ const ModalSearch : FC<IProps> = ({ onClose }) => {
       <ScrollView>
         {
           state.list.map((v,i) => (
-            <Item key={i} text={v.name} onPress={() => alert('En construccion...')} />
+            <Item 
+              key={i}
+              text={v.name}
+              onPress={() => NavigateToFilterScreen(v.id)} 
+            />
           ))
         } 
       </ScrollView>

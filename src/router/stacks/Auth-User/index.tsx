@@ -6,6 +6,7 @@ import useRouterUserInit from '../../hooks/useRouterUserInit';
 import WorkerDetail from '../../../screens/WorkerDetail';
 import Search from '../../../screens/Search';
 import Profile from '../../../screens/Profile';
+import SearchFilter from '../../../screens/SearchFilter';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const AuthUser = () => {
     <Stack.Screen name='contact' component={Contact} />
     <Stack.Screen name='worker-detail' component={WorkerDetail} />
     <Stack.Screen name='search' component={Search} />
+    <Stack.Screen name='search-filter' component={SearchFilter} />
   </Stack.Navigator>
 }
 
