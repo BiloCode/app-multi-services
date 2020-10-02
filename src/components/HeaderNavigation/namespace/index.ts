@@ -9,6 +9,6 @@ export namespace NSHeaderNavigation {
 
   export const colors = {
     text : '#fff',
-    background : 'blue'
+    background : '#588FFA'
   }
 }

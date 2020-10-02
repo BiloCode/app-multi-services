@@ -9,7 +9,7 @@ const BaseStyles = css`
 
 export const Container = styled.View`
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   flex-direction: row;
   justify-content: space-between;
 `;

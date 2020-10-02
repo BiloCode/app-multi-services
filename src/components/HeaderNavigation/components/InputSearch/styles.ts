@@ -6,7 +6,7 @@ export const Container = styled.View`
 `;
 
 export const ContainerIcon = styled.View`
-  width: 46px;
+  width: 56px;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -16,4 +16,6 @@ export const ContainerIcon = styled.View`
 export const Input = styled.TextInput`
   flex: 1;
   border-radius: 18px;
+  font-size: 13px;
+  font-family: 'RalewayBold'
 `;
