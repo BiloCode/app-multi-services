@@ -9,6 +9,6 @@ export const Container = styled.View`
 
 export const TextContent = styled.Text`
   font-family: 'RalewayBold';
-  font-size: 13px;
+  font-size: 15px;
   color: ${NSHeaderNavigation.colors.text};
 `;

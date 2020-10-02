@@ -14,7 +14,6 @@ import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
 
 const WorkerDetail = () => {
   const { 
-    id,
     availability,
     basePrice,
     fullName,

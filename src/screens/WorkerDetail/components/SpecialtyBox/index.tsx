@@ -13,7 +13,7 @@ const SpecialtyBox : FC<IProps> = ({ data }) => {
 
   return <BaseBox>
     <SBS.Container>
-      <SBS.SpecialtyText>Especialidad : {data}</SBS.SpecialtyText>
+      <SBS.SpecialtyText>{data}</SBS.SpecialtyText>
       <SBS.StarContainer>
         { stars.map((v,i) => <AntDesign key={i} name={v.name} size={10} color='#1858D4' />) }
       </SBS.StarContainer>      

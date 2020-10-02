@@ -1,11 +1,11 @@
 import React from 'react';
-import * as SCS from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
 import faker from 'faker';
 
 import GlobalWorkerCard from '../../../../components/GlobalWorkerCard';
 import { WorkerMetadata } from '../../../../redux/reducers/Worker/metadata';
+import RoundedSection from '../../../../components/RoundedSection';
 
 const workers : WorkerMetadata.IWorker[] = [
   {
@@ -35,19 +35,18 @@ const workers : WorkerMetadata.IWorker[] = [
 ]
 
 const SectionContent = () => (
-  <SCS.Container>
-    <SCS.FilterName>
-      <AntDesign name="filter" size={18} color="#fff" />
-      <SCS.FilterText>Desarrollo de Software</SCS.FilterText>
-    </SCS.FilterName>
-    <SCS.List>
-      <ScrollView>
-        {
-          workers.map((v,i) => <GlobalWorkerCard key={i} workerData={v} />)
-        }
-      </ScrollView>      
-    </SCS.List>
-  </SCS.Container>
+  <RoundedSection 
+    title='Desarrollo de Software'
+    icon={<AntDesign name="filter" size={18} color="#fff" />}
+  >
+    <ScrollView>
+      {
+        workers.map((v,i) => (
+          <GlobalWorkerCard key={i} workerData={v} />
+        ))
+      }
+    </ScrollView>       
+  </RoundedSection>
 )
 
 export default SectionContent;

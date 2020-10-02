@@ -10,7 +10,7 @@ export const FilterName = styled.View`
   height: ${height}px;
   border-top-left-radius: ${height / 2}px;
   border-top-right-radius: ${height / 2}px;
-  background-color: blue;
+  background-color: #588FFA;
   justify-content: center;
   align-items: center;
   flex-direction: row;

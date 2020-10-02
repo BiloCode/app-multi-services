@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import BaseInput from '../BaseInput';
-import Input from '../../../../components/Input';
+import GlobalInput from '../../../../components/GlobalInput';
 import Select from '../Select';
 import { shallowEqual, useSelector } from 'react-redux';
 import { ReduxRootState } from '../../../../metadata/types';
@@ -28,12 +28,12 @@ const InputUserInformation : FC<IProps> = ({ departmentSelected, districtSelecte
   } = useSelector<ReduxRootState,RegisterMetadata.IStore>(({ register }) => register,shallowEqual);
 
   return <BaseInput title='Informacion Personal' description='Esta informacion servira para identificarlo' >
-    <Input
+    <GlobalInput
       icon={<AntDesign name="user" size={16} color="#BBBBBB" />}
       placeholder='Nombre...'
       onChangeText={onChangeName}
     />
-    <Input
+    <GlobalInput
       icon={<AntDesign name="user" size={16} color="#BBBBBB" />}
       placeholder='Apellido...'
       onChangeText={onChangeLastname}
