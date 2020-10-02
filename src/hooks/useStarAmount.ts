@@ -1,16 +1,15 @@
-interface IStar {
-  name : 'staro' | 'star';
-}
+import { IStar } from "../metadata/interfaces";
 
 const useStarAmount = (amount : number) => {
-  const starMax = 5;
-  let stars : IStar[] = [];
+  const stars : IStar[] = [],
+    starMax = 5,
+    amountRounded = Math.floor(amount);
   
-  for(let i = 0; i < amount; i++) {
+  for(let i = 0; i < amountRounded; i++) {
     stars.push({ name : 'star' });
   }
 
-  for(let i = 0; i < (starMax - amount); i++){
+  for(let i = 0; i < (starMax - amountRounded); i++){
     stars.push({ name : 'staro' });
   }
 

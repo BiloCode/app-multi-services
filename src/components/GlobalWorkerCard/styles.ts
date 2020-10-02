@@ -22,8 +22,9 @@ export const UserMainInformation = styled.View`
 `;
 
 export const UserProfileImage = styled.View`
-  width: 70px;
+  width: 80px;
   height: 60px;
+  align-items: center;
 `;
 
 export const UserName = styled.View`
@@ -33,13 +34,13 @@ export const UserName = styled.View`
 
 export const UserNameText = styled.Text`
   font-family: 'RalewayBold';
-  font-size: 15px;
+  font-size: 16px;
 `;
 
 export const UserPuntuaction = styled.View`
   width: 80px;
   flex-direction: row;
-  padding-top: 5px;
+  padding-top: 6px;
   justify-content: center;
 `;
 
@@ -66,13 +67,14 @@ export const UserPrice = styled.Text`
 `;
 
 export const UserDescription = styled.Text`
-  font-size: 12px;
+  font-size: 11px;
   padding-top: 10px;
+  font-family: 'RalewayRegular';
 `;
 
 export const CardActions = styled.View`
   width: 100%;
   flex-direction: row;
-  padding-top: 10px;
+  padding-top: 15px;
   justify-content: space-between;
 `;

@@ -1,40 +1,45 @@
-import React, { FC } from 'react';
-import faker from 'faker';
-import { AntDesign } from '@expo/vector-icons';
-import useStarAmount from '../../hooks/useStarAmount';
+import React, { FC, memo } from 'react';
 import * as GWCS from './styles';
-import ButtonWorkerCard from './ButtonWorkerCard';
+
+import useStarAmount from '../../hooks/useStarAmount';
+import ButtonWorkerCard from './components/ButtonWorkerCard';
+import AvatarImage from '../AvatarImage';
+import StarList from './components/StarList';
+import { WorkerMetadata } from '../../redux/reducers/Worker/metadata';
+import useGlobalWorkerCard from './hooks/useGlobalWorkerCard';
 
 interface IProps {
   rounded? : boolean;
-  puntuaction : number;
+  workerData : WorkerMetadata.IWorker;
 }
 
-const GlobalWorkerCard : FC<IProps> = ({ rounded , puntuaction }) => {
-  const stars = useStarAmount(puntuaction);
+const GlobalWorkerCard : FC<IProps> = ({ rounded , workerData }) => {
+  const { basePrice , profileImage , description , specialty , stars , username , NavigateToWorkerDetail } = useGlobalWorkerCard(workerData);
 
   return <GWCS.Container rounded={rounded} >
     <GWCS.UserMainInformation>
-      <GWCS.UserProfileImage></GWCS.UserProfileImage>
+      <GWCS.UserProfileImage>
+        <AvatarImage image={profileImage} size={60} />
+      </GWCS.UserProfileImage>
       <GWCS.UserName>
-        <GWCS.UserNameText>Billy Paredes Aycho</GWCS.UserNameText>
+        <GWCS.UserNameText>{username}</GWCS.UserNameText>
       </GWCS.UserName>
       <GWCS.UserPuntuaction>
-        {stars.map((v,i) => <AntDesign key={i} size={12} name={v.name} color='orangered' />)}
+        <StarList stars={stars} />
       </GWCS.UserPuntuaction>
     </GWCS.UserMainInformation>
     <GWCS.UserWorkInformation>
       <GWCS.UserPriceAndWork>
-        <GWCS.UserWork>Desarrollador de Software</GWCS.UserWork>
-        <GWCS.UserPrice>S/15.00</GWCS.UserPrice>
+        <GWCS.UserWork>{specialty}</GWCS.UserWork>
+        <GWCS.UserPrice>S/{basePrice}</GWCS.UserPrice>
       </GWCS.UserPriceAndWork>
-      <GWCS.UserDescription>{faker.lorem.words(30)}</GWCS.UserDescription>
+      <GWCS.UserDescription>{description}</GWCS.UserDescription>
     </GWCS.UserWorkInformation>
     <GWCS.CardActions>
-      <ButtonWorkerCard text='Ver mas' />
+      <ButtonWorkerCard text='Ver mas' onPress={NavigateToWorkerDetail} />
       <ButtonWorkerCard text='Enviar mensaje' />
     </GWCS.CardActions>
   </GWCS.Container>
 };
 
-export default GlobalWorkerCard;
+export default memo(GlobalWorkerCard);

@@ -12,6 +12,7 @@ export namespace WorkerMetadata {
     basePrice : number;
     createdAt : Date;
     backgroundImage : string;
+    puntuaction : number;
     user : {
       name : string;
       lastname : string;
