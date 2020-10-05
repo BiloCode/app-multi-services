@@ -3,6 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import PSS from './styles';
 import { useNavigation } from '@react-navigation/native';
+import AvatarImage from '../../../../components/AvatarImage';
 
 interface IProps {
   fullName : string;
@@ -20,7 +21,7 @@ const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage , 
     <PSS.Image source={{ uri : backgroundImage }} />  
     <PSS.FloatingContent>
       <PSS.ImageProfileContainer>
-        <PSS.ImageProfile source={{ uri : profileImage  }} />
+        <AvatarImage iconSize={44} size={90} image={profileImage} />
       </PSS.ImageProfileContainer>
       <PSS.WorkerName>{fullName}</PSS.WorkerName>
       <PSS.WorkerState>{`(${availability})`}</PSS.WorkerState>

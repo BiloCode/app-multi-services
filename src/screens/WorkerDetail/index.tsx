@@ -21,13 +21,14 @@ const WorkerDetail = () => {
     profileImage,
     specialty,
     backgroundImage,
+    NavigateToChat
   } = useParamsWorkerDetail();
 
   return <WDS.MainContainer as={ScrollView}>
     <ProfileSection 
       fullName={fullName} 
       availability={availability!} 
-      profileImage={profileImage ? profileImage : 'https://s5.postimg.cc/537jajaxj/default.png'} 
+      profileImage={profileImage!} 
       backgroundImage={backgroundImage!}
     />
     <WDS.WorkInformation>
@@ -39,7 +40,7 @@ const WorkerDetail = () => {
       <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
       <WDS.MarginVerticalContainer>
         <WDS.MarginBottom>
-          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={() => alert('En Construccion...')} />
+          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={NavigateToChat} />
         </WDS.MarginBottom>
         <GlobalButton text='Solicitar Servicio' onPress={() => alert('En Construccion...')} />
       </WDS.MarginVerticalContainer>

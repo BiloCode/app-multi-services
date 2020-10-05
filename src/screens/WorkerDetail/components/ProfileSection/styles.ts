@@ -22,16 +22,13 @@ const ProfileSectionStyles = {
     align-items: center;
   `,
   ImageProfileContainer : styled.View`
-    width: 104px;
-    height: 104px;
-    border-radius: 50px;
-    margin: 10px 0;
-    border: 2px solid #fff;
-  `,
-  ImageProfile : styled.Image`
     width: 100px;
     height: 100px;
     border-radius: 50px;
+    margin: 10px 0;
+    border: 2px solid #fff;
+    justify-content: center;
+    align-items: center;
   `,
   WorkerName : styled.Text`
     font-family: 'RalewayExtraBold';

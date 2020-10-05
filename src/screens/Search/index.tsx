@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import faker from 'faker';
 import MainDescription from '../../components/MainDescription';
 import MainTitle from '../../components/MainTitle';
-import ModalSearch from '../../components/ModalSearch';
+import SearchModal from '../../components/SearchModal';
 import VerticalBar from '../../components/VerticalBar';
 import { ScrollView } from 'react-native';
 import SS from './styles';
@@ -39,7 +39,7 @@ const Search = () => {
         </ScrollView>        
       </SS.Container>
     </VerticalBar>
-    { modalActive && <ModalSearch onClose={closeModal} /> }
+    { modalActive && <SearchModal onClose={closeModal} /> }
   </>
 }
 

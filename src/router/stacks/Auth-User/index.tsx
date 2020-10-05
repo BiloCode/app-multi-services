@@ -8,6 +8,7 @@ import Search from '../../../screens/Search';
 import Profile from '../../../screens/Profile';
 import SearchFilter from '../../../screens/SearchFilter';
 import SearchMap from '../../../screens/SearchMap';
+import WorkerChat from '../../../screens/WorkerChat';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const AuthUser = () => {
     <Stack.Screen name='search' component={Search} />
     <Stack.Screen name='search-filter' component={SearchFilter} />
     <Stack.Screen name='search-map' component={SearchMap} />
+    <Stack.Screen name='worker-chat' component={WorkerChat} />
   </Stack.Navigator>
 }
 

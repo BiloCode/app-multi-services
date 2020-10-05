@@ -29,8 +29,7 @@ export const getNearestWorkers = (districtId : number) => async dispatch => {
     
     const { workers , error } = request.data;
 
-    if(error) 
-      alert(error);
+    if(error) alert(error);
     else if(workers){
       if(workers.length) workersData = workers;
     }

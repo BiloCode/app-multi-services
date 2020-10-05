@@ -1,7 +1,6 @@
 import React, { FC, memo } from 'react';
 import * as GWCS from './styles';
 
-import useStarAmount from '../../hooks/useStarAmount';
 import ButtonWorkerCard from './components/ButtonWorkerCard';
 import AvatarImage from '../AvatarImage';
 import StarList from './components/StarList';
@@ -14,7 +13,16 @@ interface IProps {
 }
 
 const GlobalWorkerCard : FC<IProps> = ({ rounded , workerData }) => {
-  const { basePrice , profileImage , description , specialty , stars , username , NavigateToWorkerDetail } = useGlobalWorkerCard(workerData);
+  const { 
+    basePrice,
+    profileImage,
+    description,
+    specialty,
+    stars,
+    username,
+    NavigateToWorkerDetail,
+    NavigateToChat
+  } = useGlobalWorkerCard(workerData);
 
   return <GWCS.Container rounded={rounded} >
     <GWCS.UserMainInformation>
@@ -37,7 +45,7 @@ const GlobalWorkerCard : FC<IProps> = ({ rounded , workerData }) => {
     </GWCS.UserWorkInformation>
     <GWCS.CardActions>
       <ButtonWorkerCard text='Ver mas' onPress={NavigateToWorkerDetail} />
-      <ButtonWorkerCard text='Enviar mensaje' />
+      <ButtonWorkerCard text='Enviar mensaje' onPress={NavigateToChat} />
     </GWCS.CardActions>
   </GWCS.Container>
 };

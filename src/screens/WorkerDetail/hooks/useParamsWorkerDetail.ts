@@ -1,8 +1,10 @@
+import { useNavigation } from "@react-navigation/native"
 import { shallowEqual, useSelector } from "react-redux"
 import { ReduxRootState } from "../../../metadata/types"
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata"
 
 const useParamsWorkerDetail = () => {
+  const { navigate } = useNavigation();
   const { 
     detailData : {
       availability,
@@ -26,7 +28,8 @@ const useParamsWorkerDetail = () => {
     },
     specialty : specialty?.name,
     availability,
-    backgroundImage
+    backgroundImage,
+    NavigateToChat : () => navigate('worker-chat')
   }
 }
 

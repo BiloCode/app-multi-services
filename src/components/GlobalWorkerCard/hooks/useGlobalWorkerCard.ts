@@ -20,6 +20,8 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
     navigate('worker-detail');
   }
 
+  const NavigateToChat = () => navigate('worker-chat');
+
   return {
     username : `${name} ${lastname}`,
     description,
@@ -27,7 +29,8 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
     stars,
     specialty : specialty.name,
     basePrice : isWholeNumber ? basePrice + '.00' : basePrice,
-    NavigateToWorkerDetail
+    NavigateToWorkerDetail,
+    NavigateToChat
   }
 }
 
