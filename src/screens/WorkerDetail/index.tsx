@@ -11,6 +11,7 @@ import SpecialtyBox from './components/SpecialtyBox';
 import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
+import useNavigateToChatScreen from '../../hooks/useNavigateToChatScreen';
 
 const WorkerDetail = () => {
   const { 

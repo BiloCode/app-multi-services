@@ -1,10 +1,10 @@
-import { useNavigation } from "@react-navigation/native"
 import { shallowEqual, useSelector } from "react-redux"
+import useNavigateToChatScreen from "../../../hooks/useNavigateToChatScreen"
 import { ReduxRootState } from "../../../metadata/types"
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata"
 
 const useParamsWorkerDetail = () => {
-  const { navigate } = useNavigation();
+  const Navigate = useNavigateToChatScreen();
   const { 
     detailData : {
       availability,
@@ -16,6 +16,17 @@ const useParamsWorkerDetail = () => {
       backgroundImage
     } 
   } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker,shallowEqual);
+
+  const NavigateToChat = () => {
+    Navigate({
+      id : id!,
+      specialty : specialty?.name!,
+      basePrice : basePrice!,
+      name : name!,
+      lastname : user?.lastname!,
+      profileImage : user?.profileImage!
+    });
+  }
   
   return {
     id,
@@ -29,7 +40,7 @@ const useParamsWorkerDetail = () => {
     specialty : specialty?.name,
     availability,
     backgroundImage,
-    NavigateToChat : () => navigate('worker-chat')
+    NavigateToChat
   }
 }
 

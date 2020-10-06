@@ -1,12 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import useIsWholeNumber from "../../../hooks/useIsWholeNumber";
+import useNavigateToChatScreen from "../../../hooks/useNavigateToChatScreen";
 import useStarAmount from "../../../hooks/useStarAmount";
 import { setWorkerDetailData } from "../../../redux/reducers/Worker/actions/sync";
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata";
 
 const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
-  const { user , puntuaction , specialty , basePrice } = worker;
+  const GoToChat = useNavigateToChatScreen();
+  const { user , puntuaction , specialty , basePrice , id } = worker;
   const { name , lastname, description , profileImage } = user;
 
   //Hooks
@@ -20,7 +22,16 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
     navigate('worker-detail');
   }
 
-  const NavigateToChat = () => navigate('worker-chat');
+  const NavigateToChat = () => {
+    GoToChat({
+      id : id!,
+      name : name!,
+      lastname : lastname,
+      basePrice,
+      profileImage,
+      specialty : specialty.name
+    });
+  }
 
   return {
     username : `${name} ${lastname}`,
