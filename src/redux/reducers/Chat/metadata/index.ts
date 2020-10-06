@@ -1,9 +1,11 @@
 const TYPES = {
-
+  GET_MESSAGE_LIST : 'get-message-list',
+  SET_WORKER_DATA : 'set-worker-data',
+  SET_MESSAGE : 'set-message'
 }
 
 export namespace ChatMetadata {
-  interface IMessageList {
+  export interface IMessageList {
     id : number;
     text : string;
   }

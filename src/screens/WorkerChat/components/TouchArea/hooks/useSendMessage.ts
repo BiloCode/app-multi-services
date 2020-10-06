@@ -1,20 +1,28 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../../../metadata/types";
+import { addNewMessage } from "../../../../../redux/reducers/Chat/actions/sync";
+import useMessageInput from "./useMessageInput";
 
-const useSendMessage = (message : string) => {
+const useSendMessage = () => {
+  const { messageText , ChangeMessageText } = useMessageInput();
   const { userInformation } = useSelector<ReduxRootState, any>(({ user }) => user, shallowEqual);
   const dispatch = useDispatch();
 
   const SendMessage = () => {
     const payload = {
-      message,
+      text : messageText,
       id : userInformation.id
     }
 
-    console.log(payload);
+    dispatch(addNewMessage(payload));
+    ChangeMessageText('');
   }
 
-  return SendMessage;
+  return {
+    SendMessage,
+    messageText,
+    ChangeMessageText
+  }
 }
 
 export default useSendMessage;
