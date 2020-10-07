@@ -14,8 +14,6 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
       const request = await App.post('/auth/token/verify', new URLSearchParams({ token }));
       const { isExpired , worker , user } = request.data;
 
-      console.log(user,worker);
-
       if(isExpired) {
         await AsyncStorage.clear();
         state = 'not-authentication';

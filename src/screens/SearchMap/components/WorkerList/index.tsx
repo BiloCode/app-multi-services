@@ -12,13 +12,11 @@ const WorkerList = () => {
     title='Rimac / Surquillo'
     icon={<EvilIcons name="location" size={24} color="#fff" />}
   >
-    <ScrollView>
-      {
-        workers.map((v,i) => (
-          <GlobalWorkerCard key={i} workerData={v} />
-        ))
-      }      
-    </ScrollView>
+    {
+      workers.map((v,i) => (
+        <GlobalWorkerCard key={i} workerData={v} />
+      ))
+    }      
   </RoundedSection>  
 }
 
