@@ -1,5 +1,5 @@
 import { App } from "../../../../config";
-import { setNearestWorkers, setNewWorkers } from "./sync";
+import { setNearestWorkers, setNewWorkers , setSearchLoading, setWorkersWithFilter } from "./sync";
 
 export const getNewsWorkers = () => async dispatch => {
   try{
@@ -35,6 +35,30 @@ export const getNearestWorkers = (districtId : number) => async dispatch => {
     }
 
     dispatch(setNearestWorkers(workersData));
+  }catch(e){
+    console.log(e);
+  }
+}
+
+export const getWorkersByName = (name : string) => async dispatch => {
+  try {
+    dispatch(setSearchLoading(true));
+    const workers = [];
+
+    dispatch(setWorkersWithFilter(workers));
+    dispatch(setSearchLoading(false));
+  }catch(e){
+    console.log(e);
+  }
+}
+
+export const getWorkersBySpecialty = (districtId : number, specialtyId : number) => async dispatch => {
+  try {
+    dispatch(setSearchLoading(true));
+    const workers = [];
+
+    dispatch(setWorkersWithFilter(workers));
+    dispatch(setSearchLoading(false));
   }catch(e){
     console.log(e);
   }

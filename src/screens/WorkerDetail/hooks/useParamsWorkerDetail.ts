@@ -22,7 +22,7 @@ const useParamsWorkerDetail = () => {
       id : id!,
       specialty : specialty?.name!,
       basePrice : basePrice!,
-      name : name!,
+      name : user?.name!,
       lastname : user?.lastname!,
       profileImage : user?.profileImage!
     });
