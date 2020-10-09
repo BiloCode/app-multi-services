@@ -9,6 +9,7 @@ export const Input = styled.TextInput`
   max-height: 80px;
   font-size : 14px;
   background-color: #fff;
+  font-family: 'RalewayRegular';
 `;
 
 export const TextContainer = styled.View`
