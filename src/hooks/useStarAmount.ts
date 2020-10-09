@@ -1,6 +1,6 @@
 import { IStar } from "../metadata/interfaces";
 
-const useStarAmount = (amount : number) => {
+const useStarAmount = (amount : number) : IStar[] => {
   const stars : IStar[] = [],
     starMax = 5,
     amountRounded = Math.floor(amount);
