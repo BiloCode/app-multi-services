@@ -20,6 +20,7 @@ const WorkerDescription : FC<IProps> = ({ description }) => {
       onChangeText={ChangeDescription}
       multiline={true}
       numberOfLines={5}
+      autoFocus={true}
     />
     <WDS.TextContainer as={TouchableOpacity} onPress={ActivateInputDescription}>
       <WDS.Message>{!inputEnabled ? 'Editar Descripción' : 'Guardar Descripcion'}</WDS.Message>
