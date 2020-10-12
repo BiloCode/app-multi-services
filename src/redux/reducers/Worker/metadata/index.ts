@@ -1,3 +1,5 @@
+import { WorkerState } from "../../../../metadata/types";
+
 const TYPES = {
   UPDATE_NEAREST_WORKERS : 'update-nearest-workers',
   UPDATE_NEW_WORKERS : 'update-new-workers',
@@ -9,7 +11,7 @@ const TYPES = {
 export namespace WorkerMetadata {
   export interface IWorker {
     id : number;
-    availability : string;
+    availability : WorkerState;
     location : string;
     basePrice : number;
     createdAt : Date;

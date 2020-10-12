@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 const AuthUser = () => {
   const init = useRouterUserInit();
 
-  return <Stack.Navigator headerMode='none' initialRouteName='work-detail' >
+  return <Stack.Navigator headerMode='none' initialRouteName='home' >
     <Stack.Screen name='home' component={Home} />
     <Stack.Screen name='profile' component={Profile} />
     <Stack.Screen name='contact' component={Contact} />

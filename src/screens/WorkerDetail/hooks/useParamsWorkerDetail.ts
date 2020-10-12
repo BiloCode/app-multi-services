@@ -5,6 +5,7 @@ import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata"
 
 const useParamsWorkerDetail = () => {
   const Navigate = useNavigateToChatScreen();
+
   const { 
     detailData : {
       availability,

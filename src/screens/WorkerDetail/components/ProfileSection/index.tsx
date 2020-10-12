@@ -8,7 +8,7 @@ import AvatarImage from '../../../../components/AvatarImage';
 interface IProps {
   fullName : string;
   availability : string;
-  profileImage : string;
+  profileImage? : string;
   backgroundImage : string;
 }
 

@@ -11,7 +11,7 @@ import SpecialtyBox from './components/SpecialtyBox';
 import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
-import useNavigateToChatScreen from '../../hooks/useNavigateToChatScreen';
+import useRequestServices from './hooks/useRequestServices';
 
 const WorkerDetail = () => {
   const { 
@@ -24,6 +24,7 @@ const WorkerDetail = () => {
     backgroundImage,
     NavigateToChat
   } = useParamsWorkerDetail();
+  const RequestServices = useRequestServices();
 
   return <WDS.MainContainer as={ScrollView}>
     <ProfileSection 
@@ -43,7 +44,7 @@ const WorkerDetail = () => {
         <WDS.MarginBottom>
           <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={NavigateToChat} />
         </WDS.MarginBottom>
-        <GlobalButton text='Solicitar Servicio' onPress={() => alert('En Construccion...')} />
+        <GlobalButton text='Solicitar Servicio' onPress={RequestServices} />
       </WDS.MarginVerticalContainer>
     </WDS.WorkInformation>
   </WDS.MainContainer>
