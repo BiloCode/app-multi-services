@@ -1,6 +1,9 @@
+import io from 'socket.io-client';
+import { Server } from '../../../config';
 import TYPES, { ChatMetadata } from "./metadata";
 
 const initialState : ChatMetadata.IStore = {
+  roomId : '',
   workerData : {
     id : -1,
     name : '',
@@ -10,7 +13,8 @@ const initialState : ChatMetadata.IStore = {
     specialty : ''
   },
   isLoadingMessages : true,
-  messagesList : []
+  messagesList : [],
+  socket : null
 }
 
 const reducer = (state = initialState, action) : ChatMetadata.IStore => {
@@ -32,6 +36,18 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
       return {
         ...state,
         messagesList : [...state.messagesList , action.payload]
+      }
+
+    case TYPES.SOCKET_START_CONNECTION:
+      return {
+        ...state,
+        socket : io(Server)
+      }
+
+    case TYPES.SET_ROOM_ID:
+      return {
+        ...state,
+        roomId : action.payload
       }
 
     default:

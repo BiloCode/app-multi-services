@@ -41,9 +41,9 @@ const SectionContent = () => (
   >
     <ScrollView>
       {
-        workers.map((v,i) => {
+        workers.map((v,i) => (
           <GlobalWorkerCard key={i} workerData={v} />
-        })
+        ))
       }
     </ScrollView>       
   </RoundedSection>

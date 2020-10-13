@@ -13,6 +13,7 @@ export namespace UserMetadata {
   }
 
   export interface IUser {
+    id : number;
     name : string;
     lastname : string;
     profileImage : string;

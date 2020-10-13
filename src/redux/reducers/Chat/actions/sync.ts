@@ -14,3 +14,12 @@ export const addNewMessage = (message : ChatMetadata.IMessageList) => ({
   type : TYPES.SET_MESSAGE,
   payload : message
 })
+
+export const setRoomId = (roomId : string) => ({
+  type : TYPES.SET_ROOM_ID,
+  payload : roomId
+})
+
+export const SocketStartConnection = () => ({
+  type : TYPES.SOCKET_START_CONNECTION
+})

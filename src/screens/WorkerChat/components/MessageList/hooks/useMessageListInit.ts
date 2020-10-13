@@ -7,12 +7,19 @@ const useMessageListInit = () => {
   //Redux
   const data = useSelector<ReduxRootState, ReduxRootState>(state => state,shallowEqual);
   const { userInformation } = data.user;
-  const { isLoadingMessages , messagesList } = data.chat;
+  const { isLoadingMessages , messagesList , socket , workerData } = data.chat;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMessagesList());
+    if(socket){
+      const users : [number,number] = [
+        userInformation.id,
+        workerData.id
+      ];
+
+      dispatch(getMessagesList(socket,users));
+    }
   },[]);
 
   return {

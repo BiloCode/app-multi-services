@@ -1,20 +1,29 @@
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../../../metadata/types";
-import { addNewMessage } from "../../../../../redux/reducers/Chat/actions/sync";
+import { setNewMessage } from "../../../../../redux/reducers/Chat/actions/async";
 import useMessageInput from "./useMessageInput";
 
 const useSendMessage = () => {
   const { messageText , ChangeMessageText } = useMessageInput();
-  const { userInformation } = useSelector<ReduxRootState, any>(({ user }) => user, shallowEqual);
+
   const dispatch = useDispatch();
+  const { chat , user } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
+  const { userInformation } = user;
+  const { roomId , socket } = chat;
+  
 
   const SendMessage = () => {
+    if(!socket) return;
+    
     const payload = {
-      text : messageText,
-      id : userInformation.id
+      roomId,
+      message : {
+        userId : userInformation.id,
+        message : messageText
+      }
     }
 
-    dispatch(addNewMessage(payload));
+    dispatch(setNewMessage(socket, payload));
     ChangeMessageText('');
   }
 

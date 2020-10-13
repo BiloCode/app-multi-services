@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
+import { KeyboardType } from 'react-native';
 import InputStyles from './styles';
 
 interface IProps {
   icon : JSX.Element;
   placeholder : string;
   secureTextEntry? : boolean;
+  type?: KeyboardType;
   onChangeText?(text : string) : void;
 }
 
-const Input : FC<IProps> = ({ icon , onChangeText , placeholder , secureTextEntry }) => {
+const GlobalInput : FC<IProps> = ({ icon , onChangeText , placeholder , secureTextEntry , type }) => {
   return <InputStyles.Container>
     <InputStyles.IconContainer>
       {icon}
@@ -19,13 +21,14 @@ const Input : FC<IProps> = ({ icon , onChangeText , placeholder , secureTextEntr
         placeholderTextColor='#BBBBBB'
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
+        keyboardType={type || 'default'}
       />
     </InputStyles.InputContainer>
   </InputStyles.Container>
 }
 
-Input.defaultProps = {
+GlobalInput.defaultProps = {
   secureTextEntry : false
 }
 
-export default Input;
+export default GlobalInput;

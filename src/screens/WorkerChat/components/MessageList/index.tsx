@@ -15,8 +15,8 @@ const MessageList = () => {
         messagesList.map((v,i) => (
           <Message
             key={i}
-            right={v.id === userId}
-            text={v.text} 
+            right={v.userId === userId}
+            text={v.message} 
           />
         ))
       }

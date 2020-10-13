@@ -11,9 +11,11 @@ import SpecialtyBox from './components/SpecialtyBox';
 import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
-import useRequestServices from './hooks/useRequestServices';
+import RequestServiceModal from './components/RequestServiceModal';
+import useHideModal from '../../hooks/useHideModal';
 
 const WorkerDetail = () => {
+  const { isHide , setOpen , setClose } = useHideModal();
   const { 
     availability,
     basePrice,
@@ -24,30 +26,32 @@ const WorkerDetail = () => {
     backgroundImage,
     NavigateToChat
   } = useParamsWorkerDetail();
-  const RequestServices = useRequestServices();
 
-  return <WDS.MainContainer as={ScrollView}>
-    <ProfileSection 
-      fullName={fullName} 
-      availability={availability!} 
-      profileImage={profileImage!} 
-      backgroundImage={backgroundImage!}
-    />
-    <WDS.WorkInformation>
-      <SpecialtyBox data={specialty!} />
-      <BaseBox>
-        <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
-      </BaseBox>
-      <PriceBox data={basePrice!} />
-      <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
-      <WDS.MarginVerticalContainer>
-        <WDS.MarginBottom>
-          <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={NavigateToChat} />
-        </WDS.MarginBottom>
-        <GlobalButton text='Solicitar Servicio' onPress={RequestServices} />
-      </WDS.MarginVerticalContainer>
-    </WDS.WorkInformation>
-  </WDS.MainContainer>
+  return <>
+    <WDS.MainContainer as={ScrollView}>
+      <ProfileSection 
+        fullName={fullName} 
+        availability={availability!} 
+        profileImage={profileImage!} 
+        backgroundImage={backgroundImage!}
+      />
+      <WDS.WorkInformation>
+        <SpecialtyBox data={specialty!} />
+        <BaseBox>
+          <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
+        </BaseBox>
+        <PriceBox data={basePrice!} />
+        <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
+        <WDS.MarginVerticalContainer>
+          <WDS.MarginBottom>
+            <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={NavigateToChat} />
+          </WDS.MarginBottom>
+          <GlobalButton text='Solicitar Servicio' onPress={setOpen} />
+        </WDS.MarginVerticalContainer>
+      </WDS.WorkInformation>
+    </WDS.MainContainer>
+    { !isHide && <RequestServiceModal setClose={setClose} /> }
+  </>
 }
 
 export default memo(WorkerDetail);
