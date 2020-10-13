@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const WorkerCard : FC<IProps> = ({ data }) => {
-  const { user : { name , lastname , profileImage } , specialty } = data;
+  const { user : { fullName , profileImage } , specialty } = data;
 
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
@@ -35,7 +35,7 @@ const WorkerCard : FC<IProps> = ({ data }) => {
       }
     </WCS.ImageProfileContainer>
     <WCS.InformationContainer>
-      <WCS.WorkerName>{`${name} ${lastname}`}</WCS.WorkerName>
+      <WCS.WorkerName>{fullName}</WCS.WorkerName>
       <WCS.Specialty>{specialty.name}</WCS.Specialty>
       <WCS.StarContainer>
         { stars.map((v,i) => <AntDesign key={i} name={v.name} size={9} color="#1858D4" />) }

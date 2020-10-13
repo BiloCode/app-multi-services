@@ -9,7 +9,7 @@ import { WorkDetailState } from '../../../../metadata/types';
 import DefaultText from './DefaultText';
 
 interface IProps {
-  location : any;
+  location? : any;
   workState  : WorkDetailState;
 }
 

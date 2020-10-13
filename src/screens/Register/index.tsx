@@ -15,12 +15,11 @@ import useValueInputSelect from './hooks/useValueInputSelect';
 const Register = () => {
   const init = useRegisterInit();
   const { ChangePassword , ChangeUsername , password , username } = useValueInput();
-  const { name, lastname, ChangeDepartment , ChangeDistrict , ChangeLastname, ChangeName, ChangeProvince , departmentSelected , districtSelected , provinceSelected } = useValueInputSelect();
+  const { fullName , ChangeDepartment , ChangeDistrict , ChangeFullName , ChangeProvince , departmentSelected , districtSelected , provinceSelected } = useValueInputSelect();
   const { isSend , onRegister } = useRegister({
     username,
     password,
-    name,
-    lastname,
+    fullName,
     districtId : districtSelected
   });
 
@@ -38,8 +37,7 @@ const Register = () => {
         onChangeDepartment={ChangeDepartment}
         onChangeDistrict={ChangeDistrict}
         onChangeProvince={ChangeProvince}
-        onChangeLastname={ChangeLastname}
-        onChangeName={ChangeName}
+        onChangeFullName={ChangeFullName}
       />
       <RegisterStyles.ButtonContainer>
         <GlobalButton isLoading={isSend} onPress={onRegister} text='Registrarme' />   

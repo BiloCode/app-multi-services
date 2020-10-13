@@ -1,6 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
-import useNavigateToFilterScreen from '../../../hooks/useNavigateToFilterScreen';
 import SCS from './styles';
 
 interface IProps {
@@ -10,7 +10,15 @@ interface IProps {
 }
 
 const SpecialtyCard : FC<IProps> = ({ id , title , image }) => {
-  const NavigateToFilterScreen = useNavigateToFilterScreen();
+  const { navigate } = useNavigation();
+  const NavigateToFilterScreen = (filterId : number) => {
+    navigate('search',{
+      screen : 'search-filter',
+      params : {
+        filter : filterId
+      }
+    })
+  }
 
   return <SCS.Container onPress={() => NavigateToFilterScreen(id)} as={TouchableOpacity}>
     <SCS.ImageContainer>

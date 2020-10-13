@@ -12,9 +12,9 @@ const initialState : UserMetadata.IStore = {
         name : ''
       }
     },
-    name : '',
-    lastname : '',
-    profileImage : ''
+    fullName : '',
+    profileImage : '',
+    id : -1
   }
 }
 

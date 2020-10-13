@@ -14,8 +14,7 @@ export namespace UserMetadata {
 
   export interface IUser {
     id : number;
-    name : string;
-    lastname : string;
+    fullName : string;
     profileImage : string;
     createdAt : string;
     description : string;

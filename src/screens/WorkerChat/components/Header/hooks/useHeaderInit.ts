@@ -11,8 +11,7 @@ const useHeaderInit = () => {
   const { 
     workerData : {
       basePrice,
-      lastname,
-      name,
+      fullName,
       profileImage,
       specialty
     } 
@@ -21,7 +20,7 @@ const useHeaderInit = () => {
   const isWholeNumber = useIsWholeNumber(basePrice);
 
   return {
-    fullName : `${name} ${lastname}`,
+    fullName,
     profileImage,
     specialty,
     basePrice : isWholeNumber ? basePrice + '.00' : basePrice,

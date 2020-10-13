@@ -5,8 +5,7 @@ import { App } from "../../../config";
 interface IData {
   username : string;
   password : string;
-  name : string;
-  lastname : string;
+  fullName : string;
   districtId : number;
 }
 

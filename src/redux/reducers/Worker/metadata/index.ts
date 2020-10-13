@@ -18,8 +18,7 @@ export namespace WorkerMetadata {
     backgroundImage : string;
     puntuaction : number;
     user : {
-      name : string;
-      lastname : string;
+      fullName : string;
       profileImage : string;
       district: {
         name : string;

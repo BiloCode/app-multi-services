@@ -23,15 +23,14 @@ const useParamsWorkerDetail = () => {
       id : id!,
       specialty : specialty?.name!,
       basePrice : basePrice!,
-      name : user?.name!,
-      lastname : user?.lastname!,
+      fullName : user?.fullName!,
       profileImage : user?.profileImage!
     });
   }
   
   return {
     id,
-    fullName : `${user?.name} ${user?.lastname}`,
+    fullName : user?.fullName,
     basePrice,
     profileImage : user?.profileImage,
     location : {

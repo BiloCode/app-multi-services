@@ -3,7 +3,6 @@ import { EvilIcons } from '@expo/vector-icons';
 import RoundedSection from '../../../../components/RoundedSection';
 import GlobalWorkerCard from '../../../../components/GlobalWorkerCard';
 import useWorkerListInit from './hooks/useWorkerListInit';
-import { ScrollView } from 'react-native';
 
 const WorkerList = () => {
   const { isLoadingWorkers , workers } = useWorkerListInit();

@@ -9,7 +9,7 @@ import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata";
 const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
   const GoToChat = useNavigateToChatScreen();
   const { user , puntuaction , specialty , basePrice , id } = worker;
-  const { name , lastname, description , profileImage } = user;
+  const { fullName , description , profileImage } = user;
 
   //Hooks
   const dispatch = useDispatch();
@@ -25,8 +25,7 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
   const NavigateToChat = () => {
     GoToChat({
       id : id!,
-      name : name!,
-      lastname : lastname,
+      fullName,
       basePrice,
       profileImage,
       specialty : specialty.name
@@ -34,7 +33,7 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
   }
 
   return {
-    username : `${name} ${lastname}`,
+    username : fullName,
     description,
     profileImage,
     stars,

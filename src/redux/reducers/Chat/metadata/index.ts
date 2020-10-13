@@ -14,8 +14,7 @@ export namespace ChatMetadata {
 
   export interface IWorkerDataChat {
     id : number;
-    name : string;
-    lastname : string;
+    fullName : string;
     specialty : string;
     basePrice : number;
     profileImage : string;

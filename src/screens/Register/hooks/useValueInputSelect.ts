@@ -7,14 +7,12 @@ const useValueInputSelect = () => {
   const dispatch = useDispatch();
 
   //Estados
-  const [ name , setName ] = useState<string>('');
-  const [ lastname , setLastname ] = useState<string>('');
+  const [ fullName , setFullName ] = useState<string>('');
   const [ departmentSelected , setDepartmentSelected ] = useState<number>(0);
   const [ provinceSelected , setProvinceSelected ] = useState<number>(0);
   const [ districtSelected , setDistrictSelected ] = useState<number>(0);
 
-  const ChangeName = (value : string) => setName(() => value);
-  const ChangeLastname = (value : string) => setLastname(() => value);
+  const ChangeFullName = (value : string) => setFullName(() => value);
 
   const ChangeDepartment = (item : number, index) => {
     setDepartmentSelected(item);
@@ -29,13 +27,11 @@ const useValueInputSelect = () => {
   const ChangeDistrict = (item : number, index) => setDistrictSelected(item);
 
   return {
-    name,
-    lastname,
+    fullName,
     departmentSelected,
     provinceSelected,
     districtSelected,
-    ChangeName,
-    ChangeLastname,
+    ChangeFullName,
     ChangeDepartment,
     ChangeProvince,
     ChangeDistrict

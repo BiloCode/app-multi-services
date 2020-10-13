@@ -12,14 +12,13 @@ interface IProps {
   departmentSelected : number;
   provinceSelected : number;
   districtSelected : number;
-  onChangeName?(value : string) : void;
-  onChangeLastname?(value : string) : void;
+  onChangeFullName?(value : string) : void;
   onChangeDepartment?(item : number,index) : void;
   onChangeProvince?(item : number,index) : void;
   onChangeDistrict?(item : number,index) : void;
 }
 
-const InputUserInformation : FC<IProps> = ({ departmentSelected, districtSelected, provinceSelected, onChangeName, onChangeDepartment, onChangeDistrict,onChangeProvince, onChangeLastname }) => {
+const InputUserInformation : FC<IProps> = ({ departmentSelected, districtSelected, provinceSelected, onChangeFullName, onChangeDepartment, onChangeDistrict,onChangeProvince }) => {
   //Redux
   const { 
     departmentData,
@@ -30,13 +29,8 @@ const InputUserInformation : FC<IProps> = ({ departmentSelected, districtSelecte
   return <BaseInput title='Informacion Personal' description='Esta informacion servira para identificarlo' >
     <GlobalInput
       icon={<AntDesign name="user" size={16} color="#BBBBBB" />}
-      placeholder='Nombre...'
-      onChangeText={onChangeName}
-    />
-    <GlobalInput
-      icon={<AntDesign name="user" size={16} color="#BBBBBB" />}
-      placeholder='Apellido...'
-      onChangeText={onChangeLastname}
+      placeholder='Nombre Completo...'
+      onChangeText={onChangeFullName}
     />
     <Select
       icon={<AntDesign name="enviromento" size={16} color="#BBBBBB" />}

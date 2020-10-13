@@ -17,8 +17,7 @@ const workers : WorkerMetadata.IWorker[] = new Array<WorkerMetadata.IWorker>(3).
     name : 'Desarrollo de Sistemas'
   },
   user : {
-    name : 'Billy',
-    lastname : 'Paredes Aycho',
+    fullName : 'Billy Paredes Aycho',
     description : faker.lorem.words(30),
     district : {
       name : 'Lima',
