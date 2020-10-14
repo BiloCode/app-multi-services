@@ -23,17 +23,15 @@ const WorkerDetail = () => {
     location,
     profileImage,
     specialty,
-    backgroundImage,
     NavigateToChat
   } = useParamsWorkerDetail();
 
   return <>
     <WDS.MainContainer as={ScrollView}>
       <ProfileSection 
-        fullName={fullName} 
+        fullName={fullName!} 
         availability={availability!} 
-        profileImage={profileImage!} 
-        backgroundImage={backgroundImage!}
+        profileImage={profileImage!}
       />
       <WDS.WorkInformation>
         <SpecialtyBox data={specialty!} />

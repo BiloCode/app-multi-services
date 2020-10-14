@@ -9,16 +9,15 @@ interface IProps {
   fullName : string;
   availability : string;
   profileImage? : string;
-  backgroundImage : string;
 }
 
-const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage , backgroundImage }) => {
+const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage }) => {
   const { goBack } = useNavigation();
 
   const NavigateGoBack = () => goBack();
 
   return <PSS.MainContainer>
-    <PSS.Image source={{ uri : backgroundImage }} />  
+    <PSS.Image source={{ uri : 'https://i.pinimg.com/originals/d9/7e/dd/d97eddfbccec3e6959dbfea9ec609d29.jpg' }} />
     <PSS.FloatingContent>
       <PSS.ImageProfileContainer>
         <AvatarImage iconSize={44} size={90} image={profileImage} />

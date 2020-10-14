@@ -2,12 +2,15 @@ import 'react-native-gesture-handler';
 import React from 'react';
 
 //Router
+import { enableScreens } from 'react-native-screens'
 import Router from './src/router';
 
 //Redux
 import { Provider } from 'react-redux';
 import store from './src/redux';
 import { useFonts } from 'expo-font';
+
+enableScreens();
 
 export default function App() {
   const [ loaded ] = useFonts({

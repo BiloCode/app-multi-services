@@ -5,7 +5,7 @@ const ProfileSectionStyles = {
     width: 100%;
     height: 225px;
     position: relative;
-    background-color: #D4D4D4;
+    background-color: blue;
   `,
   Image : styled.Image`
     width: 100%;

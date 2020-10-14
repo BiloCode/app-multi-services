@@ -12,11 +12,8 @@ interface IProps {
 const SpecialtyCard : FC<IProps> = ({ id , title , image }) => {
   const { navigate } = useNavigation();
   const NavigateToFilterScreen = (filterId : number) => {
-    navigate('search',{
-      screen : 'search-filter',
-      params : {
-        filter : filterId
-      }
+    navigate('search-filter',{
+      filter : filterId
     })
   }
 

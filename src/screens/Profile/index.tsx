@@ -9,7 +9,7 @@ const Profile = () => {
   const { profileImage , createdAt , description , fullName , location } = useProfileInformation();
 
   return <PS.Container>
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false} >
       <TopDesign profileImage={profileImage} />
       <PS.UserInformation>
         <PS.UserFullName>{fullName}</PS.UserFullName>

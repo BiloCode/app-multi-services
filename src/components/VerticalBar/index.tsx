@@ -1,5 +1,4 @@
-import React, { FC, memo } from 'react';
-import { ScrollView } from 'react-native';
+import React, { FC } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import Icon from './Icon';
 import VerticalBarStyles from './styles';

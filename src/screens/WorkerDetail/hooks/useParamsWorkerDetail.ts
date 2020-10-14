@@ -13,8 +13,7 @@ const useParamsWorkerDetail = () => {
       id,
       location,
       specialty,
-      user,
-      backgroundImage
+      user
     } 
   } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker,shallowEqual);
 
@@ -39,7 +38,6 @@ const useParamsWorkerDetail = () => {
     },
     specialty : specialty?.name,
     availability,
-    backgroundImage,
     NavigateToChat
   }
 }
