@@ -34,9 +34,15 @@ export const WorkInformation = styled.View`
   margin-bottom: 15px;
 `;
 
+export const SpecialtyContainer = styled.View({
+  flexDirection : 'row',
+  alignItems : 'center'
+});
+
 export const Specialty = styled.Text`
-  font-size: 14px;
-  font-family: 'RalewaySemiBold';
+  font-size: 16px;
+  font-family: 'RalewayBold';
+  margin-left: 5px;
 `;
 
 export const Price = styled.Text`

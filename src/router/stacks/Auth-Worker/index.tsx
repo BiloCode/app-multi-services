@@ -5,12 +5,13 @@ import WorkerWorkList from '../../../screens/WorkerWorkList';
 import WorkerProfile from '../../../screens/WorkerProfile';
 import WorkerChat from '../../../screens/WorkerChat';
 import WorkDetail from '../../../screens/WorkDetail';
+import DrawerNav from './DrawerNav';
 
 const Stack = createStackNavigator();
 
 const AuthWorker = () => {
   return <Stack.Navigator headerMode='none' initialRouteName='home' >
-    <Stack.Screen name='home' component={WorkerWorkList} />
+    <Stack.Screen name='home' component={DrawerNav} options={{ gestureEnabled : false }} />
     <Stack.Screen name='worker-work-list' component={WorkerWorkList} />
     <Stack.Screen name='profile' component={WorkerProfile} />
     <Stack.Screen name='worker-chat' component={WorkerChat} />

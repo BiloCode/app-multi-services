@@ -16,7 +16,7 @@ const Username : FC<IProps> = ({ name }) => {
       value={fullName}
       editable={inputEnabled}
       onChangeText={ChangeFullName}
-      autoFocus={inputEnabled}
+      focusable={inputEnabled}
     />
     <US.UsernameIconContainer onPress={ActivateInputFullName} as={TouchableOpacity}>
       <AntDesign name={!inputEnabled ? 'edit' : 'save'} size={18} color="black" />

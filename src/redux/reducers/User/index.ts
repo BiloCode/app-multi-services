@@ -1,21 +1,8 @@
 import TYPES , { UserMetadata } from "./metadata";
 
 const initialState : UserMetadata.IStore = {
-  userInformation : {
-    createdAt : '',
-    description : '',
-    district : {
-      id : -1,
-      name : '',
-      province : {
-        id : -1,
-        name : ''
-      }
-    },
-    fullName : '',
-    profileImage : '',
-    id : -1
-  }
+  userInformation : {},
+  workerInformation : {}
 }
 
 const reducer = (state = initialState, action) : UserMetadata.IStore => {
@@ -24,6 +11,12 @@ const reducer = (state = initialState, action) : UserMetadata.IStore => {
       return {
         ...state,
         userInformation : action.payload
+      }
+    
+    case TYPES.SET_WORKER_INFORMATION:
+      return {
+        ...state,
+        workerInformation : action.payload
       }
 
     default:

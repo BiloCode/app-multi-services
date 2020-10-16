@@ -9,8 +9,6 @@ import WorkerChat from '../../../screens/WorkerChat';
 import SearchFilter from '../../../screens/SearchFilter';
 import SearchMap from '../../../screens/SearchMap';
 import DrawerNav from './DrawerNav';
-import { NavigationContainer } from '@react-navigation/native';
-import VerticalBar from '../../../components/VerticalBar';
 
 const Stack = createDrawerNavigator();
 

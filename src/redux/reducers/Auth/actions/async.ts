@@ -2,7 +2,7 @@ import { AsyncStorage } from "react-native";
 import { Dispatch } from "redux";
 import { App } from "../../../../config";
 import { AuthenticationState } from "../../../../metadata/types";
-import { setUserInformation } from "../../User/actions/sync";
+import { setUserInformation, setWorkerInformation } from "../../User/actions/sync";
 import { setLoadingData, updateAuthenticationLoading, updateAuthenticationState } from "./sync";
 
 const checkAuthenticationState = () => async (dispatch : Dispatch) => {
@@ -20,7 +20,7 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
       }else{
         if(worker){
           state = 'authentication-worker';
-          dispatch(setUserInformation(worker));
+          dispatch(setWorkerInformation(worker));
         }else if(user){
           state = 'authentication-user';
           dispatch(setUserInformation(user));
@@ -57,7 +57,7 @@ const sendLoginInformation = (username : string, password : string) => async (di
 
     if(worker){
       state = 'authentication-worker';
-      dispatch(setUserInformation(worker));
+      dispatch(setWorkerInformation(worker));
     }else if(user){
       state = 'authentication-user';
       dispatch(setUserInformation(user));

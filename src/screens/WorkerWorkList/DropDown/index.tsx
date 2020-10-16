@@ -5,10 +5,11 @@ import { TouchableOpacity } from 'react-native';
 import useDropDown from './hooks/useDropDown';
 import HideContent from './components/HideContent';
 import WorkCard from './components/WorkCard';
+import { WorkMetadata } from '../../../redux/reducers/Work/metadata';
 
 interface IProps {
   title : string;
-  works : any[]
+  works : WorkMetadata.IWork[]
 }
 
 const DropDown : FC<IProps> = ({ title , works }) => {
@@ -22,7 +23,7 @@ const DropDown : FC<IProps> = ({ title , works }) => {
     { 
       isOpen && (
         <HideContent>
-          { works.map((v,i) => <WorkCard key={i} />) }
+          { works.map((v,i) => <WorkCard key={i} data={v} />) }
         </HideContent>
       )
     }

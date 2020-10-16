@@ -6,14 +6,17 @@ import useStarAmount from '../../../../hooks/useStarAmount';
 import StarList from './components/StarList';
 import Username from './components/Username';
 import Image from './components/Image';
+import Availability from './components/Availability';
+import { WorkerState } from '../../../../metadata/types';
 
 interface IProps {
   image : string;
+  availability : WorkerState;
   name : string;
   stars : number;
 }
 
-const WorkerProfileImage : FC<IProps> = ({ image , name , stars }) => {
+const WorkerProfileImage : FC<IProps> = ({ image , name , stars , availability }) => {
   const imageSize = 120;
   const starsIcon = useStarAmount(stars || 0);
 
@@ -21,6 +24,7 @@ const WorkerProfileImage : FC<IProps> = ({ image , name , stars }) => {
     <Image size={imageSize} image={image} />
     <WPIS.ContainerInformation>
       <Username name={name} />
+      <Availability value={availability} />
       <StarList stars={starsIcon} />
     </WPIS.ContainerInformation>
   </WPIS.Container>
