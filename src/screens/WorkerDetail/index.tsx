@@ -11,6 +11,7 @@ import SpecialtyBox from './components/SpecialtyBox';
 import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
+import useSocketInit from './hooks/useSocketInit';
 import RequestServiceModal from './components/RequestServiceModal';
 import useHideModal from '../../hooks/useHideModal';
 
@@ -25,6 +26,7 @@ const WorkerDetail = () => {
     specialty,
     NavigateToChat
   } = useParamsWorkerDetail();
+  const { socketLoading } = useSocketInit();
 
   return <>
     <WDS.MainContainer as={ScrollView}>
@@ -42,7 +44,13 @@ const WorkerDetail = () => {
         <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
         <WDS.MarginVerticalContainer>
           <WDS.MarginBottom>
-            <GlobalButton backgroundColor='#ECECEC' textColor='#6F6F6F' text='Enviar un Mensaje' onPress={NavigateToChat} />
+            <GlobalButton
+              backgroundColor='#ECECEC'
+              textColor='#6F6F6F'
+              text='Enviar un Mensaje'
+              onPress={NavigateToChat} 
+              isLoading={socketLoading} 
+            />
           </WDS.MarginBottom>
           <GlobalButton text='Solicitar Servicio' onPress={setOpen} />
         </WDS.MarginVerticalContainer>

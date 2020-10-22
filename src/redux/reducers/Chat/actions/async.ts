@@ -1,29 +1,38 @@
-import { ChatMetadata } from '../metadata';
-import { setMessages, setRoomId } from './sync';
+import { addNewMessage, setMessages, setRoomId } from './sync';
 
-export const getMessagesList = (socket : SocketIOClient.Socket , users : [number,number]) => dispatch => {
+interface IRequestData {
+  socket : SocketIOClient.Socket;
+  workerId : number;
+  userId : number;
+}
+
+export const getMessagesList = (data : IRequestData) => dispatch => {
+  const { socket , userId , workerId } = data;
+
   dispatch(setMessages([]));
 
-  socket.emit('join-room',{ users });
+  socket.emit('join-room',{ userId, workerId });
 
   socket.on('send-room-data', data => {
-    const { _id , messages } = data;
+    const { _id , messageList } = data;
 
     dispatch(setRoomId(_id));
-    dispatch(setMessages(messages));
+    dispatch(setMessages(messageList));
   });
 };
 
-interface IData {
+interface IMessageData {
   roomId : string;
-  message : ChatMetadata.IMessageList
+  userId : number;
+  message : string;
 }
 
-export const setNewMessage = (socket : SocketIOClient.Socket, data : IData) => dispatch => {
-  socket.emit('send-message',data);
+export const setNewMessage = (socket : SocketIOClient.Socket, message : IMessageData) => dispatch => {
+  socket.emit('send-message', message);
 
-  socket.on('send-message-success', message => {
-    console.log(message);
+  socket.on('send-message-success', msg => {
+    console.log(msg);
+    dispatch(addNewMessage(msg));
   });
 
   socket.on('send-message-fail', () => {

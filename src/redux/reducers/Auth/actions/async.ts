@@ -9,7 +9,7 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
   try {
     let state : AuthenticationState = 'not-authentication';
     const token = await AsyncStorage.getItem('user-information');
-
+    
     if(token) {
       const request = await App.post('/auth/token/verify', new URLSearchParams({ token }));
       const { isExpired , worker , user } = request.data;
@@ -26,9 +26,10 @@ const checkAuthenticationState = () => async (dispatch : Dispatch) => {
           dispatch(setUserInformation(user));
         }
       }
+
+      dispatch(updateAuthenticationState(state));
     }
 
-    dispatch(updateAuthenticationState(state));
     dispatch(setLoadingData(false));
   } catch (e) {
     console.log(e);

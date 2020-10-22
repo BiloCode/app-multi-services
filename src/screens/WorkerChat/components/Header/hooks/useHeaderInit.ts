@@ -9,7 +9,7 @@ const useHeaderInit = () => {
   
   //Redux
   const { 
-    workerData : {
+    userData : {
       basePrice,
       fullName,
       profileImage,
@@ -17,7 +17,7 @@ const useHeaderInit = () => {
     } 
   } = useSelector<ReduxRootState, ChatMetadata.IStore>(({ chat }) => chat,shallowEqual);
 
-  const isWholeNumber = useIsWholeNumber(basePrice);
+  const isWholeNumber = useIsWholeNumber(basePrice!);
 
   return {
     fullName,

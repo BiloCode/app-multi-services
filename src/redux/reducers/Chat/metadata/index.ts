@@ -10,22 +10,26 @@ export namespace ChatMetadata {
   export interface IMessageList {
     userId : number;
     message : string;
+    createdAt : string;
+    _id : string;
   }
 
-  export interface IWorkerDataChat {
+  export interface IUserDataRoom {
     id : number;
     fullName : string;
-    specialty : string;
-    basePrice : number;
     profileImage : string;
+    specialty? : string;
+    basePrice? : number;
+    userType : 'user' | 'worker'
   }
 
   export interface IStore {
     roomId : string;
-    workerData : IWorkerDataChat;
+    userData : IUserDataRoom;
     isLoadingMessages : boolean;
     messagesList : IMessageList[];
     socket : SocketIOClient.Socket | null;
+    socketLoading : boolean;
   }
 }
 

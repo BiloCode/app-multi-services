@@ -1,14 +1,30 @@
-import { WorkDetailState } from '../../../metadata/types'
+import { shallowEqual, useSelector } from 'react-redux';
+import { ReduxRootState } from '../../../metadata/types'
+import { WorkMetadata } from '../../../redux/reducers/Work/metadata';
 
-interface IReturnParams {
-  workState : WorkDetailState;
-}
+const useWorkDetailInit = () => {
+  const {
+    workDetail : {
+      id,
+      price,
+      title,
+      description,
+      state,
+      user,
+      createdAt
+    }
+  } = useSelector<ReduxRootState,WorkMetadata.IStore>(({ work }) => work, shallowEqual);
 
-const useWorkDetailInit = () : IReturnParams => {
-  const workState : WorkDetailState = 'waiting-confirmation';
-  
   return {
-    workState
+    title,
+    price,
+    description,
+    state,
+    createdAt,
+    location : {
+      name : user?.district.name,
+      coords : user?.district.location
+    }
   }
 }
 

@@ -4,17 +4,18 @@ import TYPES, { ChatMetadata } from "./metadata";
 
 const initialState : ChatMetadata.IStore = {
   roomId : '',
-  workerData : {
+  userData : {
     id : -1,
-    name : '',
-    lastname : '',
+    fullName : '',
     basePrice : 0,
     profileImage : '',
-    specialty : ''
+    specialty : '',
+    userType : 'user'
   },
   isLoadingMessages : true,
   messagesList : [],
-  socket : null
+  socket : null,
+  socketLoading : true
 }
 
 const reducer = (state = initialState, action) : ChatMetadata.IStore => {
@@ -22,7 +23,9 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
     case TYPES.SET_WORKER_DATA:
       return {
         ...state,
-        workerData : action.payload
+        userData : {
+          ...action.payload
+        }
       }
 
     case TYPES.GET_MESSAGE_LIST:
@@ -38,10 +41,11 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         messagesList : [...state.messagesList , action.payload]
       }
 
-    case TYPES.SOCKET_START_CONNECTION:
+    case TYPES.SOCKET_START_CONNECTION:  
       return {
         ...state,
-        socket : io(Server)
+        socket : io(Server),
+        socketLoading : false
       }
 
     case TYPES.SET_ROOM_ID:

@@ -1,6 +1,6 @@
 import TYPES, { ChatMetadata } from "../metadata";
 
-export const setWorkerChatData = (workerData : ChatMetadata.IWorkerDataChat) => ({
+export const setWorkerChatData = (workerData : ChatMetadata.IUserDataRoom) => ({
   type : TYPES.SET_WORKER_DATA,
   payload : workerData
 });

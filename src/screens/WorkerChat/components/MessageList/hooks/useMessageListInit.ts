@@ -5,27 +5,28 @@ import { getMessagesList } from "../../../../../redux/reducers/Chat/actions/asyn
 
 const useMessageListInit = () => {
   //Redux
-  const data = useSelector<ReduxRootState, ReduxRootState>(state => state,shallowEqual);
-  const { userInformation } = data.user;
-  const { isLoadingMessages , messagesList , socket , workerData } = data.chat;
+  const { user , chat , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state,shallowEqual);
+  const { userInformation , workerInformation } = user;
+  const { userAuthenticatioState } = auth;
+  const { isLoadingMessages , messagesList , socket , userData } = chat;
 
   const dispatch = useDispatch();
 
+  const isSpeaker = () => userData.userType;
+
   useEffect(() => {
     if(socket){
-      const users : [number,number] = [
-        userInformation.id,
-        workerData.id
-      ];
+      const userId = isSpeaker() === 'user' ? userData.id : userInformation.id!;
+      const workerId = isSpeaker() === 'worker' ? userData.id : workerInformation.id!;
 
-      dispatch(getMessagesList(socket,users));
+      dispatch(getMessagesList({ socket, userId, workerId }));
     }
   },[]);
 
   return {
     messagesList,
     isLoadingMessages,
-    userId : userInformation.id
+    userId : userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.id!
   }
 }
 

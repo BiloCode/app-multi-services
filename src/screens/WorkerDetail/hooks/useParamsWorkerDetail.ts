@@ -15,7 +15,7 @@ const useParamsWorkerDetail = () => {
       specialty,
       user
     } 
-  } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker,shallowEqual);
+  } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker, shallowEqual);
 
   const NavigateToChat = () => {
     Navigate({
@@ -23,7 +23,8 @@ const useParamsWorkerDetail = () => {
       specialty : specialty?.name!,
       basePrice : basePrice!,
       fullName : user?.fullName!,
-      profileImage : user?.profileImage!
+      profileImage : user?.profileImage!,
+      userType : 'worker'
     });
   }
   

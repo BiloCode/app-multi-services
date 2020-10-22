@@ -7,21 +7,23 @@ const useSendMessage = () => {
   const { messageText , ChangeMessageText } = useMessageInput();
 
   const dispatch = useDispatch();
-  const { chat , user } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
-  const { userInformation } = user;
+  const { chat , user , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
+  const { userAuthenticatioState } = auth;
+  const { userInformation , workerInformation } = user;
   const { roomId , socket } = chat;
   
-
   const SendMessage = () => {
     if(!socket) return;
+
+    const userId = userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.id!;
     
     const payload = {
       roomId,
-      message : {
-        userId : userInformation.id,
-        message : messageText
-      }
+      message : messageText,
+      userId
     }
+
+    console.log(payload);
 
     dispatch(setNewMessage(socket, payload));
     ChangeMessageText('');
