@@ -20,6 +20,10 @@ export const setRoomId = (roomId : string) => ({
   payload : roomId
 })
 
+export const chatResetData = () => ({
+  type : TYPES.CHAT_RESET
+})
+
 export const SocketStartConnection = () => ({
   type : TYPES.SOCKET_START_CONNECTION
 })

@@ -54,6 +54,15 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         roomId : action.payload
       }
 
+    case TYPES.CHAT_RESET:
+      return {
+        ...state,
+        isLoadingMessages : true,
+        messagesList : [],
+        roomId : '',
+        userData : initialState.userData
+      }
+
     default:
       return state;
   }

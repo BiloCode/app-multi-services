@@ -17,13 +17,13 @@ const useSearchInit = () => {
     },
     user : {
       userInformation : {
-        district : { id }
+        district
       }
     }
   } = useSelector<ReduxRootState,ReduxRootState>(state => state, shallowEqual);
 
   useEffect(() => {
-    dispatch(getNearestWorkers(id));
+    dispatch(getNearestWorkers(district?.id!));
     dispatch(getNewsWorkers());
   },[]);
 

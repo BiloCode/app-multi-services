@@ -1,25 +1,33 @@
-import { addNewMessage, setMessages, setRoomId } from './sync';
+import { App } from '../../../../config';
+import { addNewMessage, chatResetData, setMessages, setRoomId } from './sync';
 
-interface IRequestData {
-  socket : SocketIOClient.Socket;
-  workerId : number;
-  userId : number;
-}
+export const getMessagesList = (userWorkerId : number, userId : number) => async dispatch => {
+  try {
+    const request = await App.post('/user/join/room', new URLSearchParams({
+      userWorkerId : String(userWorkerId),
+      userId : String(userId)
+    }));
 
-export const getMessagesList = (data : IRequestData) => dispatch => {
-  const { socket , userId , workerId } = data;
+    const { room } = request.data;
+    const { _id , messageList } = room;
 
-  dispatch(setMessages([]));
-
-  socket.emit('join-room',{ userId, workerId });
-
-  socket.on('send-room-data', data => {
-    const { _id , messageList } = data;
+    console.log(_id);
 
     dispatch(setRoomId(_id));
     dispatch(setMessages(messageList));
-  });
-};
+  }catch(e){
+    console.log(e);
+  }
+}
+
+export const joinRoom = (socket : SocketIOClient.Socket, roomId : string) => dispatch => {
+  socket.emit('join-room', { roomId });
+}
+
+export const leaveRoom = (socket : SocketIOClient.Socket, roomId : string) => dispatch => {
+  socket.emit('leave-room', { roomId });
+  dispatch(chatResetData());
+}
 
 interface IMessageData {
   roomId : string;
@@ -31,7 +39,6 @@ export const setNewMessage = (socket : SocketIOClient.Socket, message : IMessage
   socket.emit('send-message', message);
 
   socket.on('send-message-success', msg => {
-    console.log(msg);
     dispatch(addNewMessage(msg));
   });
 

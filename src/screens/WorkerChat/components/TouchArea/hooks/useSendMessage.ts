@@ -15,16 +15,14 @@ const useSendMessage = () => {
   const SendMessage = () => {
     if(!socket) return;
 
-    const userId = userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.id!;
+    const userId = userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!;
     
     const payload = {
       roomId,
       message : messageText,
       userId
     }
-
-    console.log(payload);
-
+    
     dispatch(setNewMessage(socket, payload));
     ChangeMessageText('');
   }

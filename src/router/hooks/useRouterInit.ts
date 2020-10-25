@@ -7,6 +7,7 @@ import { ReduxRootState } from '../../metadata/types';
 //Redux
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { checkAuthenticationState } from '../../redux/reducers/Auth/actions/async';
+import { SocketStartConnection } from '../../redux/reducers/Chat/actions/sync';
 
 const useRouterInit = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const useRouterInit = () => {
 
   useEffect(() => {
     dispatch(checkAuthenticationState());
+    dispatch(SocketStartConnection());
   },[]);
 
   return {

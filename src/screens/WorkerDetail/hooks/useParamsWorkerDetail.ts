@@ -10,7 +10,6 @@ const useParamsWorkerDetail = () => {
     detailData : {
       availability,
       basePrice,
-      id,
       location,
       specialty,
       user
@@ -19,7 +18,7 @@ const useParamsWorkerDetail = () => {
 
   const NavigateToChat = () => {
     Navigate({
-      id : id!,
+      id : user?.id!,
       specialty : specialty?.name!,
       basePrice : basePrice!,
       fullName : user?.fullName!,
@@ -29,7 +28,6 @@ const useParamsWorkerDetail = () => {
   }
   
   return {
-    id,
     fullName : user?.fullName,
     basePrice,
     profileImage : user?.profileImage,

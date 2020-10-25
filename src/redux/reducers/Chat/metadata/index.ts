@@ -3,7 +3,8 @@ const TYPES = {
   SET_WORKER_DATA : 'set-worker-data',
   SET_MESSAGE : 'set-message',
   SET_ROOM_ID : 'set-room-id',
-  SOCKET_START_CONNECTION : 'socket-start-connection'
+  SOCKET_START_CONNECTION : 'socket-start-connection',
+  CHAT_RESET : 'chat-reset'
 }
 
 export namespace ChatMetadata {

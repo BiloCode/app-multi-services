@@ -17,6 +17,7 @@ export namespace WorkerMetadata {
     createdAt : Date;
     puntuaction : number;
     user : {
+      id : number;
       fullName : string;
       profileImage : string;
       district: {

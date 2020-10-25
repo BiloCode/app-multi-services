@@ -1,22 +1,29 @@
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createStackNavigator } from '@react-navigation/stack';
+
+//Hooks
+import useRouterUserInit from '../../hooks/useRouterUserInit';
 
 //Screens
-import useRouterUserInit from '../../hooks/useRouterUserInit';
 import WorkerDetail from '../../../screens/WorkerDetail';
-
 import WorkerChat from '../../../screens/WorkerChat';
 import SearchFilter from '../../../screens/SearchFilter';
 import SearchMap from '../../../screens/SearchMap';
-import DrawerNav from './DrawerNav';
+import Home from '../../../screens/Home';
+import Profile from '../../../screens/Profile';
+import Contact from '../../../screens/Contact';
+import Search from '../../../screens/Search';
 
-const Stack = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 const AuthUser = () => {
   const init = useRouterUserInit();
 
-  return <Stack.Navigator initialRouteName='home' >
-    <Stack.Screen name='home' component={DrawerNav} options={{ gestureEnabled : false }} />
+  return <Stack.Navigator headerMode='none' initialRouteName='home' >
+    <Stack.Screen name='home' component={Home} />
+    <Stack.Screen name='profile' component={Profile} />
+    <Stack.Screen name='contact' component={Contact} />
+    <Stack.Screen name='search' component={Search} />
     <Stack.Screen name='worker-detail' component={WorkerDetail} />
     <Stack.Screen name='worker-chat' component={WorkerChat} />
     <Stack.Screen name='search-filter' component={SearchFilter} />
