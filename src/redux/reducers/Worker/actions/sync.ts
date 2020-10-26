@@ -24,3 +24,12 @@ export const setSearchLoading = (loading : boolean) => ({
   type : TYPES.SET_SEARCH_LOADING,
   payload : loading
 })
+
+export const setFilterId = (filterId : number) => ({
+  type : TYPES.SET_FILTER_ID,
+  payload : filterId
+})
+
+export const setSearchReset = () => ({
+  type : TYPES.RESET_SEARCH
+});

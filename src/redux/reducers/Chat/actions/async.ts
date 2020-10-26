@@ -11,8 +11,6 @@ export const getMessagesList = (userWorkerId : number, userId : number) => async
     const { room } = request.data;
     const { _id , messageList } = room;
 
-    console.log(_id);
-
     dispatch(setRoomId(_id));
     dispatch(setMessages(messageList));
   }catch(e){

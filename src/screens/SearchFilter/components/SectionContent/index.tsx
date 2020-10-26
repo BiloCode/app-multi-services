@@ -1,46 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
-import faker from 'faker';
 
 import GlobalWorkerCard from '../../../../components/GlobalWorkerCard';
 import { WorkerMetadata } from '../../../../redux/reducers/Worker/metadata';
 import RoundedSection from '../../../../components/RoundedSection';
 
-const workers : WorkerMetadata.IWorker[] = [
-  {
-    id : 1,
-    availability : 'available',
-    backgroundImage : '',
-    basePrice : 16,
-    createdAt : new Date(),
-    location : '',
-    puntuaction : 4,
-    specialty : {
-      name : 'Desarrollo de Sistemas'
-    },
-    user : {
-      fullName : 'Billy Paredes Aycho',
-      description : faker.lorem.words(30),
-      district : {
-        name : 'Lima',
-        province : {
-          name : 'Rimac'
-        }
-      },
-      profileImage : 'https://hipertextual.com/files/2020/05/hipertextual-nuevo-pokemon-go-es-hacer-que-tus-pokemon-se-vean-mas-reales-2020697065.jpg'
-    }
-  }
-]
+interface IProps {
+  title : string;
+  isLoading : boolean;
+  list : WorkerMetadata.IWorker[];
+}
 
-const SectionContent = () => (
+const SectionContent : FC<IProps> = ({ title , list , isLoading }) => (
   <RoundedSection 
-    title='Desarrollo de Software'
+    title={title} 
     icon={<AntDesign name="filter" size={18} color="#fff" />}
   >
     <ScrollView>
       {
-        workers.map((v,i) => (
+        list.map((v,i) => (
           <GlobalWorkerCard key={i} workerData={v} />
         ))
       }

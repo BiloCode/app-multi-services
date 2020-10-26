@@ -3,7 +3,7 @@ import { setNearestWorkers, setNewWorkers , setSearchLoading, setWorkersWithFilt
 
 export const getNewsWorkers = () => async dispatch => {
   try{
-    const request = await App.get('/worker/new');
+    const request = await App.get('/worker/find/new');
     const { workers , error } = request.data;
 
     let workersData : any = [];
@@ -19,17 +19,18 @@ export const getNewsWorkers = () => async dispatch => {
   }
 }
 
-export const getNearestWorkers = (districtId : number) => async dispatch => {
+export const getNearestWorkers = (districtId : number, unlimited : boolean = false) => async dispatch => {
   try{
-    const request = await App.post('/worker/nearest', new URLSearchParams({
+    let workersData : any = [],
+      endpoint = !unlimited ? '/worker/nearest' : '/worker/nearest/unlimited';
+
+    const request = await App.post(endpoint, new URLSearchParams({
       districtId : String(districtId)
     }));
-
-    let workersData : any = [];
     
     const { workers , error } = request.data;
 
-    if(error) alert(error);
+    if(error) console.log(error);
     else if(workers){
       if(workers.length) workersData = workers;
     }
@@ -43,21 +44,34 @@ export const getNearestWorkers = (districtId : number) => async dispatch => {
 export const getWorkersByName = (name : string) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));
-    const workers = [];
+    const request = await App.get(`/worker/find/name/${name}`);
+    const { workers , error } = request.data;
 
-    dispatch(setWorkersWithFilter(workers));
+    if(error){
+      console.log(error);
+    }else if(workers){
+      dispatch(setWorkersWithFilter(workers));
+    }
+
     dispatch(setSearchLoading(false));
   }catch(e){
     console.log(e);
   }
 }
 
-export const getWorkersBySpecialty = (districtId : number, specialtyId : number) => async dispatch => {
+export const getWorkersBySpecialty = (specialtyId : number) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));
-    const workers = [];
 
-    dispatch(setWorkersWithFilter(workers));
+    const request = await App.get(`/worker/find/specialty/${specialtyId}`);
+    const { workers , error } = request.data;
+
+    if(error){
+      console.log(error);
+    }else if(workers) {
+      dispatch(setWorkersWithFilter(workers));
+    }
+
     dispatch(setSearchLoading(false));
   }catch(e){
     console.log(e);

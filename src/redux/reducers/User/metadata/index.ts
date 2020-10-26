@@ -32,12 +32,12 @@ export namespace UserMetadata {
     specialty : {
       name : string;
     },
-    user : IUser
+    user : IUser;
   }
 
   export interface IStore {
-    userInformation : Partial<IUser>,
-    workerInformation : Partial<IWorker>
+    userInformation : Partial<IUser>;
+    workerInformation : Partial<IWorker>;
   }
 
 }

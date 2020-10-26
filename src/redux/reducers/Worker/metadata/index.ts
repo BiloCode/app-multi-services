@@ -5,7 +5,9 @@ const TYPES = {
   UPDATE_NEW_WORKERS : 'update-new-workers',
   UPDATE_WORKER_DETAIL_DATA : 'update-worker-detail-data',
   SET_WORKERS_WITH_FILTER : 'set-workers-with-filter',
-  SET_SEARCH_LOADING : 'set-search-loading'
+  SET_SEARCH_LOADING : 'set-search-loading',
+  SET_FILTER_ID : 'set-filter-id',
+  RESET_SEARCH : 'reset-search'
 }
 
 export namespace WorkerMetadata {
@@ -22,8 +24,10 @@ export namespace WorkerMetadata {
       profileImage : string;
       district: {
         name : string;
+        location : string;
         province : {
           name : string;
+          location : string;
         }        
       };
       description : string;
@@ -42,7 +46,8 @@ export namespace WorkerMetadata {
     };
     search : {
       isLoadingSearch : boolean;
-      workers : IWorker[]
+      filterId : number;
+      workers : IWorker[];
     };
     detailData : Partial<IWorker>;
     mapSearch : {

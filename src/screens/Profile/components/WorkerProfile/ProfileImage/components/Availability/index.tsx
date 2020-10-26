@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { WorkerState } from '../../../../../../metadata/types';
+import { WorkerState } from '../../../../../../../metadata/types';
 import * as AS from './styles';
 
 interface IProps {

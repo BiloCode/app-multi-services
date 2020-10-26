@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { lorem } from "faker";
 import { useDispatch } from "react-redux";
 import useIsWholeNumber from "../../../hooks/useIsWholeNumber";
 import useNavigateToChatScreen from "../../../hooks/useNavigateToChatScreen";
@@ -14,7 +15,7 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
   //Hooks
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const stars = useStarAmount(puntuaction);
+  const stars = useStarAmount(puntuaction || 0);
   const isWholeNumber = useIsWholeNumber(basePrice);
   
   const NavigateToWorkerDetail = () => {
@@ -28,13 +29,14 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
       fullName,
       basePrice,
       profileImage,
-      specialty : specialty.name
+      specialty : specialty.name,
+      userType : 'worker'
     });
   }
 
   return {
     username : fullName,
-    description,
+    description : description || lorem.words(30),
     profileImage,
     stars,
     specialty : specialty.name,

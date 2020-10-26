@@ -1,19 +1,19 @@
 import React, { FC, memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import useChangeDescription from '../../hooks/useChangeDescription';
-import * as WDS from './styles';
+import useChangeDescription from '../../../hooks/useChangeDescription';
+import * as Styled from './styles';
 import { KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 
 interface IProps {
   description : string;
 }
 
-const WorkerDescription : FC<IProps> = ({ description }) => {
+const Description : FC<IProps> = ({ description }) => {
   const { descriptionText , ActivateInputDescription , ChangeDescription , inputEnabled } = useChangeDescription(description);
 
-  return <WDS.Container>
+  return <Styled.Container>
     <KeyboardAvoidingView>
-      <WDS.Input
+      <Styled.Input
         value={descriptionText}
         editable={inputEnabled}
         placeholder='Sin Descripcion disponible...'
@@ -22,14 +22,14 @@ const WorkerDescription : FC<IProps> = ({ description }) => {
         multiline={true}
         numberOfLines={5}
       />
-      <WDS.TextContainer as={TouchableOpacity} onPress={ActivateInputDescription}>
-        <WDS.EditIconContainer>
+      <Styled.TextContainer as={TouchableOpacity} onPress={ActivateInputDescription}>
+        <Styled.EditIconContainer>
           <AntDesign name={!inputEnabled ? 'edit' : 'save'} size={13} color="blue" />
-        </WDS.EditIconContainer>
-        <WDS.Message>{!inputEnabled ? 'Editar Descripción' : 'Guardar Descripcion'}</WDS.Message>
-      </WDS.TextContainer>      
+        </Styled.EditIconContainer>
+        <Styled.Message>{!inputEnabled ? 'Editar Descripción' : 'Guardar Descripcion'}</Styled.Message>
+      </Styled.TextContainer>      
     </KeyboardAvoidingView>
-  </WDS.Container>
+  </Styled.Container>
 }
 
-export default memo(WorkerDescription);
+export default memo(Description);

@@ -1,28 +1,24 @@
 import React from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
-import GlobalButton from '../../components/GlobalButton';
-import TopDesign from './components/TopDesign';
-import useProfileInformation from './hooks/useProfileInformation';
-import PS from './styles';
+
+//Components
+import WorkerProfile from './components/WorkerProfile';
+
+//Redux
+import { shallowEqual, useSelector } from 'react-redux';
+import AuthMetadata from '../../redux/reducers/Auth/metadata';
+import { ReduxRootState } from '../../metadata/types';
+import UserProfile from './components/UserProfile';
 
 const Profile = () => {
-  const { profileImage , createdAt , description , fullName , location } = useProfileInformation();
+  const { userAuthenticatioState } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth, shallowEqual);
 
-  return <PS.Container>
-    <ScrollView showsVerticalScrollIndicator={false} >
-      <TopDesign profileImage={profileImage} />
-      <PS.UserInformation>
-        <PS.UserFullName>{fullName}</PS.UserFullName>
-        <PS.UserSpecialty>Usuario de la App</PS.UserSpecialty>
-      </PS.UserInformation>  
-      <PS.UserDescription>{description}</PS.UserDescription>    
-      <PS.UserLocation>{location}</PS.UserLocation>
-      <PS.ButtonContainer>
-        <GlobalButton onPress={() => alert('En construccion...')} text='Editar Informacion' />
-      </PS.ButtonContainer>
-      <PS.UserDate>{createdAt}</PS.UserDate>
-    </ScrollView>
-  </PS.Container>
-}
+  switch(userAuthenticatioState){
+    case 'authentication-user':
+      return <UserProfile />
+
+    case 'authentication-worker':
+      return <WorkerProfile />
+  }
+};
 
 export default Profile;

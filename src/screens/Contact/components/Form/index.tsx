@@ -11,7 +11,7 @@ import { ButtonContainer, FormContainer } from './styles';
 const Form = () => {
   const { userInformation : { id } } = useSelector<ReduxRootState,any>(({ user }) => user, shallowEqual);
   const { itemSelected , list , onChangeValue } = useSelectAction();
-  const { SendData , ChangeContent , ChangeTitle } = useSendData(itemSelected,id);
+  const { SendData , ChangeContent , ChangeTitle , isSend } = useSendData(itemSelected,id);
 
   return <FormContainer>
     <Input.Text 
@@ -36,7 +36,7 @@ const Form = () => {
       }
     </Input.Select>
     <ButtonContainer>
-      <GlobalButton text='Enviar Solicitud' onPress={SendData} />  
+      <GlobalButton text='Enviar Solicitud' onPress={SendData} isLoading={isSend} />  
     </ButtonContainer>        
   </FormContainer>
 }

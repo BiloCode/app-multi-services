@@ -19,6 +19,8 @@ const useSendData = (specialtyId : number, userId : number) => {
         return;
       }
 
+      setIsSend(() => true);
+
       const request = await App.post('/curriculum/add', new URLSearchParams({
         title,
         content,
@@ -36,6 +38,8 @@ const useSendData = (specialtyId : number, userId : number) => {
       }else{
         alert('No se pudo enviar la solicitud');
       }
+
+      setIsSend(() => false);
     }catch(e){
       console.log(e);
     }

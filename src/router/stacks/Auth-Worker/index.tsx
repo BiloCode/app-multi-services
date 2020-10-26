@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import WorkerWorkList from '../../../screens/WorkerWorkList';
-import WorkerProfile from '../../../screens/WorkerProfile';
+import WorkerProfile from '../../../screens/Profile';
 import WorkerChat from '../../../screens/WorkerChat';
 import WorkDetail from '../../../screens/WorkDetail';
 import DrawerNav from './DrawerNav';

@@ -10,9 +10,9 @@ import WorkerChat from '../../../screens/WorkerChat';
 import SearchFilter from '../../../screens/SearchFilter';
 import SearchMap from '../../../screens/SearchMap';
 import Home from '../../../screens/Home';
-import Profile from '../../../screens/Profile';
 import Contact from '../../../screens/Contact';
 import Search from '../../../screens/Search';
+import UserProfile from '../../../screens/Profile';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +21,7 @@ const AuthUser = () => {
 
   return <Stack.Navigator headerMode='none' initialRouteName='home' >
     <Stack.Screen name='home' component={Home} />
-    <Stack.Screen name='profile' component={Profile} />
+    <Stack.Screen name='profile' component={UserProfile} />
     <Stack.Screen name='contact' component={Contact} />
     <Stack.Screen name='search' component={Search} />
     <Stack.Screen name='worker-detail' component={WorkerDetail} />

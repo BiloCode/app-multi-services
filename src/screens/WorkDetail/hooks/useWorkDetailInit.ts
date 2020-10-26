@@ -5,7 +5,6 @@ import { WorkMetadata } from '../../../redux/reducers/Work/metadata';
 const useWorkDetailInit = () => {
   const {
     workDetail : {
-      id,
       price,
       title,
       description,

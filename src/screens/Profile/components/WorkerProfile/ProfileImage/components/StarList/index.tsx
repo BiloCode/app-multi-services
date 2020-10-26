@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import * as SLS from './styles';
 import { AntDesign } from '@expo/vector-icons';
-import { IStar } from '../../../../../../metadata/interfaces';
+import { IStar } from '../../../../../../../metadata/interfaces';
 
 interface IProps {
   stars : IStar[];

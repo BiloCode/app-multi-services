@@ -9,7 +9,8 @@ const initialState : WorkerMetadata.IStore = {
   },
   search : {
     isLoadingSearch : true,
-    workers : []
+    workers : [],
+    filterId : -1
   },
   detailData : {},
   mapSearch : {
@@ -61,6 +62,23 @@ const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
         search : {
           ...state.search,
           isLoadingSearch : action.payload
+        }
+      }
+
+    case TYPES.SET_FILTER_ID:
+      return {
+        ...state,
+        search : {
+          ...state.search,
+          filterId : action.payload
+        }
+      }
+
+    case TYPES.RESET_SEARCH:
+      return {
+        ...state,
+        search : {
+          ...initialState.search
         }
       }
 
