@@ -38,7 +38,7 @@ const GlobalWorkerCard : FC<IProps> = ({ rounded , workerData }) => {
     </GWCS.UserMainInformation>
     <GWCS.UserWorkInformation>
       <GWCS.UserPriceAndWork>
-        <GWCS.UserWork>{specialty}</GWCS.UserWork>
+        <GWCS.UserWork>Ocupacion : {specialty}</GWCS.UserWork>
         <GWCS.UserPrice>S/{basePrice}</GWCS.UserPrice>
       </GWCS.UserPriceAndWork>
       <GWCS.UserDescription>{description}</GWCS.UserDescription>

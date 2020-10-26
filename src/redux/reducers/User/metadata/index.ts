@@ -2,7 +2,11 @@ import { WorkerState } from '../../../../metadata/types';
 
 const TYPES = {
   SET_USER_INFORMATION : 'set-user-information',
-  SET_WORKER_INFORMATION : 'set-worker-information'
+  SET_WORKER_INFORMATION : 'set-worker-information',
+  UPDATE_USER_FULLNAME : 'update-user-fullname',
+  UPDATE_USER_DESCRIPTION : 'update-user-description',
+  UPDATE_WORKER_FULLNAME : 'update-worker-fullname',
+  UPDATE_WORKER_DESCRIPTION : 'update-worker-fullname'
 }
 
 export namespace UserMetadata {
@@ -36,8 +40,8 @@ export namespace UserMetadata {
   }
 
   export interface IStore {
-    userInformation : Partial<IUser>;
-    workerInformation : Partial<IWorker>;
+    userInformation : IUser;
+    workerInformation : IWorker;
   }
 
 }

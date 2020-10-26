@@ -9,14 +9,14 @@ import useWorkerProfileInit from '../../hooks/useWorkerProfileInit';
 import BaseStructure from '../Global/BaseStructure';
 
 const WorkerProfile = () => {
-  const { fullName, description, basePrice, profileImage, specialty, stars, availability, BackToScreen } = useWorkerProfileInit();
+  const { fullName, description, basePrice, profileImage, specialty, puntuaction, availability, BackToScreen } = useWorkerProfileInit();
 
   return <BaseStructure>
     <ProfileImage
-      availability={availability!}
-      image={profileImage!} 
-      stars={stars}
-      name={fullName!}
+      availability={availability}
+      image={profileImage} 
+      stars={puntuaction}
+      name={fullName}
     />
     <Styled.ContainerText>
       <Styled.WorkInformation>
@@ -26,7 +26,7 @@ const WorkerProfile = () => {
         </Styled.SpecialtyContainer>
         <Styled.Price>S/ {basePrice}</Styled.Price>
       </Styled.WorkInformation>
-      <Description description={description!} />
+      <Description description={description} />
       <Styled.ContainerButton>
         <GlobalButton text='Ver Trabajos' onPress={BackToScreen} />
       </Styled.ContainerButton>

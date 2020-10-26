@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { AntDesign } from '@expo/vector-icons';
-import { ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView } from 'react-native';
 
 import GlobalWorkerCard from '../../../../components/GlobalWorkerCard';
 import { WorkerMetadata } from '../../../../redux/reducers/Worker/metadata';
@@ -17,13 +17,18 @@ const SectionContent : FC<IProps> = ({ title , list , isLoading }) => (
     title={title} 
     icon={<AntDesign name="filter" size={18} color="#fff" />}
   >
-    <ScrollView>
-      {
-        list.map((v,i) => (
-          <GlobalWorkerCard key={i} workerData={v} />
-        ))
-      }
-    </ScrollView>       
+    {
+      isLoading ? 
+        <ActivityIndicator size={32} color='red' /> :
+        <ScrollView>
+          {
+            list.map((v,i) => (
+              <GlobalWorkerCard key={i} workerData={v} />
+            ))
+          }
+        </ScrollView> 
+    }
+          
   </RoundedSection>
 )
 

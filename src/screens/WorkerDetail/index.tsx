@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import faker from 'faker';
 import { ScrollView } from 'react-native-gesture-handler';
 import WDS from './styles';
 
@@ -23,7 +22,8 @@ const WorkerDetail = () => {
     location,
     profileImage,
     specialty,
-    NavigateToChat
+    NavigateToChat,
+    description
   } = useParamsWorkerDetail();
 
   return <>
@@ -36,7 +36,7 @@ const WorkerDetail = () => {
       <WDS.WorkInformation>
         <SpecialtyBox data={specialty!} />
         <BaseBox>
-          <WDS.TextDescription>{faker.lorem.words(50)}</WDS.TextDescription>
+          <WDS.TextDescription>{description}</WDS.TextDescription>
         </BaseBox>
         <PriceBox data={basePrice!} />
         <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />

@@ -15,7 +15,7 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
   //Hooks
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
-  const stars = useStarAmount(puntuaction || 0);
+  const stars = useStarAmount(puntuaction || 3);
   const isWholeNumber = useIsWholeNumber(basePrice);
   
   const NavigateToWorkerDetail = () => {

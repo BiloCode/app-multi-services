@@ -24,7 +24,7 @@ const useWorkerProfileInit = () => {
     fullName : user?.fullName,
     profileImage : user?.profileImage,
     description : user?.description,
-    stars : 3,
+    puntuaction : 3,
     BackToScreen : () => goBack()
   }
 }

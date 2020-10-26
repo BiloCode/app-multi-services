@@ -3,7 +3,6 @@ import React, { FC, memo } from 'react';
 //Hooks
 import useStarAmount from '../../../../../hooks/useStarAmount';
 import StarList from './components/StarList';
-import Username from '../../Global/ProfileImageStructure/Username';
 import Availability from './components/Availability';
 import { WorkerState } from '../../../../../metadata/types';
 import ProfileImageStructure from '../../Global/ProfileImageStructure';
@@ -16,7 +15,7 @@ interface IProps {
 }
 
 const ProfileImage : FC<IProps> = ({ image , name , stars , availability }) => {
-  const starsIcon = useStarAmount(stars || 0);
+  const starsIcon = useStarAmount(stars);
 
   return <ProfileImageStructure image={image} name={name} >
     <Availability value={availability} />
