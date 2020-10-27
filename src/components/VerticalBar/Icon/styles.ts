@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../config";
 
 
 const flex = css`
@@ -23,7 +24,7 @@ export const Circle = styled.View<ICircleProps>`
   ${flex}
 
   ${({ isSelect }) => isSelect && css`
-    background-color: #1858D4;
+    background-color: ${colors.main};
     /* transform: translateX(20px); */
   `}
 `;

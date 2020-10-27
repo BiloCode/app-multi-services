@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 const VerticalBarStyles = {
   Container : styled.View`
@@ -9,7 +10,7 @@ const VerticalBarStyles = {
     width: 60px;
     padding-top: 24px;
     height: 100%;
-    background-color: #1858D4;
+    background-color: ${colors.main};
   `,
   BarHeader : styled.View`
     height: 75px;

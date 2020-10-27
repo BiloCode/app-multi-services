@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import * as Styled from './styles';
+import { colors } from '../../../config';
 
 interface IProps {
   iconNameAntDesign : string;
@@ -14,7 +15,7 @@ const Icon : FC<IProps> = ({ onPress , iconNameAntDesign , isSelect }) => (
     <TouchableOpacity onPress={onPress}>
       <Styled.Circle isSelect={isSelect} >
         <Styled.WhiteCircle isSelect={isSelect} >
-          <AntDesign name={iconNameAntDesign} size={24} color={isSelect ? 'blue' : '#fff'} />
+          <AntDesign name={iconNameAntDesign} size={24} color={isSelect ? colors.main : '#fff'} />
         </Styled.WhiteCircle> 
       </Styled.Circle>
     </TouchableOpacity>

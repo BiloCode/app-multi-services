@@ -16,19 +16,17 @@ const SectionContent : FC<IProps> = ({ title , list , isLoading }) => (
   <RoundedSection 
     title={title} 
     icon={<AntDesign name="filter" size={18} color="#fff" />}
+    isLoading={isLoading}
   >
     {
-      isLoading ? 
-        <ActivityIndicator size={32} color='red' /> :
-        <ScrollView>
-          {
-            list.map((v,i) => (
-              <GlobalWorkerCard key={i} workerData={v} />
-            ))
-          }
-        </ScrollView> 
+      <ScrollView>
+        {
+          list.map((v,i) => (
+            <GlobalWorkerCard key={i} workerData={v} />
+          ))
+        }
+      </ScrollView> 
     }
-          
   </RoundedSection>
 )
 

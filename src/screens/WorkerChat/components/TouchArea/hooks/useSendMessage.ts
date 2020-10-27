@@ -13,7 +13,7 @@ const useSendMessage = () => {
   const { roomId , socket } = chat;
   
   const SendMessage = () => {
-    if(!socket) return;
+    if(!socket || !messageText) return;
 
     const userId = userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!;
     
@@ -23,7 +23,7 @@ const useSendMessage = () => {
       userId
     }
     
-    dispatch(setNewMessage(socket, payload));
+    dispatch(setNewMessage(socket!, payload));
     ChangeMessageText('');
   }
 

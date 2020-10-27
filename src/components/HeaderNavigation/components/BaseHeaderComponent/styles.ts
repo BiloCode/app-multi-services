@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components/native";
-import { NSHeaderNavigation } from "../../namespace";
+import { colors } from "../../../../config";
 
 const BaseStyles = css`
   height: 38px;
   border-radius: 18px;
-  background-color: ${NSHeaderNavigation.colors.background};
+  background-color: ${colors.mainSmoothed};
 `;
 
 export const Container = styled.View`

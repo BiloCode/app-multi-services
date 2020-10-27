@@ -1,43 +1,34 @@
 import React, { FC } from 'react';
 import Icon from './Icon';
-
-import { useRoute } from '@react-navigation/native'
-import VerticalBarStyles from './styles';
-import useActionsBar from './hooks/useActionsBar';
+import Styled from './styles';
+import TabUser from './components/TabUser';
+import useInitBar from './hooks/useInitBar';
+import TabWorker from './components/TabWorker';
 
 const VerticalBar : FC = ({ children }) => {
   const { 
     CloseSession,
-    NavigateToContact,
-    NavigateToHome,
     NavigateToProfile,
-    NavigateToSearch,
-    NavigateToWorkDetail
-  } = useActionsBar();
-
-  const { name } = useRoute();
+    userAuthenticatioState
+  } = useInitBar();
 
   return (
-    <VerticalBarStyles.Container>
-      <VerticalBarStyles.Bar>
-        <VerticalBarStyles.BarHeader>
+    <Styled.Container>
+      <Styled.Bar>
+        <Styled.BarHeader>
           <Icon iconNameAntDesign="user" onPress={NavigateToProfile} />
-        </VerticalBarStyles.BarHeader>
-        <VerticalBarStyles.BarSection>
-          <Icon iconNameAntDesign="home" onPress={NavigateToHome} isSelect={name === 'home'} />
-          <Icon iconNameAntDesign="search1" onPress={NavigateToSearch} isSelect={name === 'search'} />
-          <Icon iconNameAntDesign="profile" onPress={NavigateToWorkDetail} isSelect={name === 'work-list'} />
-          <Icon iconNameAntDesign="wechat" onPress={NavigateToWorkDetail} isSelect={name === 'chat-list'} />
-          <Icon iconNameAntDesign="phone" onPress={NavigateToContact} isSelect={name === 'contact'} />
-        </VerticalBarStyles.BarSection>
-        <VerticalBarStyles.BarFooter>
+        </Styled.BarHeader>
+        <Styled.BarSection>
+          { userAuthenticatioState === 'authentication-user' ? <TabUser /> : <TabWorker /> }
+        </Styled.BarSection>
+        <Styled.BarFooter>
           <Icon iconNameAntDesign="back" onPress={CloseSession} />
-        </VerticalBarStyles.BarFooter>
-      </VerticalBarStyles.Bar>
-      <VerticalBarStyles.Content>
+        </Styled.BarFooter>
+      </Styled.Bar>
+      <Styled.Content>
         {children}
-      </VerticalBarStyles.Content>
-    </VerticalBarStyles.Container>
+      </Styled.Content>
+    </Styled.Container>
   );
 }
 

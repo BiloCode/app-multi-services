@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const FooterMessageStyles = {
   Container : styled.View`
@@ -9,13 +10,13 @@ const FooterMessageStyles = {
   `,
   NotLink : styled.Text`
     font-size: 10px;
-    color: #6F6F6F;
+    color: ${colors.text};
     font-family: 'RalewayMedium';
   `,
   Link : styled.Text`
     margin-left: 5px;
-    color: #1858D4;
-    font-size: 10px;
+    color: ${colors.main};
+    font-size: 11px;
     font-family : 'RalewayBold';
   `
 }

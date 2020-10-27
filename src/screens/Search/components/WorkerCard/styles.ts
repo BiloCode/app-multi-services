@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 export const Container = styled.View`
   width: 190px;
@@ -61,7 +62,7 @@ export const ImageProfile = styled.Image`
 export const Icon = styled.View`
   width: 70px;
   height: 70px;
-  background-color: rgb(240,240,240);
+  background-color: ${colors.bgMainOpacited};
   border-radius: 40px;
   justify-content: center;
   align-items: center;

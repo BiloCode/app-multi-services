@@ -1,11 +1,12 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const SmallButtonStyles = {
   Button : styled.View`
     width: 130px;
     height: 26px;
     border-radius: 13px;
-    background-color: #1858D4;
+    background-color: ${colors.main};
     align-items: center;
     justify-content: center;
   `,

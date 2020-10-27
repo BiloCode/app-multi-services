@@ -3,6 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import useChangeDescription from '../../../hooks/useChangeDescription';
 import * as Styled from './styles';
 import { KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { colors } from '../../../../../config';
 
 interface IProps {
   description : string;
@@ -20,11 +21,11 @@ const Description : FC<IProps> = ({ description }) => {
         placeholderTextColor='rgb(180,180,180)'
         onChangeText={ChangeDescription}
         multiline={true}
-        numberOfLines={5}
+        numberOfLines={4}
       />
       <Styled.TextContainer as={TouchableOpacity} onPress={ActivateInputDescription}>
         <Styled.EditIconContainer>
-          <AntDesign name={!inputEnabled ? 'edit' : 'save'} size={13} color="blue" />
+          <AntDesign name={!inputEnabled ? 'edit' : 'save'} size={13} color={colors.mainSmoothed} />
         </Styled.EditIconContainer>
         <Styled.Message>{!inputEnabled ? 'Editar Descripción' : 'Guardar Descripcion'}</Styled.Message>
       </Styled.TextContainer>      

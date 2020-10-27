@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { WorkerMetadata } from '../../../../redux/reducers/Worker/metadata';
 import { useDispatch } from 'react-redux';
 import { setWorkerDetailData } from '../../../../redux/reducers/Worker/actions/sync';
+import { colors } from '../../../../config';
 
 interface IProps {
   data : WorkerMetadata.IWorker
@@ -30,7 +31,7 @@ const WorkerCard : FC<IProps> = ({ data }) => {
         profileImage ?
           <WCS.ImageProfile source={{ uri : profileImage}} /> :
           <WCS.Icon>
-            <AntDesign name="user" size={40} color="#585858" />
+            <AntDesign name="user" size={40} color='black' />
           </WCS.Icon>
       }
     </WCS.ImageProfileContainer>
@@ -38,7 +39,7 @@ const WorkerCard : FC<IProps> = ({ data }) => {
       <WCS.WorkerName>{fullName}</WCS.WorkerName>
       <WCS.Specialty>{specialty.name}</WCS.Specialty>
       <WCS.StarContainer>
-        { stars.map((v,i) => <AntDesign key={i} name={v.name} size={9} color="#1858D4" />) }
+        { stars.map((v,i) => <AntDesign key={i} name={v.name} size={9} color={colors.stars} />) }
       </WCS.StarContainer>
     </WCS.InformationContainer>
     <WCS.ButtonContainer>

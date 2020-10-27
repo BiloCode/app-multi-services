@@ -4,15 +4,13 @@ import * as FBS from './styles';
 import { TouchableOpacity } from 'react-native';
 
 const FilterBar = () => (
-  <FBS.Container>
+  <FBS.Container as={TouchableOpacity}>
     <FBS.IconContainer>
-      <TouchableOpacity>
         <AntDesign name="filter" size={16} color="#fff" />
-      </TouchableOpacity>
     </FBS.IconContainer>
     <FBS.TextContainer>
       <FBS.Title>Aplicar Filtro</FBS.Title>
-    </FBS.TextContainer>
+    </FBS.TextContainer> 
   </FBS.Container>
 );
 

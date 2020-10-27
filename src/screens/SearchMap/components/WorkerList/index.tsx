@@ -10,6 +10,7 @@ const WorkerList = () => {
   return <RoundedSection
     title='Rimac / Surquillo'
     icon={<EvilIcons name="location" size={24} color="#fff" />}
+    isLoading={isLoadingWorkers}
   >
     {
       workers.map((v,i) => (

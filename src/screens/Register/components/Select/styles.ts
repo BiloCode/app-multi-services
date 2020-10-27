@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const SelectStyles = {
   Container : styled.View`
@@ -6,7 +7,7 @@ const SelectStyles = {
     height: 38px;
     flex-direction: row;
     border-radius: 19px;
-    background-color: #F4F4F4;
+    background-color: ${colors.bgMainOpacited};
     margin: 3px 0;
   `,
   ContainerIcon : styled.View`

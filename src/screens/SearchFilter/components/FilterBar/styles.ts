@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 const BasicStyles = css`
   height: 100%;
@@ -10,14 +11,14 @@ export const Container = styled.View`
   height: 38px;
   margin: 10px auto;
   border-radius: 19px;
-  border: 1px solid #588FFA;
+  border: 1px solid ${colors.mainSmoothed};
   flex-direction: row;
 `;
 
 export const IconContainer = styled.View`
   width: 60px;
   border-right-width: 1px;
-  border-right-color: #588FFA;
+  border-right-color: ${colors.mainSmoothed};
   align-items: center;
   ${BasicStyles};
 `;

@@ -12,7 +12,7 @@ const SpecialtiesSectionStyles = {
   TitleSection : styled.Text`
     font-size: 19px;
     font-family: 'RalewayExtraBold';
-    color: #585858;
+    color: black;
   `
 }
 

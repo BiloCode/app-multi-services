@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../config";
 
 interface IPropsContainer {
   rounded? : boolean;
@@ -55,13 +56,13 @@ export const UserPriceAndWork = styled.View`
 `;
 
 export const UserWork = styled.Text`
-  font-size: 12px;
+  font-size: 13px;
   font-family: 'RalewayBold';
   transform: translateY(3px);
 `;
 
 export const UserPrice = styled.Text`
-  color: blue;
+  color: ${colors.mainSmoothed};
   font-size: 20px;
   font-family: 'RalewayBlack';
 `;
@@ -70,6 +71,7 @@ export const UserDescription = styled.Text`
   font-size: 11px;
   padding-top: 10px;
   font-family: 'RalewayRegular';
+  color: ${colors.paragraph};
 `;
 
 export const CardActions = styled.View`

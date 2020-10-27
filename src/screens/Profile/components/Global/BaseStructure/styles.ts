@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../../config";
 
 export const Container = styled.View`
   flex : 1;
-  background-color: blue;
+  background-color: ${colors.main};
   padding-top: 24px;
 `;
 

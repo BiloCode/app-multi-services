@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../config";
 
 const SpecialtyCardStyles = {
   Container : styled.View`
@@ -27,7 +28,7 @@ const SpecialtyCardStyles = {
   Title : styled.Text`
     text-align: center;
     font-family: 'RalewayBlack';
-    color: #8B8B8B;
+    color: ${colors.text};
   `
 }
 

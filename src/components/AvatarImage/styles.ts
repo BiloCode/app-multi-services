@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 interface IImageProps {
   size : number;
@@ -11,7 +12,7 @@ export const Container = styled.View<IImageProps>`
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  background-color: rgb(240,240,240);
+  background-color: ${colors.bgMainOpacited};
 `;
 
 export const Image = styled.Image<IImageProps>`

@@ -11,7 +11,7 @@ const WorkerListStyles = {
   `,
   Title : styled.Text`
     font-family: 'RalewayExtraBold';
-    color: #585858;
+    color: black;
     font-size: 16px;
     padding-bottom: ${margin};
     padding-right: ${margin};

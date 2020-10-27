@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 const LoginStyles = {
   Container : styled.View`
@@ -11,7 +12,7 @@ const LoginStyles = {
   Circle : styled.View`
     width: 380px;
     height: 380px;
-    background-color: #1858D4;
+    background-color: ${colors.main};
     border-radius: 190px;
     position: absolute;
     left: -112px;

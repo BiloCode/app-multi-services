@@ -9,7 +9,7 @@ const MainTitleStyles = {
     width: 90%;
     font-size: 32px;
     font-family: 'RalewayExtraBold';
-    color: #585858;
+    color: black;
   `
 }
 

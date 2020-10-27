@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const BaseInputStyles = {
   Container : styled.View`
@@ -12,15 +13,15 @@ const BaseInputStyles = {
     margin-bottom: 18px;
   `,
   TitleText : styled.Text`
-    color: #585858;
+    color: black;
     font-family: 'RalewayBold';
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 4px;
   `,
   DescriptionText : styled.Text`
     width: 80%;
-    color: #8B8B8B;
-    font-size: 10px;
+    color: ${colors.paragraph};
+    font-size: 11px;
     font-family: 'RalewayRegular';
   `
 }

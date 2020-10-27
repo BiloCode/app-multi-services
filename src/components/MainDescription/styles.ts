@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 const MainDescriptionStyles = {
   Container : styled.View`
@@ -7,7 +8,7 @@ const MainDescriptionStyles = {
   Text : styled.Text`
     font-family: 'RalewayRegular';
     font-size: 15px;
-    color: #6F6F6F;
+    color: ${colors.paragraph};
   `,
 }
 

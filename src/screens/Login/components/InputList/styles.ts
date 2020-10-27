@@ -6,9 +6,9 @@ const InputListStyles = {
     margin: 45px 0;
   `,
   LinkText : styled.Text`
-    color: #1858D4;
-    font-size: 10px;
-    font-family: 'RalewaySemiBold';
+    color: black;
+    font-size: 11px;
+    font-family: 'RalewayBold';
     text-align: right;
     padding-top: 15px;
   `

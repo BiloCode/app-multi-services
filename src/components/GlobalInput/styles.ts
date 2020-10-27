@@ -1,16 +1,17 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 const InputStyles = {
   Container : styled.View`
     width: 100%;
-    height: 38px;
-    border-radius: 19px;
-    background-color: #F4F4F4;
+    height: 40px;
+    border-radius: 20px;
+    background-color: ${colors.bgMainOpacited};
     flex-direction: row;
     margin: 3px 0;
   `,
   IconContainer : styled.View`
-    width: 50px;
+    width: 60px;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -21,7 +22,7 @@ const InputStyles = {
   InputText : styled.TextInput`
     height: 100%;
     color: #585858;
-    font-size: 11px;
+    font-size: 12px;
     font-family: 'RalewaySemiBold';
   `
 }

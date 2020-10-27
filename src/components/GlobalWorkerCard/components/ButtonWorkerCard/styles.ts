@@ -1,9 +1,10 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 export const Container = styled.View`
   width: 48%;
   height: 28px;
-  background-color: blue;
+  background-color: ${colors.main};
   border-radius: 14px;
   justify-content: center;
   align-items: center;

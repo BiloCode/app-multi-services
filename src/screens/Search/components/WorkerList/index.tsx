@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
+import { colors } from '../../../../config'
 import { WorkerMetadata } from '../../../../redux/reducers/Worker/metadata'
 import WorkerCard from '../WorkerCard'
 import WLS from './styles'
@@ -16,7 +17,7 @@ const WorkerList : FC<IProps> = ({ title , data , isLoading }) => {
     {
       isLoading ? 
         <WLS.LoadingContainer>
-          <ActivityIndicator size={32} color='#1858D4' />
+          <ActivityIndicator size={32} color={colors.main} />
         </WLS.LoadingContainer> :
         <WLS.CardsContainer>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

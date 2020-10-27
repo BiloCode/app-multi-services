@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 export const ContainerText = styled.View`
   width: 85%;
@@ -23,12 +24,13 @@ export const Specialty = styled.Text`
   font-size: 16px;
   font-family: 'RalewayBold';
   margin-left: 5px;
+  color: ${colors.main}
 `;
 
 export const Price = styled.Text`
   font-size: 18px;
   font-family: 'RalewayBlack';
-  color: blue;
+  color: ${colors.main};
 `;
 
 export const ContainerButton = styled.View`

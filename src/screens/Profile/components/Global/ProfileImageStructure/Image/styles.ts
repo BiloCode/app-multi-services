@@ -1,5 +1,6 @@
 import { Dimensions } from "react-native";
 import styled from "styled-components/native";
+import { colors } from "../../../../../../config";
 
 const { width } = Dimensions.get('window');
 const iconSize = 36;
@@ -20,7 +21,7 @@ export const EditIconContainer = styled.View`
   width: ${iconSize}px;
   height: ${iconSize}px;
   border-radius: ${iconSize / 2}px;
-  background-color: blue;
+  background-color: ${colors.main};
   position: absolute;
   bottom: 0;
   right: 0;

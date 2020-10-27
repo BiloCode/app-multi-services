@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 //Header Information
 export const Container = styled.View`
   width: 100%;
   height: 55px;
-  background-color: #1858D4;
+  background-color: ${colors.main};
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
@@ -49,7 +50,7 @@ export const ExtraInformation = styled.View`
 `;
 
 const textStyles = css`
-  font-size: 13px;
+  font-size: 14px;
   font-family: 'RalewayBold';
 `;
 
@@ -60,5 +61,5 @@ export const WorkName = styled.Text`
 
 export const Price = styled.Text`
   ${textStyles};
-  color: #1858D4;
+  color: ${colors.main};
 `;

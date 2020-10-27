@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../config";
 
-const backgroundColor = 'rgb(0,115,255)';
+const backgroundColor = colors.mainSmoothed;
 
 export const Container = styled.View`
   flex: 1;
   padding-top: 24px;
-  background-color: blue;
+  background-color: ${colors.main};
 `;
 
 export const MainContainer = styled.View`

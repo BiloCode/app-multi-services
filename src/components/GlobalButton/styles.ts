@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 interface ButtonProps {
   horizontalSize : string;
@@ -12,7 +13,7 @@ interface ButtonTextProps {
 const GlobalButtonStyles = {
   Container : styled.View<ButtonProps>`
     width: ${({ horizontalSize }) => horizontalSize};
-    background-color: ${({ backgroundColor }) => backgroundColor || '#1858D4'};
+    background-color: ${({ backgroundColor }) => backgroundColor || colors.main };
     padding: 10px 0;
     border-radius: 20px;
   `,

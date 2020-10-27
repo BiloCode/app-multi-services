@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 const CircleStyles = css`
   width: 380px;
@@ -21,13 +22,13 @@ const TopDesignStyles = {
     ${CircleStyles};
     top: -140px;
     left: -95px;
-    background-color: #1858D4;
+    background-color: ${colors.main};
   `,
   CircleRight: styled.View`
     ${CircleStyles};
     top: -173px;
     left: 89px;
-    background-color: #296CEF;
+    background-color: ${colors.mainSmoothed};
   `,
   FloatingContent : styled.View`
     width: 100%;
