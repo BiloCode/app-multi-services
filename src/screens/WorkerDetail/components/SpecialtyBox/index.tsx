@@ -5,15 +5,16 @@ import BaseBox from '../BaseBox';
 import SBS from './styles';
 
 interface IProps {
-  data : string;
+  name : string;
+  puntuaction : number;
 }
 
-const SpecialtyBox : FC<IProps> = ({ data }) => {
-  const stars = useStarAmount(3);
+const SpecialtyBox : FC<IProps> = ({ name , puntuaction }) => {
+  const stars = useStarAmount(puntuaction);
 
   return <BaseBox>
     <SBS.Container>
-      <SBS.SpecialtyText>{data}</SBS.SpecialtyText>
+      <SBS.SpecialtyText>{name}</SBS.SpecialtyText>
       <SBS.StarContainer>
         { stars.map((v,i) => <AntDesign key={i} name={v.name} size={10} color='#1858D4' />) }
       </SBS.StarContainer>      

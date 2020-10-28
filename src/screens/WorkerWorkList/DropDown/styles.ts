@@ -17,8 +17,28 @@ export const DropHeader = styled.View`
   border-radius: 10px;
 `;
 
+export const DropHeaderTitleContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const DropHeaderTitle = styled.Text`
   color: #fff;
   font-family: 'RalewayBold';
   font-size: 14px;
+`;
+
+export const WorksIndicatorContainer = styled.View`
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  background-color: #fff;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const WorksIndicator = styled.Text`
+  color: ${colors.main};
+  font-size: 12px;
 `;

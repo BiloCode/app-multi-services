@@ -7,10 +7,11 @@ interface IProps {
   placeholder : string;
   secureTextEntry? : boolean;
   type?: KeyboardType;
+  defaultValue? : string;
   onChangeText?(text : string) : void;
 }
 
-const GlobalInput : FC<IProps> = ({ icon , onChangeText , placeholder , secureTextEntry , type }) => {
+const GlobalInput : FC<IProps> = ({ icon , onChangeText , placeholder , secureTextEntry , type , defaultValue }) => {
   return <InputStyles.Container>
     <InputStyles.IconContainer>
       {icon}
@@ -22,6 +23,7 @@ const GlobalInput : FC<IProps> = ({ icon , onChangeText , placeholder , secureTe
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         keyboardType={type || 'default'}
+        defaultValue={defaultValue}
       />
     </InputStyles.InputContainer>
   </InputStyles.Container>

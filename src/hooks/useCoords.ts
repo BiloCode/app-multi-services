@@ -1,4 +1,4 @@
-const useCoordsData = (json : string) => {
+const useCoords = (json : string) => {
   const coords = JSON.parse(json);
 
   return {
@@ -7,4 +7,4 @@ const useCoordsData = (json : string) => {
   }
 }
 
-export default useCoordsData;
+export default useCoords;

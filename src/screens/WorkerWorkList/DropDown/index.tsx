@@ -14,10 +14,16 @@ interface IProps {
 
 const DropDown : FC<IProps> = ({ title , works }) => {
   const { ToggleHideContent , isOpen } = useDropDown();
+  const worksIndicator = works.length > 9 ? '9+' : works.length;
 
   return <DDS.Container>
     <DDS.DropHeader as={TouchableOpacity} onPress={ToggleHideContent} >
-      <DDS.DropHeaderTitle>{title}</DDS.DropHeaderTitle>
+      <DDS.DropHeaderTitleContainer>
+        <DDS.DropHeaderTitle>{title}</DDS.DropHeaderTitle>
+        <DDS.WorksIndicatorContainer>
+          <DDS.WorksIndicator>{worksIndicator}</DDS.WorksIndicator>
+        </DDS.WorksIndicatorContainer>
+      </DDS.DropHeaderTitleContainer>
       <AntDesign name="downcircleo" size={15} color="#fff" />
     </DDS.DropHeader>
     { 

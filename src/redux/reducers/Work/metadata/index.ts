@@ -1,3 +1,4 @@
+import { IDistrict } from "../../../../metadata/interfaces";
 import { WorkDetailState } from "../../../../metadata/types";
 
 export const TYPES = {
@@ -13,18 +14,16 @@ export namespace WorkMetadata {
     title : string;
     description : string;
     createdAt : string;
+    finished : string;
     user : {
       id : number;
       profileImage : string;
-      district : {
-        location : string;
-        name : string;
-      }
+      district : IDistrict
     }
   }
 
   export interface IStore {
     works : IWork[],
-    workDetail : Partial<IWork>
+    workDetail : IWork
   }
 }

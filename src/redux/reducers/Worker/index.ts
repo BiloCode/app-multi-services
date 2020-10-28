@@ -12,7 +12,32 @@ const initialState : WorkerMetadata.IStore = {
     workers : [],
     filterId : -1
   },
-  detailData : {},
+  detailData : {
+    id : -1,
+    availability : 'not-available',
+    basePrice : -1,
+    createdAt : '',
+    puntuaction : 0,
+    specialty : {
+      name : ''
+    },
+    user : {
+      id : -1,
+      description : '',
+      fullName : '',
+      profileImage : '',
+      district : {
+        id : -1,
+        name : '',
+        location : '{}',
+        province : {
+          id : -1,
+          location : '{}',
+          name : ''
+        }
+      }
+    }
+  },
   mapSearch : {
     isLoadingWorkers : true,
     workers : []

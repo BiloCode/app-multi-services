@@ -10,7 +10,6 @@ const useParamsWorkerDetail = () => {
     detailData : {
       availability,
       basePrice,
-      location,
       specialty,
       user
     } 
@@ -39,7 +38,8 @@ const useParamsWorkerDetail = () => {
     },
     specialty : specialty?.name,
     availability,
-    NavigateToChat
+    puntuaction : 3,
+    NavigateToChat,
   }
 }
 

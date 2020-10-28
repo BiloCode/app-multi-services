@@ -1,3 +1,4 @@
+import { IDistrict } from "../../../../metadata/interfaces";
 import { WorkerState } from "../../../../metadata/types";
 
 const TYPES = {
@@ -9,29 +10,21 @@ const TYPES = {
   SET_FILTER_ID : 'set-filter-id',
   RESET_SEARCH : 'reset-search',
   SET_WORKER_LOADING_MAP : 'set-worker-loading-map',
-  SET_WORKERS_MAP : 'set-workers-map'
+  SET_WORKERS_MAP : 'set-workers-map',
 }
 
 export namespace WorkerMetadata {
   export interface IWorker {
     id : number;
     availability : WorkerState;
-    location : string;
     basePrice : number;
-    createdAt : Date;
+    createdAt : string;
     puntuaction : number;
     user : {
       id : number;
       fullName : string;
       profileImage : string;
-      district: {
-        name : string;
-        location : string;
-        province : {
-          name : string;
-          location : string;
-        }        
-      };
+      district: IDistrict;
       description : string;
     },
     specialty : {
@@ -51,7 +44,7 @@ export namespace WorkerMetadata {
       filterId : number;
       workers : IWorker[];
     };
-    detailData : Partial<IWorker>;
+    detailData : IWorker;
     mapSearch : {
       isLoadingWorkers : boolean;
       workers : IWorker[]

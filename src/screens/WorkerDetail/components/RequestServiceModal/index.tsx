@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { MaterialCommunityIcons , MaterialIcons } from '@expo/vector-icons';
 import GlobalInput from '../../../../components/GlobalInput';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
@@ -10,13 +10,14 @@ import GlobalButton from '../../../../components/GlobalButton';
 import useRequestServices from '../../hooks/useRequestServices';
 
 interface IProps {
+  basePrice : number;
   setClose() : void;
 }
 
-//price - description
+//currentPrice - description
 
-const RequestServiceModal : FC<IProps> = ({ setClose }) => {
-  const { ChangeDescription , SendRequest , isLoading , ChangePrice } = useRequestServices(setClose);
+const RequestServiceModal : FC<IProps> = ({ setClose , basePrice }) => {
+  const { ChangeDescription , SendRequest , isLoading , ChangePrice , ChangeTitle } = useRequestServices(setClose, basePrice);
 
   if(isLoading) return <DarkScreenFromModal>
     <ActivityIndicator color='#fff' size={48} />
@@ -27,6 +28,7 @@ const RequestServiceModal : FC<IProps> = ({ setClose }) => {
       <RSMS.Title>Solicitar Servicio</RSMS.Title>
       <GlobalInput
         placeholder='Titulo...'
+        onChangeText={ChangeTitle}
         icon={<MaterialCommunityIcons name="format-title" size={24} color="black" />}
       />
       <GlobalInput 
@@ -34,6 +36,7 @@ const RequestServiceModal : FC<IProps> = ({ setClose }) => {
         placeholder='Precio...'
         onChangeText={ChangePrice}
         type='number-pad'
+        defaultValue={String(basePrice)}
       />
       <GlobalInput
         icon={<MaterialIcons name="description" size={16} color="black" />}
@@ -52,4 +55,4 @@ const RequestServiceModal : FC<IProps> = ({ setClose }) => {
   </DarkScreenFromModal>
 }
 
-export default RequestServiceModal;
+export default memo(RequestServiceModal);

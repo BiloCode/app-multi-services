@@ -9,7 +9,7 @@ import useWorkDetailInit from './hooks/useWorkDetailInit';
 import useIsWholeNumber from '../../hooks/useIsWholeNumber';
 
 const WorkDetail = () => {
-  const { state , title , description , price , location, createdAt } = useWorkDetailInit();
+  const { state , title , description , price , location, createdAt , finished } = useWorkDetailInit();
   const isWholeNumber = useIsWholeNumber(price!);
 
   return <WDS.Container>
@@ -21,8 +21,8 @@ const WorkDetail = () => {
           {
             state === 'completed' && (
               <WDS.WorkDateContainer>
-                <WorkDate title='Fecha Inicio' date={createdAt!} />
-                <WorkDate title='Fecha Acabado' date='01/10/19' />
+                <WorkDate title='Fecha Inicio' date={createdAt} />
+                <WorkDate title='Fecha Acabado' date={finished} />
               </WDS.WorkDateContainer>
             )
           }
@@ -32,10 +32,10 @@ const WorkDetail = () => {
         </WDS.PriceContainer>
         <WDS.WorkDescriptionContainer>
           <WDS.WorkDescriptionTitle>Descripción</WDS.WorkDescriptionTitle>
-          <WDS.WorkDescriptionText>{description}</WDS.WorkDescriptionText>
+          <WDS.WorkDescriptionText>{description || 'Sin descripción.'}</WDS.WorkDescriptionText>
         </WDS.WorkDescriptionContainer>
       </WDS.MainContainer>
-      <BottonContent workState={state!} />     
+      <BottonContent workState={state} coords={location.coords!} province={location.name} />     
     </ScrollView>
   </WDS.Container>
 };

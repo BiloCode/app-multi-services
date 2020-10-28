@@ -11,10 +11,9 @@ import PriceBox from './components/PriceBox';
 import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
 import RequestServiceModal from './components/RequestServiceModal';
-import useHideModal from '../../hooks/useHideModal';
+import useRequestServiceModal from './hooks/useRequestServiceModal';
 
 const WorkerDetail = () => {
-  const { isHide , setOpen , setClose } = useHideModal();
   const { 
     availability,
     basePrice,
@@ -23,23 +22,25 @@ const WorkerDetail = () => {
     profileImage,
     specialty,
     NavigateToChat,
-    description
+    description,
+    puntuaction
   } = useParamsWorkerDetail();
+  const { isHide , setClose , openModal } = useRequestServiceModal(availability);
 
   return <>
     <WDS.MainContainer as={ScrollView}>
       <ProfileSection 
-        fullName={fullName!} 
-        availability={availability!} 
-        profileImage={profileImage!}
+        fullName={fullName} 
+        availability={availability} 
+        profileImage={profileImage}
       />
       <WDS.WorkInformation>
-        <SpecialtyBox data={specialty!} />
+        <SpecialtyBox name={specialty} puntuaction={puntuaction} />
         <BaseBox>
           <WDS.TextDescription>{description || 'Sin descripción disponible.'}</WDS.TextDescription>
         </BaseBox>
         <PriceBox data={basePrice!} />
-        <LocationBox coords={location.coords!} province={location.province!} district={location.district!} />
+        <LocationBox coords={location.coords} province={location.province} district={location.district} />
         <WDS.MarginVerticalContainer>
           <WDS.MarginBottom>
             <GlobalButton
@@ -49,11 +50,11 @@ const WorkerDetail = () => {
               onPress={NavigateToChat}
             />
           </WDS.MarginBottom>
-          <GlobalButton text='Solicitar Servicio' onPress={setOpen} />
+          <GlobalButton text='Solicitar Servicio' onPress={openModal} />
         </WDS.MarginVerticalContainer>
       </WDS.WorkInformation>
     </WDS.MainContainer>
-    { !isHide && <RequestServiceModal setClose={setClose} /> }
+    { !isHide && <RequestServiceModal basePrice={basePrice} setClose={setClose} /> }
   </>
 }
 

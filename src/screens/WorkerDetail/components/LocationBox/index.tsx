@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 import MapView, { Marker } from 'react-native-maps';
+import useCoords from '../../../../hooks/useCoords';
 import BaseBox from '../BaseBox';
-import useCoordsData from './hooks/useCoordsData';
 import LBS from './styles';
 
 interface IProps {
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const LocationBox : FC<IProps> = ({ coords , district, province }) => {
-  const { latitude , longitude } = useCoordsData(coords);
+  const { latitude , longitude } = useCoords(coords);
   
   return <LBS.Container>
     <BaseBox isMarginBottom={false}>

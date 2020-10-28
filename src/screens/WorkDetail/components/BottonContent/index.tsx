@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import * as WLS from './styles';
@@ -7,13 +7,17 @@ import ButtonWorkAccept from './ButtonWorkAccept';
 import RoundedSection from '../../../../components/RoundedSection';
 import { WorkDetailState } from '../../../../metadata/types';
 import DefaultText from './DefaultText';
+import useCoords from '../../../../hooks/useCoords';
 
 interface IProps {
-  location? : any;
+  coords : string;
+  province : string;
   workState  : WorkDetailState;
 }
 
-const BottonContent : FC<IProps> = ({ workState , location }) => {
+const BottonContent : FC<IProps> = ({ workState , coords , province }) => {
+  const { latitude , longitude } = useCoords(coords);
+
   const isWorkCompleted = () => {
     return workState === 'completed' ? 'Trabajo Terminado' : 'Trabajo Pendiente';
   }
@@ -27,13 +31,15 @@ const BottonContent : FC<IProps> = ({ workState , location }) => {
         <WLS.Map
           as={MapView}
           initialRegion={{
-            latitude: -12.0464,
-            longitude: -77.0428,
+            latitude,
+            longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
           scrollEnabled={false}
-        />
+        >
+          <Marker title={province} coordinate={{ latitude , longitude }} />
+        </WLS.Map>
       </WLS.MapContainer>
       {
         workState === 'waiting-confirmation' ? 

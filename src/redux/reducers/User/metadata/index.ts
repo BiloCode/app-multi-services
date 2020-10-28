@@ -1,4 +1,5 @@
 import { WorkerState } from '../../../../metadata/types';
+import { IDistrict } from '../../../../metadata/interfaces';
 
 const TYPES = {
   SET_USER_INFORMATION : 'set-user-information',
@@ -10,16 +11,6 @@ const TYPES = {
 }
 
 export namespace UserMetadata {
-  interface ILocate {
-    id : number;
-    name : string;
-    location : string;
-  }
-
-  interface IDistrict extends ILocate {
-    province : ILocate
-  }
-
   export interface IUser {
     id : number;
     fullName : string;

@@ -10,7 +10,8 @@ const useWorkDetailInit = () => {
       description,
       state,
       user,
-      createdAt
+      createdAt,
+      finished
     }
   } = useSelector<ReduxRootState,WorkMetadata.IStore>(({ work }) => work, shallowEqual);
 
@@ -21,9 +22,10 @@ const useWorkDetailInit = () => {
     state,
     createdAt,
     location : {
-      name : user?.district.name,
-      coords : user?.district.location
-    }
+      name : user.district.province.name,
+      coords : user.district.province.location
+    },
+    finished
   }
 }
 

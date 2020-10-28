@@ -26,6 +26,7 @@ export const FilterText = styled.Text`
 
 export const List = styled.View`
   flex: 1;
+  min-height: 250px;
   background-color: rgb(240,240,240);
 `;
 

@@ -1,9 +1,30 @@
-import { WorkerMetadata } from "../Worker/metadata";
 import { WorkMetadata , TYPES } from "./metadata";
 
 const initialState : WorkMetadata.IStore = {
   works : [],
-  workDetail : {}
+  workDetail : {
+    id : -1,
+    createdAt : '',
+    description : '',
+    price : -1,
+    state : 'waiting-confirmation',
+    title : '',
+    finished : '',
+    user : {
+      id : -1,
+      profileImage : '',
+      district : {
+        id : -1,
+        location : '{}',
+        name : '',
+        province : {
+          id : -1,
+          location : '{}',
+          name : ''
+        }
+      }
+    }
+  }
 }
 
 const reducer = (state = initialState, action) => {
