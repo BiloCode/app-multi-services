@@ -33,8 +33,9 @@ const useParamsWorkerDetail = () => {
     profileImage : user?.profileImage,
     description : user?.description,
     location : {
-      coords : location,
-      mapLocation : `${user?.district.province.name} ,${user?.district.name}`
+      coords : user?.district.province.location,
+      district : user?.district.name,
+      province : user?.district.province.name
     },
     specialty : specialty?.name,
     availability,

@@ -1,5 +1,5 @@
 import { App } from "../../../../config";
-import { setNearestWorkers, setNewWorkers , setSearchLoading, setWorkersWithFilter } from "./sync";
+import { setNearestWorkers, setNewWorkers , setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter } from "./sync";
 
 export const getNewsWorkers = () => async dispatch => {
   try{
@@ -19,13 +19,12 @@ export const getNewsWorkers = () => async dispatch => {
   }
 }
 
-export const getNearestWorkers = (districtId : number, unlimited : boolean = false) => async dispatch => {
+export const getNearestWorkers = (provinceId : number) => async dispatch => {
   try{
-    let workersData : any = [],
-      endpoint = !unlimited ? '/worker/nearest' : '/worker/nearest/unlimited';
+    let workersData : any = [];
 
-    const request = await App.post(endpoint, new URLSearchParams({
-      districtId : String(districtId)
+    const request = await App.post('/worker/nearest', new URLSearchParams({
+      provinceId : String(provinceId)
     }));
     
     const { workers , error } = request.data;
@@ -36,6 +35,29 @@ export const getNearestWorkers = (districtId : number, unlimited : boolean = fal
     }
 
     dispatch(setNearestWorkers(workersData));
+  }catch(e){
+    console.log(e);
+  }
+}
+
+export const getNearestWorkersUnlimited = (provinceId : number) => async dispatch => {
+  try{
+    dispatch(setWorkerLoadingMap(true));
+    let workersData : any = [];
+
+    const request = await App.post('/worker/nearest/unlimited', new URLSearchParams({
+      provinceId : String(provinceId)
+    }));
+    
+    const { workers , error } = request.data;
+
+    if(error) console.log(error);
+    else if(workers){
+      if(workers.length) workersData = workers;
+    }
+
+    dispatch(setWorkersMap(workersData));
+    dispatch(setWorkerLoadingMap(false));
   }catch(e){
     console.log(e);
   }

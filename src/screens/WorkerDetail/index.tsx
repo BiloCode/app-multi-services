@@ -36,10 +36,10 @@ const WorkerDetail = () => {
       <WDS.WorkInformation>
         <SpecialtyBox data={specialty!} />
         <BaseBox>
-          <WDS.TextDescription>{description}</WDS.TextDescription>
+          <WDS.TextDescription>{description || 'Sin descripción disponible.'}</WDS.TextDescription>
         </BaseBox>
         <PriceBox data={basePrice!} />
-        <LocationBox coords={location.coords!} mapLocation={location.mapLocation} />
+        <LocationBox coords={location.coords!} province={location.province!} district={location.district!} />
         <WDS.MarginVerticalContainer>
           <WDS.MarginBottom>
             <GlobalButton

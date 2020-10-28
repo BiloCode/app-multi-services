@@ -1,5 +1,8 @@
+import { useContext, useEffect } from "react";
 import { shallowEqual, useSelector } from "react-redux"
 import { ReduxRootState } from "../../../../../metadata/types"
+import { MessageListScrollContext } from "../../../context/MessageListScroll";
+import useScrollToEndMessageList from "../../../hooks/useScrollToEndMessageList";
 
 const useMessageListInit = () => {
   //Redux
@@ -8,10 +11,19 @@ const useMessageListInit = () => {
   const { userAuthenticatioState } = auth;
   const { isLoadingMessages , messagesList } = chat;
 
+  //Context
+  const { scrollView } = useContext(MessageListScrollContext);
+  const scrollToEnd = useScrollToEndMessageList();
+
+  useEffect(() => {
+    scrollToEnd();
+  });
+
   return {
     messagesList,
     isLoadingMessages,
-    userId : userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!
+    userId : userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!,
+    scrollView
   }
 }
 

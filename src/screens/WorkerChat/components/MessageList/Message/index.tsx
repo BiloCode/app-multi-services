@@ -1,15 +1,27 @@
-import React, { FC } from 'react';
-import * as MS from './styles';
+import React, { FC, memo, useState } from 'react';
+import moment from 'moment';
+import * as Styled from './styles';
+import { TouchableOpacity } from 'react-native';
 
 interface IProps {
   right? : boolean;
+  date : string;
   text : string;
 }
 
-const Message : FC<IProps> = ({ right , text }) => (
-  <MS.Container isRight={right} >
-    <MS.Message>{text}</MS.Message>
-  </MS.Container>
-);
+const Message : FC<IProps> = ({ right , text , date }) => {
+  const [ hideDate , setHideDate ] = useState<boolean>(true);
 
-export default Message;
+  const toogleHideDate = () => setHideDate(() => !hideDate);
+  
+  return <Styled.Container isRight={right} as={TouchableOpacity} onPress={toogleHideDate} >
+    <Styled.MessageContainer isHide={hideDate}>
+      <Styled.Message>{text}</Styled.Message>
+    </Styled.MessageContainer>
+    { !hideDate && (
+      <Styled.Date>{moment(date).format('MM/DD/YYYY')}</Styled.Date>
+    )}
+  </Styled.Container>
+}
+
+export default memo(Message);

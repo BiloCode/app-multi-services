@@ -33,3 +33,14 @@ export const setFilterId = (filterId : number) => ({
 export const setSearchReset = () => ({
   type : TYPES.RESET_SEARCH
 });
+
+//Map
+export const setWorkerLoadingMap = (value : boolean) => ({
+  type : TYPES.SET_WORKER_LOADING_MAP,
+  payload : value
+})
+
+export const setWorkersMap = (workers : WorkerMetadata.IWorker[]) => ({
+  type : TYPES.SET_WORKERS_MAP,
+  payload : workers
+})

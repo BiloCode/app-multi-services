@@ -7,7 +7,9 @@ const TYPES = {
   SET_WORKERS_WITH_FILTER : 'set-workers-with-filter',
   SET_SEARCH_LOADING : 'set-search-loading',
   SET_FILTER_ID : 'set-filter-id',
-  RESET_SEARCH : 'reset-search'
+  RESET_SEARCH : 'reset-search',
+  SET_WORKER_LOADING_MAP : 'set-worker-loading-map',
+  SET_WORKERS_MAP : 'set-workers-map'
 }
 
 export namespace WorkerMetadata {

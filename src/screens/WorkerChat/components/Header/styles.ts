@@ -28,7 +28,7 @@ export const WorkerInformationArea = styled.View`
 
 export const WorkerFullName = styled.Text`
   font-size: 16px;
-  font-family: 'RalewayBold';
+  font-family: 'RalewayBlack';
   color: #fff;
   margin-right: 15px;
 `;
@@ -50,7 +50,7 @@ export const ExtraInformation = styled.View`
 `;
 
 const textStyles = css`
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'RalewayBold';
 `;
 

@@ -82,6 +82,24 @@ const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
         }
       }
 
+    case TYPES.SET_WORKER_LOADING_MAP:
+      return {
+        ...state,
+        mapSearch : {
+          ...state.mapSearch,
+          isLoadingWorkers : action.payload
+        }
+      }
+
+    case TYPES.SET_WORKERS_MAP:
+      return {
+        ...state,
+        mapSearch : {
+          ...state.mapSearch,
+          workers : action.payload
+        }
+      }
+
     default:
       return state;
   }
