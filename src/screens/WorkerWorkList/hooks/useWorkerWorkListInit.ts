@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { ReduxRootState } from "../../../metadata/types";
 import { UserMetadata } from "../../../redux/reducers/User/metadata";
 import { getWorkList } from "../../../redux/reducers/Work/actions/async";
+import { workResetData } from "../../../redux/reducers/Work/actions/sync";
 
 const useWorkerWorkListInit = () => {
   const {
@@ -16,6 +17,10 @@ const useWorkerWorkListInit = () => {
       type : 'worker',
       value : id!
     }));
+
+    return () => {
+      dispatch(workResetData());
+    }
   },[]);
 }
 

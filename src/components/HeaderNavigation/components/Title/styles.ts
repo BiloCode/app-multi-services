@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { NSHeaderNavigation } from "../../namespace";
 
 export const Container = styled.View`
   flex: 1;
@@ -10,5 +9,5 @@ export const Container = styled.View`
 export const TextContent = styled.Text`
   font-family: 'RalewayBold';
   font-size: 15px;
-  color: ${NSHeaderNavigation.colors.text};
+  color: #fff;
 `;

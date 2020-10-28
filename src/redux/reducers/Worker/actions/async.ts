@@ -51,6 +51,8 @@ export const getNearestWorkersUnlimited = (provinceId : number) => async dispatc
     
     const { workers , error } = request.data;
 
+    console.log(workers);
+
     if(error) console.log(error);
     else if(workers){
       if(workers.length) workersData = workers;

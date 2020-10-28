@@ -13,6 +13,7 @@ import Home from '../../../screens/Home';
 import Contact from '../../../screens/Contact';
 import Search from '../../../screens/Search';
 import UserProfile from '../../../screens/Profile';
+import ChatList from '../../../screens/ChatList';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const AuthUser = () => {
     <Stack.Screen name='contact' component={Contact} />
     <Stack.Screen name='search' component={Search} />
     <Stack.Screen name='worker-detail' component={WorkerDetail} />
+    <Stack.Screen name='chat-list' component={ChatList} />
     <Stack.Screen name='worker-chat' component={WorkerChat} />
     <Stack.Screen name='search-filter' component={SearchFilter} />
     <Stack.Screen name='search-map' component={SearchMap} />  

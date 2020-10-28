@@ -7,8 +7,8 @@ export namespace NSHeaderNavigation {
     onChangeText?(text : string);
   }
 
-  export const colors = {
-    text : '#fff',
-    background : '#588FFA'
+  export interface IPropsUserData {
+    fullName : string;
+    profileImage : string;
   }
 }

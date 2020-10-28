@@ -4,13 +4,15 @@ import { WorkMetadata } from "../../../redux/reducers/Work/metadata";
 
 const useFilterWorks = () => {
   const {
-    works
+    works,
+    worksLoading
   } = useSelector<ReduxRootState, WorkMetadata.IStore>(({ work }) => work, shallowEqual);
 
   return {
     worksWaiting : works.filter(v => v.state === 'waiting-confirmation'),
     worksPendient : works.filter(v => v.state === 'pendient'),
-    worksComplete : works.filter(v => v.state === 'completed')
+    worksComplete : works.filter(v => v.state === 'completed'),
+    worksLoading
   }
 }
 

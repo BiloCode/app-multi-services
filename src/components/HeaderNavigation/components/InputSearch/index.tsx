@@ -10,7 +10,7 @@ const InputSearch : FC<NSHeaderNavigation.IPropsInputSearch> = () => (
       <ITS.ContainerIcon>
         <AntDesign name="search1" size={19} color="#fff" />
       </ITS.ContainerIcon>
-      <ITS.Input placeholder='Busca a un trabajador...' placeholderTextColor={NSHeaderNavigation.colors.text} />      
+      <ITS.Input placeholder='Busca a un trabajador...' placeholderTextColor='#fff' />      
     </ITS.Container>
   </BaseHeaderComponent>
 );

@@ -7,19 +7,17 @@ import DropDown from './DropDown';
 import useWorkerWorkListInit from './hooks/useWorkerWorkListInit';
 import useFilterWorks from './hooks/useFilterWorks';
 
-const works = new Array(4).fill('');
-
 const WorkerWorkList = () => {
   const init = useWorkerWorkListInit();
-  const { worksPendient , worksWaiting , worksComplete } = useFilterWorks();
+  const { worksPendient , worksWaiting , worksComplete , worksLoading } = useFilterWorks();
 
   return <VerticalBar>
     <ScrollView showsVerticalScrollIndicator={false}>
       <MainTitle text='Mis Trabajos' />
       <WWLS.DropDownWorks>
-        <DropDown title='En Proceso' works={worksWaiting} />
-        <DropDown title='Pendientes' works={worksPendient} />
-        <DropDown title='Completados' works={worksComplete} />         
+        <DropDown title='En espera' works={worksWaiting} isLoading={worksLoading} />
+        <DropDown title='Pendientes' works={worksPendient} isLoading={worksLoading} />
+        <DropDown title='Completados' works={worksComplete} isLoading={worksLoading} />         
       </WWLS.DropDownWorks>
     </ScrollView>
   </VerticalBar>

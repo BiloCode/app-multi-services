@@ -18,6 +18,9 @@ const Profile = () => {
 
     case 'authentication-worker':
       return <WorkerProfile />
+
+    default:
+      return <UserProfile />
   }
 };
 

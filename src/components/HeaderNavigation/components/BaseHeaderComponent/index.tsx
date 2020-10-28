@@ -10,7 +10,7 @@ const BaseHeaderComponent : FC = ({ children }) => {
 
   return <HTS.Container>
     <HTS.IconBackContainer as={TouchableOpacity} onPress={() => goBack()}>
-      <AntDesign name="back" size={20} color={NSHeaderNavigation.colors.text} />
+      <AntDesign name="back" size={20} color='#fff' />
     </HTS.IconBackContainer>
     <HTS.RightContent>
       {children}

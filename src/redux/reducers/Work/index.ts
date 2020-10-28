@@ -2,6 +2,7 @@ import { WorkMetadata , TYPES } from "./metadata";
 
 const initialState : WorkMetadata.IStore = {
   works : [],
+  worksLoading : true,
   workDetail : {
     id : -1,
     createdAt : '',
@@ -40,6 +41,28 @@ const reducer = (state = initialState, action) => {
         ...state,
         workDetail : action.payload
       }
+
+    case TYPES.SET_WORK_LOADING:
+        return {
+          ...state,
+          worksLoading : action.payload
+        }
+      
+    case TYPES.WORK_UPDATE_BY_ID:
+      return {
+        ...state,
+        workDetail : action.payload,
+        works : state.works.map(v => {
+          if(v.id === action.payload.id) {
+            return action.payload
+          }
+
+          return v;
+        })
+      }
+
+    case TYPES.RESET_DATA:
+      return initialState;
       
     default:
       return state;

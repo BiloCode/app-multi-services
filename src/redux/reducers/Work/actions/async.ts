@@ -1,5 +1,5 @@
 import { App } from "../../../../config";
-import { setWorks } from "./sync";
+import { setWorkLoading, setWorks, workUpdateById } from "./sync";
 
 interface IUserParams {
   type : 'user' | 'worker';
@@ -7,6 +7,8 @@ interface IUserParams {
 }
 
 export const getWorkList = (data : IUserParams) => async dispatch => {
+  dispatch(setWorkLoading(true));
+
   try {
     let endpoint : string = '',
       requestData : any = {};
@@ -23,7 +25,26 @@ export const getWorkList = (data : IUserParams) => async dispatch => {
     const { works } = request.data;
   
     dispatch(setWorks(works));
+    dispatch(setWorkLoading(false));
   }catch(e){
     console.log(e);
+  }
+}
+
+export const acceptWork = (workId : number) => async dispatch => {
+  try {
+    const request = await App.post('/worker/service/accept', new URLSearchParams({ workId : String(workId) }));
+    const { work , error } = request.data;
+
+    if(error){
+      alert(error);
+      return false;
+    }else if(work) {
+      dispatch(workUpdateById(work));
+      return true;
+    }
+  }catch(e){  
+    console.log(e);
+    return false;
   }
 }

@@ -3,7 +3,10 @@ import { WorkDetailState } from "../../../../metadata/types";
 
 export const TYPES = {
   GET_WORKS : 'get-works',
-  SET_WORK_DETAIL : 'set-work-detail'
+  SET_WORK_DETAIL : 'set-work-detail',
+  SET_WORK_LOADING : 'set-work-loading',
+  RESET_DATA : 'reset-data',
+  WORK_UPDATE_BY_ID : 'work-update-by-id'
 }
 
 export namespace WorkMetadata {
@@ -23,7 +26,8 @@ export namespace WorkMetadata {
   }
 
   export interface IStore {
-    works : IWork[],
-    workDetail : IWork
+    works : IWork[];
+    worksLoading : boolean;
+    workDetail : IWork;
   }
 }
