@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { shallowEqual, useSelector } from 'react-redux';
 import { ReduxRootState } from '../../../metadata/types'
 import { WorkMetadata } from '../../../redux/reducers/Work/metadata';
@@ -20,7 +21,7 @@ const useWorkDetailInit = () => {
     price,
     description,
     state,
-    createdAt,
+    createdAt : moment(createdAt).format('DD/MM/YYYY'),
     location : {
       name : user.district.province.name,
       coords : user.district.province.location

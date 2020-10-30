@@ -10,7 +10,7 @@ namespace AuthMetadata {
   export interface IStore {
     isLoadingInformation : boolean;
     isSend : boolean;
-    userAuthenticatioState : AuthenticationState;
+    userAuthenticationState : AuthenticationState;
   }
 }
 

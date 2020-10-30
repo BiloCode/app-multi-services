@@ -9,7 +9,7 @@ interface IProps {
 const WorkDate : FC<IProps> = ({ title , date }) => (
   <WDS.Container>
     <WDS.TitleDate>{title}</WDS.TitleDate>
-    <WDS.Date>{date}</WDS.Date>
+    <WDS.Date>{date || '-- --'}</WDS.Date>
   </WDS.Container>
 );
 

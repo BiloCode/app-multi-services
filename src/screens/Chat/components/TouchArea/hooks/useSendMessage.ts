@@ -10,14 +10,14 @@ const useSendMessage = () => {
 
   const dispatch = useDispatch();
   const { chat , user , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
-  const { userAuthenticatioState } = auth;
+  const { userAuthenticationState } = auth;
   const { userInformation , workerInformation } = user;
   const { roomId , socket } = chat;
   
   const SendMessage = () => {
     if(!socket || !messageText) return;
 
-    const userId = userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!;
+    const userId = userAuthenticationState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!;
     
     const payload = {
       roomId,

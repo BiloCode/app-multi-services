@@ -25,18 +25,17 @@ const useGlobalWorkerCard = (worker : WorkerMetadata.IWorker) => {
 
   const NavigateToChat = () => {
     GoToChat({
-      id : id!,
+      id,
       fullName,
       basePrice,
       profileImage,
-      specialty : specialty.name,
-      userType : 'worker'
+      specialty : specialty.name
     });
   }
 
   return {
     username : fullName,
-    description : description || lorem.words(30),
+    description : description || 'Sin descripcion disponible.',
     profileImage,
     stars,
     specialty : specialty.name,

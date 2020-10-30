@@ -9,7 +9,7 @@ const VerticalBar : FC = ({ children }) => {
   const { 
     CloseSession,
     NavigateToProfile,
-    userAuthenticatioState
+    userAuthenticationState
   } = useInitBar();
 
   return (
@@ -19,7 +19,7 @@ const VerticalBar : FC = ({ children }) => {
           <Icon iconNameAntDesign="user" onPress={NavigateToProfile} />
         </Styled.BarHeader>
         <Styled.BarSection>
-          { userAuthenticatioState === 'authentication-user' ? <TabUser /> : <TabWorker /> }
+          { userAuthenticationState === 'authentication-user' ? <TabUser /> : <TabWorker /> }
         </Styled.BarSection>
         <Styled.BarFooter>
           <Icon iconNameAntDesign="back" onPress={CloseSession} />

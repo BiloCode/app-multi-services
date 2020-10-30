@@ -5,20 +5,27 @@ import { getMessagesList, joinRoom, leaveRoom } from "../../../redux/reducers/Ch
 
 const useJoinRoom = () => {
   //Redux
-  const { user , chat } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
+  const { user , chat , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
+  const { userAuthenticationState } = auth;
   const { userInformation , workerInformation } = user;
   const { userData , socket , roomId } = chat;
 
   const dispatch = useDispatch();
 
-  const isSpeaker = () => userData.userType;
-
   useEffect(() => {
-    //Other user is user / worker
-    const userId = isSpeaker() === 'user' ? userData.id : userInformation.id!;
-    const userWorkerId = isSpeaker() === 'worker' ? userData.id : workerInformation.user?.id!;
+    let userWorkerId : number = 0, userId : number = 0;
 
-    dispatch(getMessagesList(userId, userWorkerId));
+    if(userAuthenticationState === 'authentication-worker'){
+      userWorkerId = workerInformation.user.id;
+      userId = userData.id;
+    }else if(userAuthenticationState === 'authentication-user') {
+      userWorkerId = userData.id;
+      userId = userInformation.id;
+    }
+
+    if(userWorkerId > 0 && userId > 0){
+      dispatch(getMessagesList(userWorkerId, userId));
+    }
   },[]);
 
   useEffect(() => {

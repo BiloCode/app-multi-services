@@ -11,7 +11,7 @@ const InputStyles = {
     margin: 3px 0;
   `,
   IconContainer : styled.View`
-    width: 60px;
+    width: 55px;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -24,6 +24,7 @@ const InputStyles = {
     color: #585858;
     font-size: 12px;
     font-family: 'RalewaySemiBold';
+    padding-right: 10px;
   `
 }
 

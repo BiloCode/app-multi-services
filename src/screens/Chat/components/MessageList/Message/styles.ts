@@ -7,6 +7,7 @@ interface IContainerProps {
 
 export const Container = styled.View<IContainerProps>`
   max-width: 80%;
+  align-self: flex-start;
 
   ${({ isRight }) => isRight && css`
     align-self: flex-end;

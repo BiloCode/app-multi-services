@@ -10,9 +10,9 @@ import { ReduxRootState } from '../../metadata/types';
 import UserProfile from './components/UserProfile';
 
 const Profile = () => {
-  const { userAuthenticatioState } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth, shallowEqual);
+  const { userAuthenticationState } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth, shallowEqual);
 
-  switch(userAuthenticatioState){
+  switch(userAuthenticationState){
     case 'authentication-user':
       return <UserProfile />
 

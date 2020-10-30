@@ -8,15 +8,15 @@ import AuthWorker from './stacks/Auth-Worker';
 import NotAuth from './stacks/Not-Auth';
 
 const Router = () => {
-  const { isLoadingInformation , userAuthenticatioState } = useRouterInit();
+  const { isLoadingInformation , userAuthenticationState } = useRouterInit();
 
   if(isLoadingInformation) return <ScreenLoading />
 
   return <NavigationContainer>
     {
-      userAuthenticatioState === 'not-authentication' ?
+      userAuthenticationState === 'not-authentication' ?
         <NotAuth /> :
-        userAuthenticatioState === 'authentication-user' ?
+        userAuthenticationState === 'authentication-user' ?
           <AuthUser /> :
           <AuthWorker />
     }

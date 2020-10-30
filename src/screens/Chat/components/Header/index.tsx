@@ -7,7 +7,7 @@ import AvatarImage from '../../../../components/AvatarImage';
 import useHeaderInit from './hooks/useHeaderInit';
 
 const Header = () => {
-  const { fullName , profileImage, basePrice , specialty , GoToBackScreen } = useHeaderInit();
+  const { fullName , profileImage, basePrice , specialty , GoToBackScreen , userAuthenticationState } = useHeaderInit();
 
   return <>
     <HS.Container>
@@ -19,12 +19,16 @@ const Header = () => {
         <AvatarImage size={36} iconSize={24} image={profileImage} />
       </HS.WorkerInformationArea>
     </HS.Container>
-    <HS.WorkContainer>
-      <HS.ExtraInformation>
-        <HS.WorkName>{specialty}</HS.WorkName>
-        <HS.Price>S/ {basePrice}</HS.Price>        
-      </HS.ExtraInformation>
-    </HS.WorkContainer>
+    {
+      userAuthenticationState === 'authentication-user' && (
+        <HS.WorkContainer>
+          <HS.ExtraInformation>
+            <HS.WorkName>{specialty}</HS.WorkName>
+            <HS.Price>S/ {basePrice}</HS.Price>        
+          </HS.ExtraInformation>
+        </HS.WorkContainer>
+      )
+    } 
   </>
 }
 

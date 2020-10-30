@@ -6,7 +6,7 @@ import { MessageListScrollProvider } from './context/MessageListScroll';
 import useRoomInit from './hooks/useRoomInit';
 import * as WCS from './styles'
 
-const WorkerChat = () => {
+const Chat = () => {
   const __init = useRoomInit();
 
   return <WCS.Container>
@@ -18,4 +18,4 @@ const WorkerChat = () => {
   </WCS.Container>
 };
 
-export default WorkerChat;
+export default Chat;

@@ -18,14 +18,10 @@ const WorkDetail = () => {
       <WDS.MainContainer>
         <WDS.WorkMainData>
           <WDS.WorkTitle>{title}</WDS.WorkTitle>
-          {
-            state === 'completed' && (
-              <WDS.WorkDateContainer>
-                <WorkDate title='Fecha Inicio' date={createdAt} />
-                <WorkDate title='Fecha Acabado' date={finished} />
-              </WDS.WorkDateContainer>
-            )
-          }
+          <WDS.WorkDateContainer>
+            <WorkDate title='Fecha Inicio' date={createdAt} />
+            <WorkDate title='Fecha Acabado' date={finished} />
+          </WDS.WorkDateContainer>
         </WDS.WorkMainData>
         <WDS.PriceContainer>
           <WDS.Price>Precio Estimado : S/ {isWholeNumber ? price + '.00' : price}</WDS.Price>

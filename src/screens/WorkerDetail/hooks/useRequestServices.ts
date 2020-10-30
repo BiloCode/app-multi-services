@@ -42,6 +42,7 @@ const useRequestServices = (closeModal : Function, basePrice : number) => {
 
       if(error) console.log(error);
       else if(isWorkCreate){
+        alert('Acaba de solicitar el servicio. Espere a que el especialista acepte o rechaze la peticion.')
         closeModal();
       }else{
         alert('No se pudo solicitar debido a un error.')

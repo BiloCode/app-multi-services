@@ -17,12 +17,11 @@ const useParamsWorkerDetail = () => {
 
   const NavigateToChat = () => {
     Navigate({
-      id : user?.id!,
-      specialty : specialty?.name!,
-      basePrice : basePrice!,
-      fullName : user?.fullName!,
-      profileImage : user?.profileImage!,
-      userType : 'worker'
+      id : user.id,
+      specialty : specialty.name,
+      basePrice : basePrice,
+      fullName : user.fullName,
+      profileImage : user.profileImage
     });
   }
   

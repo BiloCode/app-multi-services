@@ -7,7 +7,7 @@ import AuthMetadata from "../../../redux/reducers/Auth/metadata";
 const useInitBar = () => {
   const nav = useNavigation();
   const dispatch = useDispatch();
-  const { userAuthenticatioState } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth, shallowEqual);
+  const { userAuthenticationState } = useSelector<ReduxRootState,AuthMetadata.IStore>(({ auth }) => auth, shallowEqual);
 
   const NavigateToProfile = () => nav.navigate('profile');
   const CloseSession = () => {
@@ -17,7 +17,7 @@ const useInitBar = () => {
   return {
     NavigateToProfile,
     CloseSession,
-    userAuthenticatioState
+    userAuthenticationState
   }
 }
 

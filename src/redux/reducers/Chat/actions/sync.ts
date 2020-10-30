@@ -1,16 +1,16 @@
 import TYPES, { ChatMetadata } from "../metadata";
 
-export const setWorkerChatData = (workerData : ChatMetadata.IUserDataRoom) => ({
+export const setWorkerChatData = (workerData : ChatMetadata.IUserDataRoom | ChatMetadata.IUserWorkerDataRoom) => ({
   type : TYPES.SET_WORKER_DATA,
   payload : workerData
 });
 
-export const setMessages = (messages : ChatMetadata.IMessageList[]) => ({
+export const setMessages = (messages : ChatMetadata.IChatMessageList[]) => ({
   type : TYPES.GET_MESSAGE_LIST,
   payload : messages
 });
 
-export const addNewMessage = (message : ChatMetadata.IMessageList) => ({
+export const addNewMessage = (message : ChatMetadata.IChatMessageList) => ({
   type : TYPES.SET_MESSAGE,
   payload : message
 })
@@ -26,4 +26,14 @@ export const chatResetData = () => ({
 
 export const SocketStartConnection = () => ({
   type : TYPES.SOCKET_START_CONNECTION
+})
+
+export const setUserChatList = (list : ChatMetadata.IUserRoomList[]) => ({
+  type : TYPES.SET_USER_CHAT_LIST,
+  payload : list
+});
+
+export const setUserChatLoading = (value : boolean) => ({
+  type : TYPES.SET_USER_CHAT_LOADING,
+  payload : value
 })

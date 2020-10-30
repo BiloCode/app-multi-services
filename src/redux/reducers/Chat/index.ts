@@ -9,8 +9,11 @@ const initialState : ChatMetadata.IStore = {
     fullName : '',
     basePrice : 0,
     profileImage : '',
-    specialty : '',
-    userType : 'user'
+    specialty : ''
+  },
+  userChatList : {
+    isLoading : true,
+    list : []
   },
   isLoadingMessages : true,
   messagesList : [],
@@ -61,6 +64,24 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         messagesList : [],
         roomId : '',
         userData : initialState.userData
+      }
+
+    case TYPES.SET_USER_CHAT_LIST:
+      return {
+        ...state,
+        userChatList : {
+          ...state.userChatList,
+          list : action.payload
+        }
+      }
+
+    case TYPES.SET_USER_CHAT_LOADING:
+      return {
+        ...state,
+        userChatList : {
+          ...state.userChatList,
+          isLoading : action.payload
+        }
       }
 
     default:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ActivityIndicator, ScrollView } from 'react-native';
 import { colors } from '../../../../config';
 import useMessageListInit from './hooks/useMessageListInit';
@@ -32,4 +32,4 @@ const MessageList = () => {
   </MLS.Container>
 }
 
-export default MessageList;
+export default memo(MessageList);

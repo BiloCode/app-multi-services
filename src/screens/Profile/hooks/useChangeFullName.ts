@@ -12,7 +12,7 @@ const useChangeFullName = (name : string) => {
 
   const ActivateInputFullName = () => {
     if(inputEnabled){
-      const isWorker = auth.userAuthenticatioState === 'authentication-worker';
+      const isWorker = auth.userAuthenticationState === 'authentication-worker';
       const userId = (!isWorker) ? 
             user.userInformation.id : 
             user.workerInformation.user.id;

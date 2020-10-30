@@ -1,5 +1,5 @@
 import { App } from '../../../../config';
-import { addNewMessage, chatResetData, setMessages, setRoomId } from './sync';
+import { addNewMessage, chatResetData, setMessages, setRoomId, setUserChatList, setUserChatLoading } from './sync';
 
 export const getMessagesList = (userWorkerId : number, userId : number) => async dispatch => {
   try {
@@ -43,4 +43,24 @@ export const setNewMessage = (socket : SocketIOClient.Socket, message : IMessage
   socket.on('send-message-fail', () => {
     console.log('Ocurrio un error en el servidor...');
   })
+}
+
+/** Chat List Screen */
+
+export const getChatList = (isWorker : boolean, userId : number) => async dispatch => {
+  dispatch(setUserChatLoading(true));
+
+  try {
+    const endpoint = isWorker ? '/worker/get/rooms' : '/user/get/rooms';
+    const request = await App.post(endpoint, new URLSearchParams({ userId : String(userId) }));
+    const { error , roomList } = request.data;
+
+    if(error) alert(error);
+    else{
+      dispatch(setUserChatList(roomList));
+      dispatch(setUserChatLoading(false));
+    }
+  }catch(e){
+    console.log(e);
+  }
 }

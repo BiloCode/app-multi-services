@@ -12,7 +12,7 @@ const useChangeDescription = (description : string) => {
 
   const ActivateInputDescription = () => {
     if(inputEnabled){
-      const isWorker = auth.userAuthenticatioState === 'authentication-worker';
+      const isWorker = auth.userAuthenticationState === 'authentication-worker';
       const userId = (!isWorker) ? 
             user.userInformation.id : 
             user.workerInformation.user.id;

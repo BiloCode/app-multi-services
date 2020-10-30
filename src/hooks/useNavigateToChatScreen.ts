@@ -7,9 +7,9 @@ const useNavigateToChatScreen = () => {
   const { navigate } = useNavigation();
   const dispatch = useDispatch();
 
-  const NavigateToChat = (userData : ChatMetadata.IUserDataRoom) => {
+  const NavigateToChat = (userData : ChatMetadata.IUserDataRoom | ChatMetadata.IUserWorkerDataRoom) => {
     dispatch(setWorkerChatData(userData));
-    navigate('worker-chat');
+    navigate('chat-user');
   }
 
   return NavigateToChat;

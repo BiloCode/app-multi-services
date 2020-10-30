@@ -8,7 +8,7 @@ const useMessageListInit = () => {
   //Redux
   const { user , chat , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state,shallowEqual);
   const { userInformation , workerInformation } = user;
-  const { userAuthenticatioState } = auth;
+  const { userAuthenticationState } = auth;
   const { isLoadingMessages , messagesList } = chat;
 
   //Context
@@ -22,7 +22,7 @@ const useMessageListInit = () => {
   return {
     messagesList,
     isLoadingMessages,
-    userId : userAuthenticatioState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!,
+    userId : userAuthenticationState === 'authentication-user' ? userInformation.id! : workerInformation.user?.id!,
     scrollView
   }
 }

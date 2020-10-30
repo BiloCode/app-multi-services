@@ -6,7 +6,7 @@ import useRouterUserInit from '../../hooks/useRouterUserInit';
 
 //Screens
 import WorkerDetail from '../../../screens/WorkerDetail';
-import WorkerChat from '../../../screens/WorkerChat';
+import Chat from '../../../screens/Chat';
 import SearchFilter from '../../../screens/SearchFilter';
 import SearchMap from '../../../screens/SearchMap';
 import Home from '../../../screens/Home';
@@ -27,7 +27,7 @@ const AuthUser = () => {
     <Stack.Screen name='search' component={Search} />
     <Stack.Screen name='worker-detail' component={WorkerDetail} />
     <Stack.Screen name='chat-list' component={ChatList} />
-    <Stack.Screen name='worker-chat' component={WorkerChat} />
+    <Stack.Screen name='chat-user' component={Chat} />
     <Stack.Screen name='search-filter' component={SearchFilter} />
     <Stack.Screen name='search-map' component={SearchMap} />  
   </Stack.Navigator>       
