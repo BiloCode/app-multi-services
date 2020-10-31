@@ -31,7 +31,7 @@ const WorkDetail = () => {
           <WDS.WorkDescriptionText>{description || 'Sin descripción.'}</WDS.WorkDescriptionText>
         </WDS.WorkDescriptionContainer>
       </WDS.MainContainer>
-      <BottonContent workState={state} coords={location.coords!} province={location.name} />     
+      <BottonContent workState={state} coords={location.coords} province={location.name} />     
     </ScrollView>
   </WDS.Container>
 };

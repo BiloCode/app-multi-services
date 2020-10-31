@@ -94,6 +94,8 @@ export const getWorkersBySpecialty = (specialtyId : number) => async dispatch =>
     const request = await App.get(`/worker/find/specialty/${specialtyId}`);
     const { workers , error } = request.data;
 
+    console.log(workers);
+
     if(error){
       console.log(error);
     }else if(workers) {

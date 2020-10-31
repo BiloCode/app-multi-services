@@ -13,9 +13,9 @@ const SearchMap = () => {
     <ScrollView>
       <SMS.HeaderContent>
         <HeaderNavigation.Title title='Los mas cercanos' /> 
-        <Map province={district.province.name} coords={district.province.location} /> 
+        <Map province={district.province.name} coords={district.province.location.location} /> 
       </SMS.HeaderContent>
-      <WorkerList />      
+      <WorkerList ubicationName={district.name + ' / ' + district.province.name} />      
     </ScrollView>
   </SMS.Container>
 };

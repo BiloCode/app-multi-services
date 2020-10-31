@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { Alert } from "react-native";
 import { App } from "../../../config";
 
 interface IData {
@@ -35,7 +36,7 @@ const useRegister = (data : IData) => {
         alert(error);
         setIsSend(() => false);
       }else if(isRegister){
-        alert('Te acabas de registrar.Ya puedes Iniciar Sesion');
+        Alert.alert('¡Registro Completado!','Te acabas de registrar.Ya puedes Iniciar Sesion');
         goBack();
       }else{
         alert('Ocurrio un error inesperado');
