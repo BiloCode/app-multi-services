@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
 import GlobalInput from '../../../../components/GlobalInput';
@@ -25,11 +25,11 @@ const InputList : FC<IProps> = ({ changePassword , changeUsername }) => (
         secureTextEntry={true}
         onChangeText={changePassword}
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => alert('En construcción')} >
         <InputListStyles.LinkText>¿Olvidaste tu contraseña?</InputListStyles.LinkText>
       </TouchableOpacity>
     </InputListStyles.Container>    
   </KeyboardAvoidingView>
 )
 
-export default InputList;
+export default memo(InputList);

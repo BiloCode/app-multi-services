@@ -33,7 +33,10 @@ export const getWorkList = (data : IUserParams) => async dispatch => {
 
 export const acceptWork = (workId : number) => async dispatch => {
   try {
-    const request = await App.post('/worker/service/accept', new URLSearchParams({ workId : String(workId) }));
+    const request = await App.post('/worker/service/accept', new URLSearchParams({
+      workId : String(workId)
+    }));
+
     const { work , error } = request.data;
 
     if(error){
@@ -44,6 +47,24 @@ export const acceptWork = (workId : number) => async dispatch => {
       return true;
     }
   }catch(e){  
+    console.log(e);
+    return false;
+  }
+}
+
+export const rejectWork = (workId : number) => async dispatch => {
+  try {
+    const request = await App.post('/worker/reject/work', new URLSearchParams({
+      workId : String(workId)
+    }));
+
+    const { work, error } = request.data;
+
+    if(error) alert(error);
+    else {
+      dispatch(workUpdateById(work));
+    }
+  }catch(e){
     console.log(e);
     return false;
   }

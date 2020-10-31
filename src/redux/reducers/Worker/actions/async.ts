@@ -163,3 +163,27 @@ export const requestService = (data : IRequestService) => async dispatch => {
     return false;
   }
 }
+
+//Completar el servicio
+export const serviceCompletation = (workId : number) => async dispatch => {
+  try {
+    const request = await App.post('/user/work/completed', new URLSearchParams({
+      workId : String(workId),
+    }));
+
+    const { isCompleted , error } = request.data;
+
+    if(error){
+      alert(error);
+      return false;
+    }else if(isCompleted){
+      dispatch(setWorkerWorkState({ id : -1, state : '' }));
+      return true;
+    }
+
+    return false;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}

@@ -13,6 +13,7 @@ import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
 import RequestServiceModal from './components/RequestServiceModal';
 import useRequestServiceModal from './hooks/useRequestServiceModal';
 import HeaderNavigation from '../../components/HeaderNavigation';
+import useFinishWork from './hooks/useFinishWork';
 
 const WorkerDetail = () => {
   const { 
@@ -31,9 +32,11 @@ const WorkerDetail = () => {
   } = useParamsWorkerDetail();
 
   const { isHide , setClose , openModal } = useRequestServiceModal(availability);
+  const finishWork = useFinishWork();
+  
   const BottomButton = () => {
     if(workState.state === 'pendient') {
-      //...Terminar el trabajo
+      finishWork();
       return;
     }else if(workState.state === 'waiting-confirmation'){
       alert('Esperando la confirmacion de la solicitud.')

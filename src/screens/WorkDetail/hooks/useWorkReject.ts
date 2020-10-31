@@ -1,25 +1,25 @@
 import { Alert } from "react-native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
-import { acceptWork } from "../../../redux/reducers/Work/actions/async";
+import { rejectWork } from "../../../redux/reducers/Work/actions/async";
 import { WorkMetadata } from "../../../redux/reducers/Work/metadata";
 
-const useWorkAccept = () => {
+const useWorkReject = () => {
   const dispatch = useDispatch();
 
   const { workDetail } = useSelector<ReduxRootState,WorkMetadata.IStore>(({ work }) => work, shallowEqual);
 
   return () => {
     Alert.alert(
-      'Solicitud de Trabajo',
-      '¿Desea aceptar este trabajo?',
+      'Rechazar la Solicitud',
+      '¿Desea rechazar este trabajo?',
       [
         {
           text : 'Aceptar',
           onPress : async () => {
-            const response = await dispatch(acceptWork(workDetail.id));
+            const response = await dispatch(rejectWork(workDetail.id));
             if(response!) {
-              Alert.alert('Completado','El trabajo se ha aceptado correctamente');
+              Alert.alert('Completado','Se acaba de rechazar el trabajo correctamente.');
             }
           }
         },
@@ -29,4 +29,4 @@ const useWorkAccept = () => {
   }
 }
 
-export default useWorkAccept;
+export default useWorkReject;

@@ -22,11 +22,11 @@ const useWorkDetailInit = () => {
     description,
     state,
     createdAt : moment(createdAt).format('DD/MM/YYYY'),
+    finished : finished ? moment(finished).format('DD/MM/YYYY') : '',
     location : {
       name : user.district.province.name,
       coords : user.district.province.location
-    },
-    finished
+    }
   }
 }
 

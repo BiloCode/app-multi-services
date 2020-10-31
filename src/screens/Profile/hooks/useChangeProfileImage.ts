@@ -5,8 +5,9 @@ const useChangeProfileImage = (image : string) => {
   const [ editImageEnabled , setEditImageEnabled ] = useState<boolean>(false);
 
   const ChangeProfileImage = () => {
-    console.log('Changed...');
-    setEditImageEnabled(() => !editImageEnabled);
+    /*console.log('Changed...');
+    setEditImageEnabled(() => !editImageEnabled);*/
+    alert('En proceso...')
   }
 
   return {

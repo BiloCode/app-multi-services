@@ -19,7 +19,11 @@ const BottonContent : FC<IProps> = ({ workState , coords , province }) => {
   const { latitude , longitude } = useCoords(coords);
 
   const isWorkCompleted = () => {
-    return workState === 'completed' ? 'Trabajo Terminado' : 'Trabajo Pendiente';
+    if(workState === 'completed') return 'Trabajo Terminado';
+    else if(workState === 'pendient') return 'Trabajo Pendiente';
+    
+    //Reject
+    return 'Trabajo rechazado';
   }
 
   return <RoundedSection
