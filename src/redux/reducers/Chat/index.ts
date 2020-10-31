@@ -84,6 +84,14 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         }
       }
 
+    case TYPES.CHAT_LIST_RESET:
+      return {
+        ...state,
+        userChatList : {
+          ...initialState.userChatList
+        }
+      }
+
     default:
       return state;
   }

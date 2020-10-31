@@ -3,6 +3,7 @@ import { AntDesign } from '@expo/vector-icons';
 import useStarAmount from '../../../../hooks/useStarAmount';
 import BaseBox from '../BaseBox';
 import SBS from './styles';
+import { colors } from '../../../../config';
 
 interface IProps {
   name : string;
@@ -14,9 +15,9 @@ const SpecialtyBox : FC<IProps> = ({ name , puntuaction }) => {
 
   return <BaseBox>
     <SBS.Container>
-      <SBS.SpecialtyText>{name}</SBS.SpecialtyText>
+      <SBS.SpecialtyText>Especialidad : {name}</SBS.SpecialtyText>
       <SBS.StarContainer>
-        { stars.map((v,i) => <AntDesign key={i} name={v.name} size={10} color='#1858D4' />) }
+        { stars.map((v,i) => <AntDesign key={i} name={v.name} size={10} color={colors.stars} />) }
       </SBS.StarContainer>      
     </SBS.Container>
   </BaseBox>

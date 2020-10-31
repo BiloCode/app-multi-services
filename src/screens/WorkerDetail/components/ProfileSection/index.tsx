@@ -1,7 +1,5 @@
 import React, { FC, memo } from 'react';
-import { AntDesign } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native';
-import PSS from './styles';
+import Styled from './styles';
 import { useNavigation } from '@react-navigation/native';
 import AvatarImage from '../../../../components/AvatarImage';
 
@@ -11,24 +9,16 @@ interface IProps {
   profileImage? : string;
 }
 
-const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage }) => {
-  const { goBack } = useNavigation();
-
-  const NavigateGoBack = () => goBack();
-
-  return <PSS.MainContainer>
-    <PSS.Image source={{ uri : 'https://i.pinimg.com/originals/d9/7e/dd/d97eddfbccec3e6959dbfea9ec609d29.jpg' }} />
-    <PSS.FloatingContent>
-      <PSS.ImageProfileContainer>
-        <AvatarImage iconSize={44} size={90} image={profileImage} />
-      </PSS.ImageProfileContainer>
-      <PSS.WorkerName>{fullName}</PSS.WorkerName>
-      <PSS.WorkerState>{`(${availability})`}</PSS.WorkerState>
-    </PSS.FloatingContent>
-    <PSS.FloatingIcon onPress={NavigateGoBack} as={TouchableOpacity}>
-      <AntDesign name="arrowleft" size={24} color="#fff" />
-    </PSS.FloatingIcon>
-  </PSS.MainContainer>
-}
+const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage }) => (
+  <Styled.MainContainer>
+    <Styled.FloatingContent>
+      <Styled.ImageProfileContainer>
+        <AvatarImage iconSize={50} size={110} image={profileImage} />
+      </Styled.ImageProfileContainer>
+      <Styled.WorkerName>{fullName}</Styled.WorkerName>
+      <Styled.WorkerState>{`(${availability})`}</Styled.WorkerState>
+    </Styled.FloatingContent>
+  </Styled.MainContainer>
+)
 
 export default memo(ProfileSection);

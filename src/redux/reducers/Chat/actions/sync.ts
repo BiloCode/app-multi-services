@@ -37,3 +37,7 @@ export const setUserChatLoading = (value : boolean) => ({
   type : TYPES.SET_USER_CHAT_LOADING,
   payload : value
 })
+
+export const resetChatList = () => ({
+  type : TYPES.CHAT_LIST_RESET
+})

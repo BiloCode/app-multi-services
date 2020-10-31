@@ -10,6 +10,7 @@ import { SpecialtyMetadata } from '../../redux/reducers/Specialty/metadata';
 import Item from './Item';
 import useNavigateToFilterScreen from '../../hooks/useNavigateToFilterScreen';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../../config';
 
 interface IProps {
   onClose?() : void;
@@ -54,7 +55,7 @@ const ModalSearch : FC<IProps> = ({ onClose }) => {
       <GlobalButton text='Ver a los mas Cercanos' onPress={NavigateToMapScreen} />
     </MSS.ButtonContainer>
     <MSS.IconClose onPress={onClose} as={TouchableOpacity}>
-      <MaterialCommunityIcons name="close-circle-outline" size={32} color="#1858D4" />
+      <MaterialCommunityIcons name="close-circle-outline" size={32} color={colors.main} />
     </MSS.IconClose>
   </MSS.Container>
 }

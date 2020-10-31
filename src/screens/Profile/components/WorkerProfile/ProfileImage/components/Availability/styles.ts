@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../../../../config";
 
 export const Container = styled.View`
   margin-top: 2px;
@@ -7,5 +8,5 @@ export const Container = styled.View`
 
 export const TextAvailability = styled.Text`
   font-size: 12px;
-  color: #30d146;
+  color: ${colors.paragraph};
 `;

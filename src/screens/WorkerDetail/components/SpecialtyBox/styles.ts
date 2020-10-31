@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const SpecialtyBoxStyles = {
   Container : styled.View`
@@ -10,7 +11,7 @@ const SpecialtyBoxStyles = {
   SpecialtyText : styled.Text`
     font-size: 16px;
     font-family: 'RalewayBlack';
-    color: #585858;
+    color: ${colors.main};
     margin-bottom: 6px;
   `
 }

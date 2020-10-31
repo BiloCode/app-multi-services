@@ -1,6 +1,7 @@
 import { App } from "../../../../config";
-import { setNearestWorkers, setNewWorkers , setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter } from "./sync";
+import { setNearestWorkers, setNewWorkers , setSearchFilterByName, setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter } from "./sync";
 
+//Obtiene todos los 8 trabajadores mas nuevos
 export const getNewsWorkers = () => async dispatch => {
   try{
     const request = await App.get('/worker/find/new');
@@ -19,6 +20,7 @@ export const getNewsWorkers = () => async dispatch => {
   }
 }
 
+//Obtiene los 8 primeros trabajadores mas cercanos
 export const getNearestWorkers = (provinceId : number) => async dispatch => {
   try{
     let workersData : any = [];
@@ -40,6 +42,7 @@ export const getNearestWorkers = (provinceId : number) => async dispatch => {
   }
 }
 
+//Obtiene todos los trabajadores cercanos disponibles
 export const getNearestWorkersUnlimited = (provinceId : number) => async dispatch => {
   try{
     dispatch(setWorkerLoadingMap(true));
@@ -50,8 +53,6 @@ export const getNearestWorkersUnlimited = (provinceId : number) => async dispatc
     }));
     
     const { workers , error } = request.data;
-
-    console.log(workers);
 
     if(error) console.log(error);
     else if(workers){
@@ -65,6 +66,7 @@ export const getNearestWorkersUnlimited = (provinceId : number) => async dispatc
   }
 }
 
+//Busca el trabajador por el nombre
 export const getWorkersByName = (name : string) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));
@@ -77,12 +79,14 @@ export const getWorkersByName = (name : string) => async dispatch => {
       dispatch(setWorkersWithFilter(workers));
     }
 
+    dispatch(setSearchFilterByName(name));
     dispatch(setSearchLoading(false));
   }catch(e){
     console.log(e);
   }
 }
 
+//Obtener trabajadores por especialidad
 export const getWorkersBySpecialty = (specialtyId : number) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));

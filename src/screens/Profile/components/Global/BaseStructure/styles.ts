@@ -1,22 +1,31 @@
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../../../../../config";
 
-export const Container = styled.View`
-  flex : 1;
-  background-color: ${colors.main};
-  padding-top: 24px;
-`;
+const { width , height } = Dimensions.get('window');
 
-export const HeaderContainer = styled.View`
-  width: 100%;
-  height: 180px;
-`;
+export const Container = styled.View({
+  flex : 1,
+  paddingTop: 24
+});
+
+export const ScrollContainer = styled.ScrollView({
+  width,
+  height,
+});
+
+const headerHeight = 180;
+
+export const HeaderContainer = styled.View({
+  width: '100%',
+  height: headerHeight
+})
 
 const borderRadius = 30;
+const minHeight = height - (headerHeight - 24);
 
-export const ProfileInformationContainer = styled.View`
-  flex: 1;
-  border-top-left-radius: ${borderRadius}px;
-  border-top-right-radius: ${borderRadius}px;
-  background-color: #fff;
-`;
+export const ProfileInformationContainer = styled.View({
+  minHeight,
+  borderTopLeftRadius: borderRadius,
+  borderTopRightRadius: borderRadius,
+  backgroundColor: '#fff'
+})

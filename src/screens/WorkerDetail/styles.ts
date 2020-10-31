@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { colors } from "../../config";
 
 const WorkerDetailStyle = {
   MainContainer : styled.View`
@@ -17,8 +18,8 @@ const WorkerDetailStyle = {
   `,
   TextDescription : styled.Text`
     font-family: 'RalewayRegular';
-    font-size: 11px;
-    color: #6F6F6F;
+    font-size: 13px;
+    color: ${colors.paragraph};
   `
 };
 

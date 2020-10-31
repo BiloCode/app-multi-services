@@ -11,6 +11,7 @@ const TYPES = {
   RESET_SEARCH : 'reset-search',
   SET_WORKER_LOADING_MAP : 'set-worker-loading-map',
   SET_WORKERS_MAP : 'set-workers-map',
+  SET_FILTER_SEARCH_NAME : 'set-filter-search-name'
 }
 
 export namespace WorkerMetadata {
@@ -42,6 +43,7 @@ export namespace WorkerMetadata {
     search : {
       isLoadingSearch : boolean;
       filterId : number;
+      searchByName : string;
       workers : IWorker[];
     };
     detailData : IWorker;

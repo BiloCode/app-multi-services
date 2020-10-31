@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 const TextBaseStyles = css`
   font-family : 'RalewayBlack';
@@ -15,13 +16,13 @@ const LocationBoxStyles = {
   `,
   LocationTextBase : styled.Text`
     ${TextBaseStyles};
-    font-size: 13px;
-    color: #585858;
+    font-size: 14px;
+    color: black;
   `,
   LocationText : styled.Text`
     ${TextBaseStyles};
-    font-size: 11.5px;
-    color: #1858D4;
+    font-size: 13px;
+    color: ${colors.main};
   `,
   MapContainer : styled.View`
     width: 100%;

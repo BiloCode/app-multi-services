@@ -6,7 +6,8 @@ const TYPES = {
   SOCKET_START_CONNECTION : 'socket-start-connection',
   CHAT_RESET : 'chat-reset',
   SET_USER_CHAT_LIST : 'set-user-chat-list',
-  SET_USER_CHAT_LOADING : 'set-user-chat-loading'
+  SET_USER_CHAT_LOADING : 'set-user-chat-loading',
+  CHAT_LIST_RESET : 'chat-list-reset'
 }
 
 export namespace ChatMetadata {

@@ -12,6 +12,7 @@ import LocationBox from './components/LocationBox';
 import useParamsWorkerDetail from './hooks/useParamsWorkerDetail';
 import RequestServiceModal from './components/RequestServiceModal';
 import useRequestServiceModal from './hooks/useRequestServiceModal';
+import HeaderNavigation from '../../components/HeaderNavigation';
 
 const WorkerDetail = () => {
   const { 
@@ -29,6 +30,7 @@ const WorkerDetail = () => {
 
   return <>
     <WDS.MainContainer as={ScrollView}>
+      <HeaderNavigation.Title title='Especialista' />
       <ProfileSection 
         fullName={fullName} 
         availability={availability} 

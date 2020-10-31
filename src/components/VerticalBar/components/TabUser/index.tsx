@@ -10,7 +10,6 @@ const TabUser = () => {
   return <>
     <Icon iconNameAntDesign="home" onPress={NavigateToHome} isSelect={name === 'home'} />
     <Icon iconNameAntDesign="search1" onPress={NavigateToSearch} isSelect={name === 'search'} />
-    <Icon iconNameAntDesign="profile" onPress={NavigateToWorkDetail} isSelect={name === 'work-list'} />
     <Icon iconNameAntDesign="wechat" onPress={NavigateToWorkerChat} />
     <Icon iconNameAntDesign="phone" onPress={NavigateToContact} isSelect={name === 'contact'} />
   </>

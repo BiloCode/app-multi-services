@@ -1,5 +1,5 @@
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
+
 import * as Styled from './styles';
 
 import ProfileImage from './ProfileImage';
@@ -7,10 +7,22 @@ import Description from '../Global/Description';
 import GlobalButton from '../../../../components/GlobalButton';
 import useWorkerProfileInit from '../../hooks/useWorkerProfileInit';
 import BaseStructure from '../Global/BaseStructure';
-import { colors } from '../../../../config';
+import BoxInformation from '../Global/BoxInformation';
+import WorkInformation from './WorkInformation';
 
 const WorkerProfile = () => {
-  const { fullName, description, basePrice, profileImage, specialty, puntuaction, availability, BackToScreen } = useWorkerProfileInit();
+  const { 
+    fullName,
+    description,
+    basePrice, 
+    profileImage, 
+    specialty,
+    createdAt,
+    location,
+    puntuaction,
+    availability,
+    BackToScreen 
+  } = useWorkerProfileInit();
 
   return <BaseStructure>
     <ProfileImage
@@ -20,13 +32,9 @@ const WorkerProfile = () => {
       name={fullName}
     />
     <Styled.ContainerText>
-      <Styled.WorkInformation>
-        <Styled.SpecialtyContainer>
-          <MaterialIcons name="work" size={20} color={colors.main} />
-          <Styled.Specialty>{specialty}</Styled.Specialty>
-        </Styled.SpecialtyContainer>
-        <Styled.Price>S/ {basePrice}</Styled.Price>
-      </Styled.WorkInformation>
+      <BoxInformation title='Ubicacion' ADIconName='enviromento' value={location} />
+      <BoxInformation title='Fecha de Creación' ADIconName='calendar' value={createdAt} />
+      <WorkInformation price={basePrice} specialty={specialty} />
       <Description description={description} />
       <Styled.ContainerButton>
         <GlobalButton text='Ver Trabajos' onPress={BackToScreen} />

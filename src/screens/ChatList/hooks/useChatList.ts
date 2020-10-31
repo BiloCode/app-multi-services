@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
 import AuthMetadata from "../../../redux/reducers/Auth/metadata";
 import { getChatList } from "../../../redux/reducers/Chat/actions/async";
+import { resetChatList } from "../../../redux/reducers/Chat/actions/sync";
 import { UserMetadata } from "../../../redux/reducers/User/metadata";
 
 const useChatList = () => {
@@ -17,6 +18,10 @@ const useChatList = () => {
 
   useEffect(() => {
     dispatch(getChatList(isWorker, userId));
+
+    return () => {
+      dispatch(resetChatList());
+    }
   },[]);
 
   return {

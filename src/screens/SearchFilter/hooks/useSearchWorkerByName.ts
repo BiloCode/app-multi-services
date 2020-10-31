@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getWorkersByName } from "../../../redux/reducers/Worker/actions/async";
 
 const useSearchWorkerByName = () => {
+  const [ searchValue , setSearchValue ] = useState<string>('');
   const dispatch = useDispatch();
 
-  const SearchByName = (text : string) => {
-    dispatch(getWorkersByName(text));
-  }
+  const ChangeSearchValue = (text : string) => setSearchValue(text);
+  const SearchStart = () => dispatch(getWorkersByName(searchValue));
 
-  return SearchByName;
+  return {
+    ChangeSearchValue,
+    SearchStart
+  }
 }
 
 export default useSearchWorkerByName;

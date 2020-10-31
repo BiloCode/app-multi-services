@@ -1,31 +1,23 @@
 import styled from "styled-components/native";
+import { colors } from "../../../../config";
 
 const ProfileSectionStyles = {
   MainContainer : styled.View`
     width: 100%;
     height: 225px;
     position: relative;
-    background-color: blue;
-  `,
-  Image : styled.Image`
-    width: 100%;
-    height: 100%;
   `,
   FloatingContent : styled.View`
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.4);
-    position: absolute;
-    top: 0;
-    left: 0;
     justify-content: center;
     align-items: center;
   `,
   ImageProfileContainer : styled.View`
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    margin: 10px 0;
+    width: 116px;
+    height: 116px;
+    border-radius: 58px;
+    margin-bottom: 10px;
     border: 2px solid #fff;
     justify-content: center;
     align-items: center;
@@ -33,18 +25,25 @@ const ProfileSectionStyles = {
   WorkerName : styled.Text`
     font-family: 'RalewayExtraBold';
     font-size: 17px;
-    color: #fff;
+    color: black;
     text-align: center;
   `,
   WorkerState : styled.Text`
     font-family: 'RalewayMedium';
     font-size: 10px;
-    color: #fff;
+    color: ${colors.paragraph};
     text-align: center;
   `,
-  FloatingIcon : styled.View`
+  FloatingIcon : styled.View` 
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
     position: absolute;
-    padding: 15px;
+    background-color: ${colors.main};
+    align-items : center;
+    justify-content : center;
+    top: 15px;
+    left: 15px;
   `
 }
 

@@ -1,24 +1,26 @@
-import { shallowEqual, useSelector } from "react-redux";
+import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-import { ReduxRootState } from "../../../metadata/types";
-import { UserMetadata } from "../../../redux/reducers/User/metadata";
+import useFormatCreateDate from './useFormatCreateDate';
+import useUserSignInData from '../../../hooks/useUserSignInData';
 
 const useUserProfileInit = () => {
   const { goBack } = useNavigation();
-  const {
-    userInformation : {
-      fullName,
-      description,
-      profileImage,
-      createdAt
-    }
-  } = useSelector<ReduxRootState,UserMetadata.IStore>(({ user }) => user, shallowEqual);
+  const { 
+    fullName,
+    description,
+    profileImage,
+    createdAt,
+    district
+  } = useUserSignInData();
+
+  const formatDate = useFormatCreateDate();
 
   return {
     fullName,
     profileImage,
     description,
-    createdAt,
+    location : district.province.name + '/' + district.name,
+    createdAt : formatDate(createdAt),
     BackToScreen : () => goBack()
   }
 }

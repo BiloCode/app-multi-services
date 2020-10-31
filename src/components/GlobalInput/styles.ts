@@ -24,7 +24,7 @@ const InputStyles = {
     color: #585858;
     font-size: 12px;
     font-family: 'RalewaySemiBold';
-    padding-right: 10px;
+    padding-right: 20px;
   `
 }
 

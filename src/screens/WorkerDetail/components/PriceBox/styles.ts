@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components/native";
+import { colors } from "../../../../config";
 
 const baseTextStyles = css`
   font-family : 'RalewayBlack';
-  font-size: 12.5px;
+  font-size: 14px;
 `
 
 const PriceBoxStyles = {
@@ -13,11 +14,12 @@ const PriceBoxStyles = {
   `,
   PriceText : styled.Text`
     ${baseTextStyles};
-    color: #1858D4;
+    color: ${colors.main};
+    font-size: 13px;
   `,
   BaseText : styled.Text`
     ${baseTextStyles};
-    color: #585858;
+    color: black;
   `
 }
 

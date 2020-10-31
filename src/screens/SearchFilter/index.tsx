@@ -1,4 +1,5 @@
 import React from 'react';
+import BackgroundGradient from '../../components/BackgroundGradient';
 import HeaderNavigation from '../../components/HeaderNavigation';
 import FilterBar from './components/FilterBar';
 import SectionContent from './components/SectionContent';
@@ -7,20 +8,17 @@ import useSearchWorkerByName from './hooks/useSearchWorkerByName';
 import * as SFS from './styles';
 
 const SearchFilter = () => {
-  const { FilterData , isLoadingSearch , FilterList } = useSearchInit();
-  const SearchByName = useSearchWorkerByName();
+  const { filterTitle } = useSearchInit();
+  const { ChangeSearchValue , SearchStart } = useSearchWorkerByName();
 
   return <SFS.Container>
+    <BackgroundGradient />
     <SFS.Top>
-      <HeaderNavigation.InputSearch onChangeText={SearchByName} />
+      <HeaderNavigation.InputSearch onChangeText={ChangeSearchValue} />
       <FilterBar />
     </SFS.Top>
     <SFS.Section>
-      <SectionContent
-        title={`Filtro : ${FilterData?.name!}`} 
-        list={FilterList}
-        isLoading={isLoadingSearch}
-      />
+      <SectionContent title={filterTitle} />
     </SFS.Section>
   </SFS.Container>
 }

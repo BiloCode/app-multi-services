@@ -1,4 +1,3 @@
-import faker from 'faker';
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
@@ -13,8 +12,7 @@ const useSearchInit = () => {
   const {
     search : {
       filterId,
-      workers,
-      isLoadingSearch
+      searchByName
     }
   } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker, shallowEqual);
 
@@ -26,10 +24,10 @@ const useSearchInit = () => {
     }
   },[]);
 
+  const currentFilter = list.find(v => v.id === filterId);
+
   return {
-    FilterData : list.find(v => v.id === filterId),
-    FilterList : workers,
-    isLoadingSearch
+    filterTitle : searchByName ? `Busqueda : ${searchByName}` : `Filtro : ${currentFilter?.name!}`
   }
 }
 

@@ -34,6 +34,11 @@ export const setSearchReset = () => ({
   type : TYPES.RESET_SEARCH
 });
 
+export const setSearchFilterByName = (name : string) => ({
+  type : TYPES.SET_FILTER_SEARCH_NAME,
+  payload : name
+});
+
 //Map
 export const setWorkerLoadingMap = (value : boolean) => ({
   type : TYPES.SET_WORKER_LOADING_MAP,
