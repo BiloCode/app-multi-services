@@ -24,15 +24,16 @@ const ProfileSectionStyles = {
   `,
   WorkerName : styled.Text`
     font-family: 'RalewayExtraBold';
-    font-size: 17px;
+    font-size: 18px;
     color: black;
     text-align: center;
   `,
   WorkerState : styled.Text`
     font-family: 'RalewayMedium';
-    font-size: 10px;
+    font-size: 11px;
     color: ${colors.paragraph};
     text-align: center;
+    padding-top: 3px;
   `,
   FloatingIcon : styled.View` 
     width: 46px;

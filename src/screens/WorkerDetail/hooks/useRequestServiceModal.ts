@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { Alert } from "react-native";
 import useHideModal from "../../../hooks/useHideModal";
 import { WorkerState } from "../../../metadata/types";
 
@@ -7,7 +8,10 @@ const useRequestServiceModal = (availability : WorkerState) => {
 
   const openModal = useCallback(() => {
     if(availability === 'not-available'){
-      alert('El especialista no se encuentra disponible actualmente, pero puede dejarle un mensaje.');
+      Alert.alert(
+        'Especialista no disponible',
+        'El especialista no se encuentra disponible actualmente, pero puede dejarle un mensaje.'
+      );
       return;
     }
 

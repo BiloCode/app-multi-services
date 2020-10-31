@@ -5,6 +5,7 @@ export namespace NSHeaderNavigation {
 
   export interface IPropsInputSearch {
     onChangeText?(text : string);
+    onPressButton();
   }
 
   export interface IPropsUserData {

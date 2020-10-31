@@ -1,11 +1,11 @@
 import React, { FC, memo } from 'react';
 import Styled from './styles';
-import { useNavigation } from '@react-navigation/native';
 import AvatarImage from '../../../../components/AvatarImage';
+import { WorkerState } from '../../../../metadata/types';
 
 interface IProps {
   fullName : string;
-  availability : string;
+  availability : WorkerState;
   profileImage? : string;
 }
 
@@ -16,7 +16,7 @@ const ProfileSection : FC<IProps> = ({ availability , fullName , profileImage })
         <AvatarImage iconSize={50} size={110} image={profileImage} />
       </Styled.ImageProfileContainer>
       <Styled.WorkerName>{fullName}</Styled.WorkerName>
-      <Styled.WorkerState>{`(${availability})`}</Styled.WorkerState>
+      <Styled.WorkerState>{`(${availability === 'available' ? 'Disponible' : 'No Disponible'})`}</Styled.WorkerState>
     </Styled.FloatingContent>
   </Styled.MainContainer>
 )

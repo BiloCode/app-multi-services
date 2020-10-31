@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const Top = styled.View`
   width: 100%;
-  height: 160px;
+  height: 120px;
 `;
 
 export const Section = styled.View`

@@ -12,7 +12,8 @@ const useSearchInit = () => {
   const {
     search : {
       filterId,
-      searchByName
+      searchByName,
+      workers
     }
   } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker, shallowEqual);
 
@@ -27,7 +28,8 @@ const useSearchInit = () => {
   const currentFilter = list.find(v => v.id === filterId);
 
   return {
-    filterTitle : searchByName ? `Busqueda : ${searchByName}` : `Filtro : ${currentFilter?.name!}`
+    filterTitle : searchByName ? `Busqueda : ${searchByName}` : `Filtro : ${currentFilter?.name!}`,
+    workers
   }
 }
 

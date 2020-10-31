@@ -8,14 +8,14 @@ import useSearchWorkerByName from './hooks/useSearchWorkerByName';
 import * as SFS from './styles';
 
 const SearchFilter = () => {
-  const { filterTitle } = useSearchInit();
+  const { filterTitle , workers } = useSearchInit();
   const { ChangeSearchValue , SearchStart } = useSearchWorkerByName();
 
   return <SFS.Container>
     <BackgroundGradient />
     <SFS.Top>
-      <HeaderNavigation.InputSearch onChangeText={ChangeSearchValue} />
-      <FilterBar />
+      <HeaderNavigation.InputSearch onPressButton={SearchStart} onChangeText={ChangeSearchValue} />
+      {/* <FilterBar /> */}
     </SFS.Top>
     <SFS.Section>
       <SectionContent title={filterTitle} />
