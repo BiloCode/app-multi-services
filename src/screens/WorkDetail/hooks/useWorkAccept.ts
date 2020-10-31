@@ -20,10 +20,7 @@ const useWorkAccept = () => {
             dispatch(acceptWork(workDetail.id));
           }
         },
-        {
-          text : 'No Aceptar',
-          onPress : () => console.log('No acepto')
-        }
+        { text : 'Cancelar' }
       ]
     )
   }

@@ -1,3 +1,4 @@
+import { WorkDetailState } from "../../../../metadata/types";
 import TYPES, { WorkerMetadata } from "../metadata";
 
 export const setNewWorkers = (workers : WorkerMetadata.IWorker[]) => ({
@@ -10,11 +11,18 @@ export const setNearestWorkers = (workers : WorkerMetadata.IWorker[]) => ({
   payload : workers
 })
 
+//WorkerDetail
 export const setWorkerDetailData = (worker : WorkerMetadata.IWorker) => ({
   type : TYPES.UPDATE_WORKER_DETAIL_DATA,
   payload : worker
 })
 
+export const setWorkerWorkState = (workState : WorkerMetadata.IWorkState) => ({
+  type : TYPES.SET_WORKER_WORK_STATE,
+  payload : workState
+});
+
+//Filter Screen
 export const setWorkersWithFilter = (workers : WorkerMetadata.IWorker[]) => ({
   type : TYPES.SET_WORKERS_WITH_FILTER,
   payload : workers

@@ -1,5 +1,5 @@
 import { App } from "../../../../config";
-import { setNearestWorkers, setNewWorkers , setSearchFilterByName, setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter } from "./sync";
+import { setNearestWorkers, setNewWorkers , setSearchFilterByName, setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter, setWorkerWorkState } from "./sync";
 
 //Obtiene todos los 8 trabajadores mas nuevos
 export const getNewsWorkers = () => async dispatch => {
@@ -103,5 +103,63 @@ export const getWorkersBySpecialty = (specialtyId : number) => async dispatch =>
     dispatch(setSearchLoading(false));
   }catch(e){
     console.log(e);
+  }
+}
+
+//Revisa si el usuario posee un trabajo pendiente con el trabajador (WorkerDetail Screen)
+export const isUserPendientWork = (userId : number, workerId : number) => async dispatch => {
+  try {
+    const request = await App.post('/worker/detail/work/check', new URLSearchParams({
+      userId : String(userId),
+      workerId : String(workerId)
+    }));
+
+    const { work, error } = request.data;
+
+    if(error) alert(error);
+    else if(work){
+      dispatch(setWorkerWorkState(work));
+    }else {
+      dispatch(setWorkerWorkState({ id : -1 , state : '' }));
+    }
+  }catch (e){
+    console.log(e);
+  }
+}
+
+//Solicitar un servicio al trabajador
+interface IRequestService {
+  userId : number,
+  workerId : number,
+  title : string,
+  price : number,
+  description : string
+}
+
+export const requestService = (data : IRequestService) => async dispatch => {
+  try{
+    const request = await App.post('/worker/request/service', new URLSearchParams({
+      userId : String(data.userId),
+      workerId : String(data.workerId),
+      price : String(data.price),
+      description : data.description,
+      title : data.title
+    }));
+
+    const { isWorkCreate , error } = request.data;
+
+    if(error){
+      console.log(error);
+      return false;
+    }else if(isWorkCreate){
+      dispatch(setWorkerWorkState({ id : -1, state : 'waiting-confirmation' }));
+      return true;
+    }else{
+      return false;
+    }
+
+  }catch(e){
+    console.log(e);
+    return false;
   }
 }

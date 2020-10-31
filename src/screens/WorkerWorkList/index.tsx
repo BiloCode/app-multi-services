@@ -9,7 +9,7 @@ import useFilterWorks from './hooks/useFilterWorks';
 
 const WorkerWorkList = () => {
   const init = useWorkerWorkListInit();
-  const { worksPendient , worksWaiting , worksComplete , worksLoading } = useFilterWorks();
+  const { worksPendient , worksWaiting , worksComplete , worksLoading , worksReject } = useFilterWorks();
 
   return <VerticalBar>
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -17,7 +17,8 @@ const WorkerWorkList = () => {
       <WWLS.DropDownWorks>
         <DropDown title='En espera' works={worksWaiting} isLoading={worksLoading} />
         <DropDown title='Pendientes' works={worksPendient} isLoading={worksLoading} />
-        <DropDown title='Completados' works={worksComplete} isLoading={worksLoading} />         
+        <DropDown title='Completados' works={worksComplete} isLoading={worksLoading} />
+        <DropDown title='Rechazados' works={worksReject} isLoading={worksLoading} />         
       </WWLS.DropDownWorks>
     </ScrollView>
   </VerticalBar>

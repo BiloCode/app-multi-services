@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import { shallowEqual, useSelector } from "react-redux";
-import { App } from "../../../config";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import useUserSignInData from "../../../hooks/useUserSignInData";
 import { ReduxRootState } from "../../../metadata/types";
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata";
+import { requestService } from '../../../redux/reducers/Worker/actions/async'
 
 const useRequestServices = (closeModal : Function, basePrice : number) => {
   const [ title , setTitle ] = useState<string>('');
@@ -19,6 +19,9 @@ const useRequestServices = (closeModal : Function, basePrice : number) => {
   const { id } = useUserSignInData();
   const { detailData } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker, shallowEqual);
 
+  //Redux
+  const dispatch = useDispatch();
+
   const SendRequest = useCallback(async () => {
     if(!title || !price || !description) return;
     else if(price < basePrice){
@@ -28,30 +31,23 @@ const useRequestServices = (closeModal : Function, basePrice : number) => {
 
     setLoading(() => true);
 
-    try {
-      const payload = {
-        userId : String(id),
-        workerId : String(detailData.id),
-        title,
-        price : String(price),
-        description
-      }
-
-      const request = await App.post('/worker/request/service', new URLSearchParams(payload));
-      const { isWorkCreate , error } = request.data;
-
-      if(error) console.log(error);
-      else if(isWorkCreate){
-        alert('Acaba de solicitar el servicio. Espere a que el especialista acepte o rechaze la peticion.')
-        closeModal();
-      }else{
-        alert('No se pudo solicitar debido a un error.')
-      }
-
-      setLoading(() => false);
-    }catch(e){
-      console.log(e);
+    const payload = {
+      userId : id,
+      workerId : detailData.worker.id,
+      title,
+      price : price,
+      description
     }
+
+    const isSend = await dispatch(requestService(payload));
+    if(isSend!) {
+      alert('Acaba de solicitar el servicio. Espere a que el especialista acepte o rechaze la peticion.')
+      closeModal();
+    }else{
+      alert('No se pudo solicitar debido a un error.');
+    }
+
+    setLoading(() => false);
   },[title,price,description]);
 
   return {

@@ -1,5 +1,5 @@
 import { IDistrict } from "../../../../metadata/interfaces";
-import { WorkerState } from "../../../../metadata/types";
+import { WorkerState , WorkDetailState } from "../../../../metadata/types";
 
 const TYPES = {
   UPDATE_NEAREST_WORKERS : 'update-nearest-workers',
@@ -11,7 +11,8 @@ const TYPES = {
   RESET_SEARCH : 'reset-search',
   SET_WORKER_LOADING_MAP : 'set-worker-loading-map',
   SET_WORKERS_MAP : 'set-workers-map',
-  SET_FILTER_SEARCH_NAME : 'set-filter-search-name'
+  SET_FILTER_SEARCH_NAME : 'set-filter-search-name',
+  SET_WORKER_WORK_STATE : 'set-worker-work-state'
 }
 
 export namespace WorkerMetadata {
@@ -33,6 +34,11 @@ export namespace WorkerMetadata {
     }
   }
 
+  export interface IWorkState {
+    id : number;
+    state : WorkDetailState | '';
+  }
+
   export interface IStore {
     main : {
       workersNearestLoading : boolean;
@@ -46,7 +52,11 @@ export namespace WorkerMetadata {
       searchByName : string;
       workers : IWorker[];
     };
-    detailData : IWorker;
+    detailData : {
+      worker : IWorker;
+      workState : IWorkState;
+      isWorkStateLoading : boolean;
+    };
     mapSearch : {
       isLoadingWorkers : boolean;
       workers : IWorker[]

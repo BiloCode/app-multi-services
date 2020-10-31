@@ -7,6 +7,7 @@ const ButtonWorkAccept = () => {
   const WorkAccept = useWorkAccept();
 
   return <BWA.Container>
+    <GlobalButton text='Aceptar Trabajo' onPress={WorkAccept} />
     <GlobalButton text='Aceptar Trabajo' onPress={WorkAccept} />            
   </BWA.Container>
 }

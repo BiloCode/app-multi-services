@@ -14,30 +14,37 @@ const initialState : WorkerMetadata.IStore = {
     searchByName : ''
   },
   detailData : {
-    id : -1,
-    availability : 'not-available',
-    basePrice : -1,
-    createdAt : '',
-    puntuaction : 0,
-    specialty : {
-      name : ''
-    },
-    user : {
+    worker : {
       id : -1,
-      description : '',
-      fullName : '',
-      profileImage : '',
-      district : {
+      availability : 'not-available',
+      basePrice : -1,
+      createdAt : '',
+      puntuaction : 0,
+      specialty : {
+        name : ''
+      },
+      user : {
         id : -1,
-        name : '',
-        location : '{}',
-        province : {
+        description : '',
+        fullName : '',
+        profileImage : '',
+        district : {
           id : -1,
+          name : '',
           location : '{}',
-          name : ''
+          province : {
+            id : -1,
+            location : '{}',
+            name : ''
+          }
         }
       }
-    }
+    },
+    workState : {
+      state : '',
+      id : -1
+    },
+    isWorkStateLoading : true
   },
   mapSearch : {
     isLoadingWorkers : true,
@@ -70,7 +77,10 @@ const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
     case TYPES.UPDATE_WORKER_DETAIL_DATA:
       return {
         ...state,
-        detailData : action.payload
+        detailData : {
+          ...state.detailData,
+          worker : action.payload
+        }
       }
 
     case TYPES.SET_WORKERS_WITH_FILTER:
@@ -132,6 +142,16 @@ const reducer = (state = initialState, action) : WorkerMetadata.IStore => {
         search : {
           ...state.search,
           searchByName : action.payload
+        }
+      }
+
+    case TYPES.SET_WORKER_WORK_STATE:
+      return {
+        ...state,
+        detailData : {
+          ...state.detailData,
+          workState : action.payload,
+          isWorkStateLoading : false
         }
       }
 

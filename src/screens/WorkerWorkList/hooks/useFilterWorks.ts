@@ -12,6 +12,7 @@ const useFilterWorks = () => {
     worksWaiting : works.filter(v => v.state === 'waiting-confirmation'),
     worksPendient : works.filter(v => v.state === 'pendient'),
     worksComplete : works.filter(v => v.state === 'completed'),
+    worksReject : works.filter(v => v.state === 'reject'),
     worksLoading
   }
 }

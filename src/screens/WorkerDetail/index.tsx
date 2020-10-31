@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import WDS from './styles';
 
 //Components
@@ -24,9 +24,24 @@ const WorkerDetail = () => {
     specialty,
     NavigateToChat,
     description,
-    puntuaction
+    puntuaction,
+    MessageButton,
+    workState,
+    isWorkStateLoading
   } = useParamsWorkerDetail();
+
   const { isHide , setClose , openModal } = useRequestServiceModal(availability);
+  const BottomButton = () => {
+    if(workState.state === 'pendient') {
+      //...Terminar el trabajo
+      return;
+    }else if(workState.state === 'waiting-confirmation'){
+      alert('Esperando la confirmacion de la solicitud.')
+      return;
+    }
+    
+    openModal();
+  }
 
   return <>
     <WDS.MainContainer as={ScrollView}>
@@ -52,7 +67,7 @@ const WorkerDetail = () => {
               onPress={NavigateToChat}
             />
           </WDS.MarginBottom>
-          <GlobalButton text='Solicitar Servicio' onPress={openModal} />
+          <GlobalButton text={MessageButton()} isLoading={isWorkStateLoading} onPress={BottomButton} />
         </WDS.MarginVerticalContainer>
       </WDS.WorkInformation>
     </WDS.MainContainer>
