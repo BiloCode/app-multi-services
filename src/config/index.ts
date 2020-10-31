@@ -14,4 +14,5 @@ export const colors = {
   paragraph : '#878787',
   stars : '#FFDB29',
   bgMainOpacited : '#FCF0F4',
+  buttonOk : 'green'
 }
