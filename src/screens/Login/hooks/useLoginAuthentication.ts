@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Alert } from "react-native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
 import { sendLoginInformation } from "../../../redux/reducers/Auth/actions/async";
@@ -15,9 +16,15 @@ const useLoginAuthentication = () => {
   const changePasswordValue = (ev : string) => setPasswordValue(ev);
 
   const sendData = () => {
-    if(!usernameValue && !passwordValue) return;
+    const formatUsername = usernameValue.trim(),
+      formatPassword = passwordValue.trim();
+      
+    if(!formatUsername && !formatPassword){
+      Alert.alert('Formulario Vacio','Rellene todos los campos porfavor.')
+      return;
+    }
 
-    dispatch(sendLoginInformation(usernameValue,passwordValue));
+    dispatch(sendLoginInformation(formatUsername,formatPassword));
   }
 
   return {

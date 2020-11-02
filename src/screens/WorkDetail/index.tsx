@@ -10,6 +10,7 @@ import useIsWholeNumber from '../../hooks/useIsWholeNumber';
 
 const WorkDetail = () => {
   const { state , title , description , price , location, createdAt , finished } = useWorkDetailInit();
+
   const isWholeNumber = useIsWholeNumber(price!);
 
   return <WDS.Container>

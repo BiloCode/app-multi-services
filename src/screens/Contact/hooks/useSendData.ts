@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react"
+import { Alert } from "react-native";
 import { App } from "../../../config";
 
 const useSendData = (specialtyId : number, userId : number) => {
@@ -14,16 +15,23 @@ const useSendData = (specialtyId : number, userId : number) => {
 
   const SendData = async () => {
     try {
-      if(!title || !content || !specialtyId){
-        alert('Rellene los campos vacios porfavor.');
+      const formatTitle = title.trim(),
+        formatContent = content.trim();
+
+      if(!formatTitle || !formatContent || !specialtyId){
+        Alert.alert(
+          'Formulario Incompleto',
+          'Existen campos vacios, porfavor rellenelos todos.',
+          [{ text : 'Entendido' }]
+        );
         return;
       }
 
       setIsSend(() => true);
 
       const request = await App.post('/curriculum/add', new URLSearchParams({
-        title,
-        content,
+        title : formatTitle,
+        content : formatContent,
         specialtyId : String(specialtyId),
         userId : String(userId)
       }));
@@ -31,12 +39,16 @@ const useSendData = (specialtyId : number, userId : number) => {
       const { send , error } = request.data;
 
       if(error){
-        alert('Ocurrio un error en el servidor');
+        Alert.alert('Error','Ocurrio un error en el servidor');
       }else if(send){
-        alert('Se ha enviado la solicitud');
+        Alert.alert(
+          'Solicitud enviada',
+          'La solicitud se ha enviado correctamente.\nEspere a que los administradores se pongan en contacto con usted.',
+          [{ text : 'Entendido' }]
+        );
         goBack();
       }else{
-        alert('No se pudo enviar la solicitud');
+        Alert.alert('Error del Servidor','No se pudo enviar la solicitud');
       }
 
       setIsSend(() => false);

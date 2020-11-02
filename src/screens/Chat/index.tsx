@@ -9,6 +9,8 @@ import * as WCS from './styles'
 const Chat = () => {
   const __init = useRoomInit();
 
+  console.log('HOla que tal.');
+
   return <WCS.Container>
     <MessageListScrollProvider>
       <Header />

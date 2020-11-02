@@ -41,3 +41,7 @@ export const setUserChatLoading = (value : boolean) => ({
 export const resetChatList = () => ({
   type : TYPES.CHAT_LIST_RESET
 })
+
+export const setJoinRoom = () => ({
+  type : TYPES.JOIN_ROOM
+})

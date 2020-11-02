@@ -1,10 +1,13 @@
 import { App } from "../../../../config";
 import { setNearestWorkers, setNewWorkers , setSearchFilterByName, setSearchLoading, setWorkerLoadingMap, setWorkersMap, setWorkersWithFilter, setWorkerWorkState } from "./sync";
 
-//Obtiene todos los 8 trabajadores mas nuevos
-export const getNewsWorkers = () => async dispatch => {
+//Obtiene todos los 8 trabajadores mas nuevos cercanos a ti
+export const getNewsWorkers = (provinceId : number) => async dispatch => {
   try{
-    const request = await App.get('/worker/find/new');
+    const request = await App.post('/worker/find/new', new URLSearchParams({
+      provinceId : String(provinceId)
+    }));
+
     const { workers , error } = request.data;
 
     let workersData : any = [];
@@ -42,7 +45,7 @@ export const getNearestWorkers = (provinceId : number) => async dispatch => {
   }
 }
 
-//Obtiene todos los trabajadores cercanos disponibles
+//Obtiene todos los trabajadores cercanos disponibles cercanos a ti
 export const getNearestWorkersUnlimited = (provinceId : number) => async dispatch => {
   try{
     dispatch(setWorkerLoadingMap(true));
@@ -66,11 +69,15 @@ export const getNearestWorkersUnlimited = (provinceId : number) => async dispatc
   }
 }
 
-//Busca el trabajador por el nombre
-export const getWorkersByName = (name : string) => async dispatch => {
+//Busca el trabajador por el nombre cercano a ti
+export const getWorkersByName = (name : string, provinceId : number) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));
-    const request = await App.get(`/worker/find/name/${name}`);
+    const request = await App.post(`/worker/find/name`, new URLSearchParams({
+      name,
+      provinceId : String(provinceId)
+    }));
+
     const { workers , error } = request.data;
 
     if(error){
@@ -86,16 +93,18 @@ export const getWorkersByName = (name : string) => async dispatch => {
   }
 }
 
-//Obtener trabajadores por especialidad
-export const getWorkersBySpecialty = (specialtyId : number) => async dispatch => {
+//Obtener trabajadores por especialidad cercanos a ti
+export const getWorkersBySpecialty = (specialtyId : number, provinceId : number) => async dispatch => {
   try {
     dispatch(setSearchLoading(true));
 
-    const request = await App.get(`/worker/find/specialty/${specialtyId}`);
+    const request = await App.post(`/worker/find/specialty`, new URLSearchParams({
+      specialtyId : String(specialtyId),
+      provinceId : String(provinceId)
+    }));
+
     const { workers , error } = request.data;
-
-    console.log(workers);
-
+    
     if(error){
       console.log(error);
     }else if(workers) {

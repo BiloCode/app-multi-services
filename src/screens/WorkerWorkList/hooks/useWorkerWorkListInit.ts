@@ -13,10 +13,7 @@ const useWorkerWorkListInit = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getWorkList({
-      type : 'worker',
-      value : id!
-    }));
+    dispatch(getWorkList(id));
 
     return () => {
       dispatch(workResetData());

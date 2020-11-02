@@ -4,6 +4,7 @@ import useUserSignInData from "../../../hooks/useUserSignInData";
 import { ReduxRootState } from "../../../metadata/types";
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata";
 import { requestService } from '../../../redux/reducers/Worker/actions/async'
+import { Alert } from "react-native";
 
 const useRequestServices = (closeModal : Function, basePrice : number) => {
   const [ title , setTitle ] = useState<string>('');
@@ -23,31 +24,45 @@ const useRequestServices = (closeModal : Function, basePrice : number) => {
   const dispatch = useDispatch();
 
   const SendRequest = useCallback(async () => {
-    if(!title || !price || !description) return;
-    else if(price < basePrice){
-      alert('El precio no puede ser menor al precio base del especialista');
-      return;
+    try {
+      const formatTitle = title.trim(),
+        formatDescription = description.trim();
+
+      if(!formatTitle || !price || !formatDescription){
+        Alert.alert('Formulario Vacio','Rellene todos los campos porfavor.');
+        return;
+      }else if(price < basePrice){
+        Alert.alert('Precio Invalido','El precio no puede ser menor al precio base del especialista');
+        return;
+      }
+
+      setLoading(() => true);
+
+      const payload = {
+        userId : id,
+        workerId : detailData.worker.id,
+        title,
+        price : price,
+        description
+      }
+
+      const isSend = await dispatch(requestService(payload));
+      if(isSend!) {
+        Alert.alert(
+          'Solicitud Enviada',
+          'Acaba de solicitar el servicio.\nEspere a que el especialista acepte o rechaze la peticion.',
+          [{ text : 'Entendido' }]
+        )
+        closeModal();
+      }else{
+        Alert.alert('Error','No se pudo solicitar debido a un error.');
+      }
+
+      setLoading(() => false);
+    }catch(e){
+      console.log(e);
+      Alert.alert('Error','No se pudo solicitar debido a un error.');
     }
-
-    setLoading(() => true);
-
-    const payload = {
-      userId : id,
-      workerId : detailData.worker.id,
-      title,
-      price : price,
-      description
-    }
-
-    const isSend = await dispatch(requestService(payload));
-    if(isSend!) {
-      alert('Acaba de solicitar el servicio. Espere a que el especialista acepte o rechaze la peticion.')
-      closeModal();
-    }else{
-      alert('No se pudo solicitar debido a un error.');
-    }
-
-    setLoading(() => false);
   },[title,price,description]);
 
   return {

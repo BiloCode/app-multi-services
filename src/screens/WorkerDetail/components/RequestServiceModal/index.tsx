@@ -27,21 +27,21 @@ const RequestServiceModal : FC<IProps> = ({ setClose , basePrice }) => {
     <RSMS.Container>
       <RSMS.Title>Solicitar Servicio</RSMS.Title>
       <GlobalInput
-        placeholder='Titulo...'
+        placeholder='Motivo o Razon...'
         onChangeText={ChangeTitle}
         icon={<MaterialCommunityIcons name="format-title" size={24} color="black" />}
       />
+      <GlobalInput
+        icon={<MaterialIcons name="description" size={16} color="black" />}
+        placeholder='Descripcion general...'
+        onChangeText={ChangeDescription}
+      />
       <GlobalInput 
         icon={<MaterialCommunityIcons name="currency-eur" size={16} color="black" />}
-        placeholder='Precio...'
+        placeholder='Precio a pagar...'
         onChangeText={ChangePrice}
         type='number-pad'
         defaultValue={String(basePrice)}
-      />
-      <GlobalInput
-        icon={<MaterialIcons name="description" size={16} color="black" />}
-        placeholder='Pequeña Descripción...'
-        onChangeText={ChangeDescription}
       />
       <RSMS.ButtonContainer>
         <GlobalButton text='Enviar Solicitud' onPress={SendRequest} />  

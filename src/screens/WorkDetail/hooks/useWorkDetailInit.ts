@@ -15,8 +15,6 @@ const useWorkDetailInit = () => {
       finished
     }
   } = useSelector<ReduxRootState,WorkMetadata.IStore>(({ work }) => work, shallowEqual);
-  
-  console.log(user);
 
   return {
     title,

@@ -60,7 +60,7 @@ const WorkerDetail = () => {
           <WDS.TextDescription>{description || 'Sin descripción disponible.'}</WDS.TextDescription>
         </BaseBox>
         <PriceBox data={basePrice!} />
-        <LocationBox coords={location.coords.location} province={location.province} district={location.district} />
+        <LocationBox coords={location.coords} province={location.province} district={location.district} />
         <WDS.MarginVerticalContainer>
           <WDS.MarginBottom>
             <GlobalButton

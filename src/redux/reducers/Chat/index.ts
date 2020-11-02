@@ -18,7 +18,8 @@ const initialState : ChatMetadata.IStore = {
   isLoadingMessages : true,
   messagesList : [],
   socket : null,
-  socketLoading : true
+  socketLoading : true,
+  isJoinRoom : false
 }
 
 const reducer = (state = initialState, action) : ChatMetadata.IStore => {
@@ -44,7 +45,7 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         messagesList : [...state.messagesList , action.payload]
       }
 
-    case TYPES.SOCKET_START_CONNECTION:  
+    case TYPES.SOCKET_START_CONNECTION: 
       return {
         ...state,
         socket : io(Server),
@@ -61,6 +62,7 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
       return {
         ...state,
         isLoadingMessages : true,
+        isJoinRoom : false,
         messagesList : [],
         roomId : '',
         userData : initialState.userData
@@ -90,6 +92,12 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
         userChatList : {
           ...initialState.userChatList
         }
+      }
+
+    case TYPES.JOIN_ROOM:
+      return {
+        ...state,
+        isJoinRoom : true
       }
 
     default:

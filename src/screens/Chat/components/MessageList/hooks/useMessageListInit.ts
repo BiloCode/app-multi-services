@@ -17,7 +17,7 @@ const useMessageListInit = () => {
 
   useEffect(() => {
     scrollToEnd();
-  });
+  },[messagesList]);
 
   return {
     messagesList,

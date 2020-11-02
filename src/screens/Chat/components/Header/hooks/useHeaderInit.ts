@@ -13,7 +13,7 @@ const useHeaderInit = () => {
   const { userData } = useSelector<ReduxRootState, ChatMetadata.IStore>(({ chat }) => chat, shallowEqual);
 
   if(userAuthenticationState === 'authentication-user'){
-    const isWholeNumber = useIsWholeNumber(userData.basePrice);
+    const isWholeNumber = useIsWholeNumber(userData.basePrice!);
 
     return {
       fullName : userData.fullName,

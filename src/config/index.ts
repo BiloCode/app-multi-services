@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export const Server = 'https://app-multi-services.herokuapp.com';
+export const Server = 'http://192.168.1.9:3000';
 
 export const App = Axios.create({
   baseURL : `${Server}/app`
@@ -13,6 +13,5 @@ export const colors = {
   text : '#A5A4A4',
   paragraph : '#878787',
   stars : '#FFDB29',
-  bgMainOpacited : '#FCF0F4',
-  buttonOk : 'green'
+  bgMainOpacited : '#FCF0F4'
 }

@@ -7,7 +7,8 @@ const TYPES = {
   CHAT_RESET : 'chat-reset',
   SET_USER_CHAT_LIST : 'set-user-chat-list',
   SET_USER_CHAT_LOADING : 'set-user-chat-loading',
-  CHAT_LIST_RESET : 'chat-list-reset'
+  CHAT_LIST_RESET : 'chat-list-reset',
+  JOIN_ROOM : 'joined-room'
 }
 
 export namespace ChatMetadata {
@@ -50,6 +51,7 @@ export namespace ChatMetadata {
     messagesList : IChatMessageList[];
     socket : SocketIOClient.Socket | null;
     socketLoading : boolean;
+    isJoinRoom : boolean;
   }
 }
 

@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { ReduxRootState } from "../../../metadata/types";
-import { getMessagesList, joinRoom, leaveRoom } from "../../../redux/reducers/Chat/actions/async";
+import { getMessagesList } from "../../../redux/reducers/Chat/actions/async";
+import { chatResetData, setJoinRoom } from "../../../redux/reducers/Chat/actions/sync";
 
 const useJoinRoom = () => {
   //Redux
   const { user , chat , auth } = useSelector<ReduxRootState, ReduxRootState>(state => state, shallowEqual);
   const { userAuthenticationState } = auth;
   const { userInformation , workerInformation } = user;
-  const { userData , socket , roomId } = chat;
+  const { userData , socket, roomId } = chat;
 
   const dispatch = useDispatch();
 
@@ -23,21 +24,23 @@ const useJoinRoom = () => {
       userId = userInformation.id;
     }
 
-    if(userWorkerId > 0 && userId > 0){
-      dispatch(getMessagesList(userWorkerId, userId));
-    }
+    dispatch(getMessagesList(userWorkerId, userId)); 
   },[]);
 
   useEffect(() => {
-    if(socket && roomId) {
-      dispatch(joinRoom(socket, roomId));
+    if(roomId){
+      socket?.emit('join-room', { roomId });
+      socket?.on('joined-room-success', () => {
+        dispatch(setJoinRoom());
+      });
 
       return () => {
-        //Abandonar la sala al salir de esta pantalla
-        dispatch(leaveRoom(socket, roomId));
+        socket?.emit('leave-room', { roomId });
+        dispatch(chatResetData());
       }
     }
-  },[socket, roomId]);
+  },[roomId]);
+
 }
 
 export default useJoinRoom;

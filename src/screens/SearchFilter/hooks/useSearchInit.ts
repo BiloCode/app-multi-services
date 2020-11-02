@@ -5,9 +5,11 @@ import { SpecialtyMetadata } from "../../../redux/reducers/Specialty/metadata";
 import { WorkerMetadata } from "../../../redux/reducers/Worker/metadata";
 import { getWorkersBySpecialty } from '../../../redux/reducers/Worker/actions/async';
 import { setSearchReset } from '../../../redux/reducers/Worker/actions/sync';
+import useUserSignInData from '../../../hooks/useUserSignInData';
 
 const useSearchInit = () => {
   const dispatch = useDispatch();
+  const { district } = useUserSignInData();
   const { list } = useSelector<ReduxRootState,SpecialtyMetadata.IStore>(({ specialties }) => specialties, shallowEqual);
   const {
     search : {
@@ -18,7 +20,7 @@ const useSearchInit = () => {
   } = useSelector<ReduxRootState,WorkerMetadata.IStore>(({ worker }) => worker, shallowEqual);
 
   useEffect(() => {
-    dispatch(getWorkersBySpecialty(filterId));
+    dispatch(getWorkersBySpecialty(filterId, district.province.id));
 
     return () => {
       dispatch(setSearchReset());

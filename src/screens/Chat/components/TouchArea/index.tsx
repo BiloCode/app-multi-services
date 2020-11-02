@@ -2,15 +2,16 @@ import React, { memo } from 'react';
 import Input from './components/Input';
 import SendButton from './components/SendButton';
 import useSendMessage from './hooks/useSendMessage';
-import * as TAS from './styles';
+import * as Styled from './styles';
 
 const TouchArea = () =>  {
-  const { ChangeMessageText , SendMessage , messageText } = useSendMessage();
+  const { ChangeMessageText , SendMessage , messageText , isJoinRoom } = useSendMessage();
 
-  return <TAS.Container>
+  return <Styled.Container>
     <Input onChangeText={ChangeMessageText} value={messageText} />
     <SendButton onPress={SendMessage} />
-  </TAS.Container>
+    { !isJoinRoom && <Styled.ContainerIsNotJoinRoom /> }
+  </Styled.Container>
 }
 
 export default memo(TouchArea);
