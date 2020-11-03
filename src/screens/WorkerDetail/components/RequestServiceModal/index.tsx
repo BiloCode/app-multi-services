@@ -1,13 +1,12 @@
 import React, { FC, memo } from 'react';
-import { MaterialCommunityIcons , MaterialIcons } from '@expo/vector-icons';
-import GlobalInput from '../../../../components/GlobalInput';
-import { ActivityIndicator, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import * as RSMS from './styles';
+import { ActivityIndicator } from 'react-native';
+import * as Styled from './styles';
 
 import DarkScreenFromModal from '../../../../components/DarkScreenFromModal';
 import GlobalButton from '../../../../components/GlobalButton';
 import useRequestServices from '../../hooks/useRequestServices';
+import TextBox from './TextBox';
+import { colors } from '../../../../config';
 
 interface IProps {
   basePrice : number;
@@ -24,34 +23,47 @@ const RequestServiceModal : FC<IProps> = ({ setClose , basePrice }) => {
   </DarkScreenFromModal>
 
   return <DarkScreenFromModal>
-    <RSMS.Container>
-      <RSMS.Title>Solicitar Servicio</RSMS.Title>
-      <GlobalInput
-        placeholder='Motivo o Razon...'
-        onChangeText={ChangeTitle}
-        icon={<MaterialCommunityIcons name="format-title" size={24} color="black" />}
+    <Styled.Container>
+      <Styled.Title>Solicitar Servicio</Styled.Title>
+      <TextBox
+        title='Motivo de la Solicitud'
+        iconName='menuunfold' 
+        inputConfig={{
+          onChangeText : ChangeTitle,
+          placeholder : 'Escribe aqui...'
+        }} 
       />
-      <GlobalInput
-        icon={<MaterialIcons name="description" size={16} color="black" />}
-        placeholder='Descripcion general...'
-        onChangeText={ChangeDescription}
+      <TextBox
+        title='Descripcion'
+        iconName='filetext1' 
+        inputConfig={{
+          onChangeText : ChangeDescription,
+          placeholder : 'Escribe aqui...'
+        }} 
       />
-      <GlobalInput 
-        icon={<MaterialCommunityIcons name="currency-eur" size={16} color="black" />}
-        placeholder='Precio a pagar...'
-        onChangeText={ChangePrice}
-        type='number-pad'
-        defaultValue={String(basePrice)}
+      <TextBox
+        title='Precio Inicial / Base'
+        iconName='bank'
+        inputLeftText='S/'
+        inputRightText='Soles peruanos'
+        inputConfig={{
+          onChangeText : ChangePrice,
+          type : 'numeric',
+          defaultValue : String(basePrice)
+        }} 
       />
-      <RSMS.ButtonContainer>
+      <Styled.ButtonContainer marginTop={35} >
         <GlobalButton text='Enviar Solicitud' onPress={SendRequest} />  
-      </RSMS.ButtonContainer>
-    </RSMS.Container>
-    <RSMS.IconContainer>
-      <TouchableOpacity onPress={setClose}>
-        <FontAwesome name="times" size={32} color="#fff" />
-      </TouchableOpacity>
-    </RSMS.IconContainer>
+        <Styled.ButtonContainer marginTop={5}>
+          <GlobalButton 
+            text='Cancelar Operacion'
+            backgroundColor='rgb(245,245,245)'
+            textColor={colors.main}
+            onPress={setClose}
+          />
+        </Styled.ButtonContainer>
+      </Styled.ButtonContainer>
+    </Styled.Container>
   </DarkScreenFromModal>
 }
 

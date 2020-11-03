@@ -1,18 +1,20 @@
 import React, { FC } from 'react';
 import NSInput from '../../metadata';
 import _Base from '../_Base';
-import TextStyles from './styles';
+import Styled from './styles';
 
-const Text : FC<NSInput.IPropsText> = ({ label , placeholder , defaultValue , onChangeText }) => {
+const Text : FC<NSInput.IPropsText> = ({ label , placeholder , defaultValue , onChangeText , type , maxLength }) => {
   return <_Base label={label}>
-    <TextStyles.Container>
-      <TextStyles.Input 
+    <Styled.Container>
+      <Styled.Input 
         placeholderTextColor='#C4C4C4'
         placeholder={placeholder}
         defaultValue={defaultValue}
         onChangeText={onChangeText}
+        keyboardType={type}
+        maxLength={maxLength}
       />
-    </TextStyles.Container>    
+    </Styled.Container>    
   </_Base>
 }
 

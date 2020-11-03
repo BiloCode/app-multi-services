@@ -7,7 +7,7 @@ const MainTitleStyles = {
   `,
   Title : styled.Text`
     width: 90%;
-    font-size: 32px;
+    font-size: 34px;
     font-family: 'RalewayExtraBold';
     color: black;
   `

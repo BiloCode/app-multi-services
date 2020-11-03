@@ -32,9 +32,11 @@ const WorkerProfile = () => {
       name={fullName}
     />
     <Styled.ContainerText>
+      <BoxInformation title='Especialidad' ADIconName='user' value={specialty} />
+      <BoxInformation title='Precio Base / Inicial' ADIconName='bank' value={'S/' + basePrice} />
       <BoxInformation title='Ubicacion' ADIconName='enviromento' value={location} />
       <BoxInformation title='Fecha de Creación' ADIconName='calendar' value={createdAt} />
-      <WorkInformation price={basePrice} specialty={specialty} />
+      {/* <WorkInformation price={basePrice} specialty={specialty} /> */}
       <Description description={description} />
       <Styled.ContainerButton>
         <GlobalButton text='Ver Trabajos' onPress={BackToScreen} />

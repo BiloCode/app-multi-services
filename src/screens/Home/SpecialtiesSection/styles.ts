@@ -2,10 +2,10 @@ import styled from "styled-components/native";
 
 const SpecialtiesSectionStyles = {
   Container : styled.View`
-    margin-top: 25px;
+    margin-top: 40px;
   `,
   ContainerTitle : styled.View`
-    width: 60%;
+    width: 80%;
     min-width: 150px;
     padding-bottom: 25px;
   `,

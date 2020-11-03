@@ -1,3 +1,5 @@
+import { KeyboardType } from "react-native";
+
 namespace NSInput {
   export interface IPropsBase {
     label : string;
@@ -13,6 +15,8 @@ namespace NSInput {
 
   interface IProps extends IPropsBase , IPlaceholderInput {
     defaultValue? : string;
+    type? : KeyboardType;
+    maxLength? : number;
   }
 
   export interface IPropsText extends IProps,IEventChangeTextInput {}

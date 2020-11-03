@@ -2,7 +2,6 @@ import styled from "styled-components/native";
 import { colors } from "../../../config";
 
 export const Container = styled.View`
-  background-color: #fff;
   margin-bottom: 7px;
 `;
 

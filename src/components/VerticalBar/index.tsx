@@ -22,7 +22,7 @@ const VerticalBar : FC = ({ children }) => {
           { userAuthenticationState === 'authentication-user' ? <TabUser /> : <TabWorker /> }
         </Styled.BarSection>
         <Styled.BarFooter>
-          <Icon iconNameAntDesign="back" onPress={CloseSession} />
+          <Icon iconNameAntDesign="logout" onPress={CloseSession} />
         </Styled.BarFooter>
       </Styled.Bar>
       <Styled.Content>

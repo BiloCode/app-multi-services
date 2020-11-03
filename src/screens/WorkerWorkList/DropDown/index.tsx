@@ -2,24 +2,23 @@ import React, { FC, memo } from 'react';
 import * as DDS from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
-import useDropDown from './hooks/useDropDown';
 import HideContent from './components/HideContent';
 import WorkCard from './components/WorkCard';
 import { WorkMetadata } from '../../../redux/reducers/Work/metadata';
-import { colors } from '../../../config';
 
 interface IProps {
   title : string;
   works : WorkMetadata.IWork[];
   isLoading : boolean;
+  isOpen : boolean;
+  onPress?() : void;
 }
 
-const DropDown : FC<IProps> = ({ title , works , isLoading }) => {
+const DropDown : FC<IProps> = ({ title , works , isLoading , isOpen , onPress }) => {
   const numberOfWorks = works.length > 9 ? '9+' : works.length;
-  const { ToggleHideContent , isOpen } = useDropDown();
 
   return <DDS.Container>
-    <DDS.DropHeader as={TouchableOpacity} onPress={ToggleHideContent} >
+    <DDS.DropHeader as={TouchableOpacity} onPress={onPress} >
       <DDS.DropHeaderTitleContainer>
         
         {

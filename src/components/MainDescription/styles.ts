@@ -7,7 +7,7 @@ const MainDescriptionStyles = {
   `,
   Text : styled.Text`
     font-family: 'RalewayRegular';
-    font-size: 15px;
+    font-size: 16px;
     color: ${colors.paragraph};
   `,
 }

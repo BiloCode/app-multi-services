@@ -23,8 +23,8 @@ const useSearchInit = () => {
   } = useSelector<ReduxRootState,ReduxRootState>(state => state, shallowEqual);
 
   useEffect(() => {
-    dispatch(getNearestWorkers(district.province.id!));
-    dispatch(getNewsWorkers());
+    dispatch(getNearestWorkers(district.province.id));
+    dispatch(getNewsWorkers(district.province.id));
   },[]);
 
   return {

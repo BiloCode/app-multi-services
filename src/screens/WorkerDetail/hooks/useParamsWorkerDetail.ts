@@ -54,7 +54,7 @@ const useParamsWorkerDetail = () => {
     },
     specialty : specialty?.name,
     availability,
-    puntuaction : 3,
+    puntuaction : 5,
     NavigateToChat,
     isWorkStateLoading,
     workState,

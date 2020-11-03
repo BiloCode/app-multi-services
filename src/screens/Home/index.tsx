@@ -9,8 +9,8 @@ import SpecialtiesSection from './SpecialtiesSection';
 const Home = () => (
   <VerticalBar>
     <HomeStyles.Container>
-      <MainTitle text='Bienvenido a GLOBALCID' />
-      <MainDescription text={faker.lorem.words(20)} />
+      <MainTitle text='Hola ¡Somos GLOBALCID!' />
+      <MainDescription text='Nos dedicamos a encontrar un experto para solucionar cada problema que requiere de nuestros especialistas.' />
       <SpecialtiesSection />
     </HomeStyles.Container>
   </VerticalBar>

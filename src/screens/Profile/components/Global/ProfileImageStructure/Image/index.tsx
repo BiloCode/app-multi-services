@@ -16,7 +16,7 @@ const Image : FC<IProps> = ({ size , image }) => {
   return <Styled.Container size={size}>
     <AvatarImage image={profileImage} size={120} iconSize={60} />
     <Styled.EditIconContainer as={TouchableOpacity} onPress={ChangeProfileImage}>
-      <AntDesign name={!editImageEnabled ? 'edit' : 'save'} size={16} color="#fff" />
+      <AntDesign name={!editImageEnabled ? 'picture' : 'save'} size={16} color="#fff" />
     </Styled.EditIconContainer>      
   </Styled.Container>
 }

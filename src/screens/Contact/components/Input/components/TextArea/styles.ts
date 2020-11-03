@@ -5,11 +5,11 @@ const TextAreaStyles = {
   Container : styled.View`
     ${InputContainerStyles};
     height: 80px;
-    border-radius: 15px;
+    border-radius: 6px;
   `,
   Input : styled.TextInput`
     ${TextInputStyles};
-    padding: 20px 0;
+    padding: 15px 0;
   `
 }
 

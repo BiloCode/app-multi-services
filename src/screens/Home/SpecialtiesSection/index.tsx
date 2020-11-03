@@ -20,7 +20,7 @@ const SpecialtiesSection = () => {
       keyExtractor={(item) => item.id.toString()}
       ListHeaderComponent={() => (
         <SSS.ContainerTitle>
-          <SSS.TitleSection>Nuestras Especialidades</SSS.TitleSection>
+          <SSS.TitleSection>¿Qué deseas solucionar?</SSS.TitleSection>
         </SSS.ContainerTitle>
       )}
       renderItem={({ item }) => <SpecialtyCard id={item.id} title={item.name} image={item.image} />}

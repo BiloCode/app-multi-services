@@ -12,7 +12,7 @@ const SmallButtonStyles = {
   `,
   ButtonText : styled.Text`
     font-family: 'RalewayExtraBold';
-    font-size: 10px;
+    font-size: 11.5px;
     color: #fff;
     text-align: center;
   `,

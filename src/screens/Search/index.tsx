@@ -21,12 +21,12 @@ const Search = () => {
     <VerticalBar>
       <SS.Container>
         <ScrollView showsVerticalScrollIndicator={false} >
-          <MainTitle text='Especialistas Cerca a Ti' />
-          <MainDescription text={faker.lorem.words(15)} />    
-          <SmallButton onPress={openModal} text='Selecciona un filtro' />
+          <MainTitle text='Expertos muy Cerca a Ti' />
+          <MainDescription text='Siempre tendrás un experto cerca de tu domicilio y lo encontrarás aquí.' />    
+          <SmallButton onPress={openModal} text='Buscar' />
           <SS.WorkersContainer>
             <WorkerList 
-              title='Nuestros Nuevos Especialistas' 
+              title='Nuevos Especialistas' 
               data={workersNew}
               isLoading={workersNewLoading}
             />

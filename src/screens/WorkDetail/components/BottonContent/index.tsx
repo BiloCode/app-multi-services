@@ -27,7 +27,7 @@ const BottonContent : FC<IProps> = ({ workState , coords , province }) => {
   }
 
   return <RoundedSection
-    title='Lima - Callao'
+    title={province}
     icon={<MaterialCommunityIcons name="map-marker" size={20} color="#fff" />} 
   >
     <WLS.Container>
