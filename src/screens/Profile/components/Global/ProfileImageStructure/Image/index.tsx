@@ -11,10 +11,10 @@ interface IProps {
 }
 
 const Image : FC<IProps> = ({ size , image }) => {
-  const { profileImage , ChangeProfileImage , editImageEnabled } = useChangeProfileImage(image);
+  const { ChangeProfileImage , editImageEnabled } = useChangeProfileImage();
 
   return <Styled.Container size={size}>
-    <AvatarImage image={profileImage} size={120} iconSize={60} />
+    <AvatarImage image={image} size={120} iconSize={60} />
     <Styled.EditIconContainer as={TouchableOpacity} onPress={ChangeProfileImage}>
       <AntDesign name={!editImageEnabled ? 'picture' : 'save'} size={16} color="#fff" />
     </Styled.EditIconContainer>      

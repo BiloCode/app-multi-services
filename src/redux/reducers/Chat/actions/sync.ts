@@ -24,10 +24,6 @@ export const chatResetData = () => ({
   type : TYPES.CHAT_RESET
 })
 
-export const SocketStartConnection = () => ({
-  type : TYPES.SOCKET_START_CONNECTION
-})
-
 export const setUserChatList = (list : ChatMetadata.IUserRoomList[]) => ({
   type : TYPES.SET_USER_CHAT_LIST,
   payload : list

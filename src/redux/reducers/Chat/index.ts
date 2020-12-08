@@ -17,7 +17,7 @@ const initialState : ChatMetadata.IStore = {
   },
   isLoadingMessages : true,
   messagesList : [],
-  socket : null,
+  socket : io(Server),
   socketLoading : true,
   isJoinRoom : false
 }
@@ -43,13 +43,6 @@ const reducer = (state = initialState, action) : ChatMetadata.IStore => {
       return {
         ...state,
         messagesList : [...state.messagesList , action.payload]
-      }
-
-    case TYPES.SOCKET_START_CONNECTION: 
-      return {
-        ...state,
-        socket : io(Server),
-        socketLoading : false
       }
 
     case TYPES.SET_ROOM_ID:

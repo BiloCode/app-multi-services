@@ -7,7 +7,9 @@ const TYPES = {
   UPDATE_USER_FULLNAME : 'update-user-fullname',
   UPDATE_USER_DESCRIPTION : 'update-user-description',
   UPDATE_WORKER_FULLNAME : 'update-worker-fullname',
-  UPDATE_WORKER_DESCRIPTION : 'update-worker-fullname'
+  UPDATE_WORKER_DESCRIPTION : 'update-worker-fullname',
+  UPDATE_USER_PROFILE_IMAGE : 'update-user-profile-image',
+  UPDATE_WORKER_PROFILE_IMAGE : 'update-worker-profile-image'
 }
 
 export namespace UserMetadata {

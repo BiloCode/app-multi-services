@@ -20,6 +20,11 @@ export const setUserDescription = (description : string) => ({
   payload : description
 });
 
+export const setUserProfileImage = (profileImage : string) => ({
+  type : TYPES.UPDATE_USER_PROFILE_IMAGE,
+  payload : profileImage
+});
+
 export const setWorkerFullName = (fullname : string) => ({
   type : TYPES.UPDATE_WORKER_FULLNAME,
   payload : fullname
@@ -28,4 +33,9 @@ export const setWorkerFullName = (fullname : string) => ({
 export const setWorkerDescription = (description : string) => ({
   type : TYPES.UPDATE_WORKER_DESCRIPTION,
   payload : description
+});
+
+export const setWorkerProfileImage = (profileImage : string) => ({
+  type : TYPES.UPDATE_WORKER_PROFILE_IMAGE,
+  payload : profileImage
 });

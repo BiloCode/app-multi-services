@@ -63,6 +63,15 @@ const reducer = (state = initialState, action) : UserMetadata.IStore => {
         }
       }
 
+    case TYPES.UPDATE_USER_PROFILE_IMAGE:
+      return {
+        ...state,
+        userInformation : {
+          ...state.userInformation,
+          profileImage : action.payload
+        }
+      }
+
     case TYPES.UPDATE_WORKER_FULLNAME:
       return {
         ...state,
@@ -83,6 +92,18 @@ const reducer = (state = initialState, action) : UserMetadata.IStore => {
           user : {
             ...state.workerInformation.user,
             description : action.payload
+          }
+        }
+      }
+
+    case TYPES.UPDATE_WORKER_PROFILE_IMAGE:
+      return {
+        ...state,
+        workerInformation : {
+          ...state.workerInformation,
+          user : {
+            ...state.workerInformation.user,
+            profileImage : action.payload
           }
         }
       }

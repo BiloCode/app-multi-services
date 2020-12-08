@@ -18,7 +18,7 @@ import ChatList from '../../../screens/ChatList';
 const Stack = createStackNavigator();
 
 const AuthUser = () => {
-  const init = useRouterUserInit();
+  useRouterUserInit();
 
   return <Stack.Navigator headerMode='none' initialRouteName='home' >
     <Stack.Screen name='home' component={Home} />

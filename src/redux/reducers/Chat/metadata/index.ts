@@ -3,7 +3,6 @@ const TYPES = {
   SET_WORKER_DATA : 'set-worker-data',
   SET_MESSAGE : 'set-message',
   SET_ROOM_ID : 'set-room-id',
-  SOCKET_START_CONNECTION : 'socket-start-connection',
   CHAT_RESET : 'chat-reset',
   SET_USER_CHAT_LIST : 'set-user-chat-list',
   SET_USER_CHAT_LOADING : 'set-user-chat-loading',
@@ -49,7 +48,7 @@ export namespace ChatMetadata {
     userData : IUserWorkerDataRoom & IUserDataRoom;
     isLoadingMessages : boolean;
     messagesList : IChatMessageList[];
-    socket : SocketIOClient.Socket | null;
+    socket : SocketIOClient.Socket;
     socketLoading : boolean;
     isJoinRoom : boolean;
   }
